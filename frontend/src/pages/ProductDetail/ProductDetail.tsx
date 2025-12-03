@@ -1,24 +1,23 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProductById, likeProduct } from '../../store/slices/productsSlice';
 import { addToCart } from '../../store/slices/cartSlice';
 import { addToFavorites, removeFromFavorites } from '../../store/slices/favoritesSlice';
+import { RootState, Product } from '../../types';
 import styles from './ProductDetail.module.scss';
 
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
-  const { currentProduct: product, loading } = useSelector((state) => state.products);
-  const { isAuthenticated } = useSelector((state) => state.auth);
-  const { items: favorites } = useSelector((state) => state.favorites);
 
-  const isFavorite = favorites.some((fav) => fav.id === product?.id);
+  const { currentProduct: product, loading } = useSelector((state: RootState) => state.products);
+  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
+  const { items: favorites } = useSelector((state: RootState) => state.favorites);
 
-  useEffect(() => {
-    dispatch(fetchProductById(id));
+  const isFavorite = favorites.some((fav: Product) => fav.id === product?.id);  useEffect(() => {
+    dispatch(fetchProductById(id) as any);
   }, [dispatch, id]);
 
   const handleAddToCart = () => {
@@ -26,8 +25,10 @@ const ProductDetail = () => {
       navigate('/login');
       return;
     }
-    dispatch(addToCart({ productId: product.id, quantity: 1 }));
-    navigate('/cart');
+    if (product) {
+      dispatch(addToCart({ productId: product.id, quantity: 1 }) as any);
+      navigate('/cart');
+    }
   };
 
   const handleFavoriteToggle = () => {
@@ -36,15 +37,19 @@ const ProductDetail = () => {
       return;
     }
 
-    if (isFavorite) {
-      dispatch(removeFromFavorites(product.id));
-    } else {
-      dispatch(addToFavorites(product.id));
+    if (product) {
+      if (isFavorite) {
+        dispatch(removeFromFavorites(product.id) as any);
+      } else {
+        dispatch(addToFavorites(product.id) as any);
+      }
     }
   };
 
   const handleLike = () => {
-    dispatch(likeProduct(product.id));
+    if (product) {
+      dispatch(likeProduct(product.id) as any);
+    }
   };
 
   if (loading) {

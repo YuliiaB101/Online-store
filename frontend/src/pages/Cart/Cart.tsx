@@ -1,38 +1,39 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCart, updateCartItem, removeFromCart, clearCart } from '../../store/slices/cartSlice';
+import { RootState, CartItem } from '../../types';
 import styles from './Cart.module.scss';
 
 const Cart = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { items, loading } = useSelector((state) => state.cart);
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { items, loading } = useSelector((state: RootState) => state.cart);
+  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
 
   useEffect(() => {
     if (!isAuthenticated) {
       navigate('/login');
       return;
     }
-    dispatch(fetchCart());
+    dispatch(fetchCart() as any);
   }, [dispatch, isAuthenticated, navigate]);
 
-  const handleQuantityChange = (id, quantity) => {
-    dispatch(updateCartItem({ id, quantity }));
+  const handleQuantityChange = (id: number, quantity: number) => {
+    dispatch(updateCartItem({ id, quantity }) as any);
   };
 
-  const handleRemove = (id) => {
-    dispatch(removeFromCart(id));
+  const handleRemove = (id: number) => {
+    dispatch(removeFromCart(id) as any);
   };
 
   const handleClearCart = () => {
     if (window.confirm('Вы уверены, что хотите очистить корзину?')) {
-      dispatch(clearCart());
+      dispatch(clearCart() as any);
     }
   };
 
-  const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const total = items.reduce((sum: number, item: CartItem) => sum + item.price * item.quantity, 0);
 
   if (loading) {
     return <div className={styles.cart}>Загрузка...</div>;

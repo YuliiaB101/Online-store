@@ -1,22 +1,23 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchFavorites } from '../../store/slices/favoritesSlice';
+import { RootState } from '../../types';
 import ProductGrid from '../../components/ProductGrid/ProductGrid';
 import styles from './Favorites.module.scss';
 
 const Favorites = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { items, loading } = useSelector((state) => state.favorites);
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { items, loading } = useSelector((state: RootState) => state.favorites);
+  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
 
   useEffect(() => {
     if (!isAuthenticated) {
       navigate('/login');
       return;
     }
-    dispatch(fetchFavorites());
+    dispatch(fetchFavorites() as any);
   }, [dispatch, isAuthenticated, navigate]);
 
   if (loading) {

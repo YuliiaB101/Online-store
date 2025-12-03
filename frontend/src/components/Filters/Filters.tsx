@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFilter, clearFilters } from '../../store/slices/productsSlice';
+import { RootState, Category } from '../../types';
 import styles from './Filters.module.scss';
 
 const Filters = () => {
   const dispatch = useDispatch();
-  const { filters } = useSelector((state) => state.products);
-  const { items: categories } = useSelector((state) => state.categories);
+  const { filters } = useSelector((state: RootState) => state.products);
+  const { items: categories } = useSelector((state: RootState) => state.categories);
   
   const [localSearch, setLocalSearch] = useState(filters.search);
 
@@ -18,15 +19,15 @@ const Filters = () => {
     return () => clearTimeout(timeoutId);
   }, [localSearch, dispatch]);
 
-  const handleCategoryChange = (e) => {
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     dispatch(setFilter({ category: e.target.value }));
   };
 
-  const handleSortChange = (e) => {
+  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     dispatch(setFilter({ sortBy: e.target.value }));
   };
 
-  const handleOrderChange = (e) => {
+  const handleOrderChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     dispatch(setFilter({ order: e.target.value }));
   };
 
@@ -52,7 +53,7 @@ const Filters = () => {
           className={styles.filters__select}
         >
           <option value="">Все категории</option>
-          {categories.map((category) => (
+          {categories.map((category: Category) => (
             <option key={category.id} value={category.slug}>
               {category.name}
             </option>

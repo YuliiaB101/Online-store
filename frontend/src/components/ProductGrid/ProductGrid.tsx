@@ -1,8 +1,13 @@
-import React from 'react';
 import ProductCard from '../ProductCard/ProductCard';
+import { Product } from '../../types';
 import styles from './ProductGrid.module.scss';
 
-const ProductGrid = ({ products, loading }) => {
+interface ProductGridProps {
+  products: Product[];
+  loading: boolean;
+}
+
+const ProductGrid: React.FC<ProductGridProps> = ({ products, loading }) => {
   if (loading) {
     return <div className={styles.loading}>Загрузка...</div>;
   }
@@ -17,7 +22,7 @@ const ProductGrid = ({ products, loading }) => {
 
   return (
     <div className={styles.productGrid}>
-      {products.map((product) => (
+      {products.map((product: Product) => (
         <ProductCard key={product.id} product={product} />
       ))}
     </div>

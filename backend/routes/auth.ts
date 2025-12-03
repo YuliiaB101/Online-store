@@ -1,5 +1,5 @@
 import express, { Router, Request, Response } from 'express';
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { body, validationResult } from 'express-validator';
 import pool from '../config/db';
