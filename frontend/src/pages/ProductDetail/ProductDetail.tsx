@@ -62,7 +62,7 @@ const ProductDetail = () => {
 
   return (
     <div className={styles.productDetail}>
-      <button onClick={() => navigate('/')} className={styles.productDetail__back}>
+      <button onClick={() => navigate('/home')} className={styles.productDetail__back}>
         ← Назад к каталогу
       </button>
 

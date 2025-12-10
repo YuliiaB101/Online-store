@@ -1,8 +1,11 @@
+@use "../../styles/mixins.scss" as *;
+@use "../../styles/variables.scss" as *;
+
 .banner {
   width: 100%;
   position: relative;
   overflow: hidden;
-  border-radius: var(--border-radius);
+  border-radius: $border-radius;
   margin-bottom: 40px;
 
   &__slider {
@@ -50,7 +53,7 @@
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.5);
     border: none;
-    transition: var(--transition);
+    transition: $transition;
 
     &--active {
       background: white;
@@ -69,8 +72,8 @@
     height: 50px;
     border-radius: 50%;
     font-size: 24px;
-    color: var(--color-secondary);
-    transition: var(--transition);
+    color: $color-secondary;
+    transition: $transition;
     z-index: 10;
 
     &:hover {

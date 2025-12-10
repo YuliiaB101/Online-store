@@ -14,19 +14,19 @@ const Header: React.FC = () => {
 
   const handleLogout = () => {
     dispatch(logout());
-    navigate('/');
+    navigate('/home');
   };
 
   return (
     <header className={styles.header}>
       <div className={styles.header__container}>
         <div className={styles.header__content}>
-          <Link to="/" className={styles.header__logo}>
+          <Link to="/home" className={styles.header__logo}>
             STORE
           </Link>
 
           <nav className={styles.header__nav}>
-            <Link to="/" className={styles.header__link}>
+            <Link to="/home" className={styles.header__link}>
               Каталог
             </Link>
             {isAuthenticated && (

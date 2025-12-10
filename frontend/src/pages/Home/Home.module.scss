@@ -1,12 +1,16 @@
+@use "../../styles/mixins.scss" as *;
+@use "../../styles/variables.scss" as *;
+
 .home {
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
-  padding: 30px 20px;
+  padding: 300px 200px;
+  background-color: $color-bg-secondary;
 
   &__title {
     font-size: 32px;
     font-weight: 700;
     margin-bottom: 30px;
-    color: var(--color-secondary);
+    color: $color-secondary;
   }
 }

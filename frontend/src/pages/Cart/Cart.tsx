@@ -44,7 +44,7 @@ const Cart = () => {
       <div className={styles.cart}>
         <div className={styles.cart__empty}>
           <h2>Ваша корзина пуста</h2>
-          <button onClick={() => navigate('/')}>
+          <button onClick={() => navigate('/home')}>
             Перейти к покупкам
           </button>
         </div>

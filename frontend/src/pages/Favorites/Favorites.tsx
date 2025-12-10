@@ -30,7 +30,7 @@ const Favorites = () => {
         <h1 className={styles.favorites__title}>Избранное</h1>
         <div className={styles.favorites__empty}>
           <h2>У вас пока нет избранных товаров</h2>
-          <button onClick={() => navigate('/')}>
+          <button onClick={() => navigate('/home')}>
             Перейти к покупкам
           </button>
         </div>

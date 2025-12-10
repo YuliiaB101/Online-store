@@ -1,3 +1,6 @@
+@use "../../styles/mixins.scss" as *;
+@use "../../styles/variables.scss" as *;
+
 .cart {
   max-width: 1200px;
   margin: 0 auto;
@@ -7,13 +10,13 @@
     font-size: 32px;
     font-weight: 700;
     margin-bottom: 30px;
-    color: var(--color-secondary);
+    color: $color-secondary;
   }
 
   &__empty {
     text-align: center;
     padding: 60px 20px;
-    color: var(--color-text-light);
+    color: $color-text-light;
 
     h2 {
       font-size: 24px;
@@ -22,16 +25,16 @@
 
     button {
       padding: 12px 24px;
-      background: var(--color-primary);
+      background: $color-primary;
       color: white;
       border: none;
-      border-radius: var(--border-radius);
+      border-radius: $border-radius;
       font-weight: 600;
       cursor: pointer;
-      transition: var(--transition);
+      transition: $transition;
 
       &:hover {
-        background: var(--color-primary-dark);
+        background: $color-primary-dark;
       }
     }
   }
@@ -55,11 +58,11 @@
   &__item {
     display: flex;
     gap: 20px;
-    background: var(--color-bg);
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius);
+    background: $color-bg;
+    border: 1px solid $color-border;
+    border-radius: $border-radius;
     padding: 20px;
-    transition: var(--transition);
+    transition: $transition;
 
     &:hover {
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -70,8 +73,8 @@
     width: 120px;
     height: 120px;
     object-fit: cover;
-    border-radius: var(--border-radius);
-    background: var(--color-bg-secondary);
+    border-radius: $border-radius;
+    background: $color-bg-secondary;
   }
 
   &__itemInfo {
@@ -84,12 +87,12 @@
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 8px;
-    color: var(--color-text);
+    color: $color-text;
   }
 
   &__itemCategory {
     font-size: 12px;
-    color: var(--color-text-light);
+    color: $color-text-light;
     text-transform: uppercase;
     margin-bottom: auto;
   }
@@ -97,7 +100,7 @@
   &__itemPrice {
     font-size: 20px;
     font-weight: 700;
-    color: var(--color-primary);
+    color: $color-primary;
   }
 
   &__itemActions {
@@ -110,10 +113,10 @@
   &__removeButton {
     background: transparent;
     border: none;
-    color: var(--color-error);
+    color: $color-error;
     cursor: pointer;
     font-size: 20px;
-    transition: var(--transition);
+    transition: $transition;
 
     &:hover {
       transform: scale(1.2);
@@ -124,8 +127,8 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius);
+    border: 1px solid $color-border;
+    border-radius: $border-radius;
     overflow: hidden;
   }
 
@@ -135,10 +138,10 @@
     padding: 8px 12px;
     font-size: 18px;
     cursor: pointer;
-    transition: var(--transition);
+    transition: $transition;
 
     &:hover {
-      background: var(--color-bg-secondary);
+      background: $color-bg-secondary;
     }
 
     &:disabled {
@@ -153,9 +156,9 @@
   }
 
   &__summary {
-    background: var(--color-bg);
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius);
+    background: $color-bg;
+    border: 1px solid $color-border;
+    border-radius: $border-radius;
     padding: 30px;
     height: fit-content;
     position: sticky;
@@ -166,14 +169,14 @@
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 20px;
-    color: var(--color-secondary);
+    color: $color-secondary;
   }
 
   &__summaryRow {
     display: flex;
     justify-content: space-between;
     padding: 12px 0;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid $color-border;
 
     &:last-of-type {
       border-bottom: none;
@@ -181,25 +184,25 @@
       margin-top: 10px;
       font-size: 20px;
       font-weight: 700;
-      color: var(--color-primary);
+      color: $color-primary;
     }
   }
 
   &__checkoutButton {
     width: 100%;
     padding: 16px;
-    background: var(--color-primary);
+    background: $color-primary;
     color: white;
     border: none;
-    border-radius: var(--border-radius);
+    border-radius: $border-radius;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: var(--transition);
+    transition: $transition;
     margin-top: 20px;
 
     &:hover {
-      background: var(--color-primary-dark);
+      background: $color-primary-dark;
     }
   }
 
@@ -207,16 +210,16 @@
     width: 100%;
     padding: 12px;
     background: transparent;
-    color: var(--color-error);
-    border: 1px solid var(--color-error);
-    border-radius: var(--border-radius);
+    color: $color-error;
+    border: 1px solid $color-error;
+    border-radius: $border-radius;
     font-weight: 600;
     cursor: pointer;
-    transition: var(--transition);
+    transition: $transition;
     margin-top: 10px;
 
     &:hover {
-      background: var(--color-error);
+      background: $color-error;
       color: white;
     }
   }

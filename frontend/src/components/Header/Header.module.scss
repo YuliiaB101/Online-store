@@ -1,6 +1,9 @@
+@use "../../styles/mixins.scss" as *;
+@use "../../styles/variables.scss" as *;
+
 .header {
-  background: var(--color-bg);
-  border-bottom: 1px solid var(--color-border);
+  background: $color-bg;
+  border-bottom: 1px solid $color-border;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -22,11 +25,11 @@
   &__logo {
     font-size: 24px;
     font-weight: 700;
-    color: var(--color-primary);
-    transition: var(--transition);
+    color: $color-primary;
+    transition: $transition;
 
     &:hover {
-      color: var(--color-primary-dark);
+      color: $color-primary-dark;
     }
   }
 
@@ -37,20 +40,20 @@
   }
 
   &__link {
-    color: var(--color-text);
+    color: $color-text;
     font-weight: 500;
-    transition: var(--transition);
+    transition: $transition;
     position: relative;
 
     &:hover {
-      color: var(--color-primary);
+      color: $color-primary;
     }
 
     &Badge {
       position: absolute;
       top: -8px;
       right: -12px;
-      background: var(--color-primary);
+      background: $color-primary;
       color: white;
       font-size: 11px;
       padding: 2px 6px;
@@ -67,25 +70,25 @@
   }
 
   &__button {
-    background: var(--color-primary);
+    background: $color-primary;
     color: white;
     border: none;
     padding: 10px 20px;
-    border-radius: var(--border-radius);
+    border-radius: $border-radius;
     font-weight: 500;
-    transition: var(--transition);
+    transition: $transition;
 
     &:hover {
-      background: var(--color-primary-dark);
+      background: $color-primary-dark;
     }
 
     &--outlined {
       background: transparent;
-      color: var(--color-primary);
-      border: 2px solid var(--color-primary);
+      color: $color-primary;
+      border: 2px solid $color-primary;
 
       &:hover {
-        background: var(--color-primary);
+        background: $color-primary;
         color: white;
       }
     }

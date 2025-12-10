@@ -1,7 +1,7 @@
 @use "../../styles/mixins.scss" as *;
 @use "../../styles/variables.scss" as *;
 
-.auth {
+.checkout {
   max-width: 450px;
   margin: 60px auto;
   padding: 40px;
@@ -23,7 +23,7 @@
     flex-direction: column;
     gap: 20px;
   }
-
+  
   &__label {
     font-size: 14px;
     font-weight: 500;
