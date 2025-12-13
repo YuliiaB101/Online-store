@@ -1,20 +1,20 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts } from '../../store/slices/productsSlice';
+// import { fetchProducts } from '../../store/slices/productsSlice';
 import { fetchCategories } from '../../store/slices/categoriesSlice';
 import { fetchBanners } from '../../store/slices/bannersSlice';
 import { fetchCart } from '../../store/slices/cartSlice';
 import { fetchFavorites } from '../../store/slices/favoritesSlice';
 import { RootState } from '../../types';
-import BannerCarousel from '../../components/BannerCarousel/BannerCarousel';
-import Filters from '../../components/Filters/Filters';
-import ProductGrid from '../../components/ProductGrid/ProductGrid';
+// import Filters from '../../components/Filters/Filters';
+// import ProductGrid from '../../components/ProductGrid/ProductGrid';
+// import homeBanner from "../../../public/images/background/1.jpg";
 import styles from './Home.module.scss';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { items: products, loading, filters } = useSelector((state: RootState) => state.products);
-  const { items: banners } = useSelector((state: RootState) => state.banners);
+  // const { items: filters } = useSelector((state: RootState) => state.products);
+  // const { items: banners } = useSelector((state: RootState) => state.banners);
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
 
   useEffect(() => {
@@ -29,16 +29,52 @@ const Home = () => {
     }
   }, [dispatch, isAuthenticated]);
 
-  useEffect(() => {
-    dispatch(fetchProducts(filters) as any);
-  }, [dispatch, filters]);
+  // useEffect(() => {
+  //   dispatch(fetchProducts(filters) as any);
+  // }, [dispatch, filters]);
 
   return (
     <div className={styles.home}>
-      <BannerCarousel banners={banners} />
-      <h1 className={styles.home__title}>Каталог товаров</h1>
-      <Filters />
-      <ProductGrid products={products} loading={loading} />
+      <span className={styles.home__slogan}>
+        <h3>We make your home feel cozy</h3>
+        <p>Coziness is more than interior design.
+          It’s a feeling — warmth, calm, and harmony that turns a space into a home.</p>
+      </span>
+
+      <div className={styles.home__sections}>
+        <div className={styles.home__about}>
+          <h3>About Us 📌</h3>
+          <p>FLORIA is an online plant store dedicated to creating cozy, living spaces.
+          </p>
+          <p>
+            We carefully select indoor plants that fit real life and help bring warmth, balance, and natural beauty into your home.
+          </p>
+        </div>
+
+        <div className={styles.home__delivery}>
+          <h3>Delivery 📦</h3>
+          <p>
+            We take special care to ensure your plants arrive healthy and beautiful 🌿
+          </p>
+          <p>
+            <ul>
+              <li>Every plant is securely and gently packed</li>
+              <li>We use eco-friendly, recyclable packaging</li>
+              <li>Fast and careful delivery to minimize stress for the plant</li>
+            </ul>
+          </p>
+        </div>
+
+        <div className={styles.home__eco}>
+          <h3>Caring for the Planet 🌍</h3>
+          <p>
+            Plants are more than decor — they are a way to stay connected to nature, even in an urban space.
+          </p>
+          <p>
+            By choosing FLORIA, you support mindful consumption, respect for nature, and a balanced relationship between people and the environment.
+          </p>
+        </div>
+      </div>
     </div>
   );
 };

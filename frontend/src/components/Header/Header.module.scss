@@ -2,41 +2,37 @@
 @use "../../styles/variables.scss" as *;
 
 .header {
-  background: $color-bg;
-  border-bottom: 1px solid $color-border;
-  position: sticky;
-  top: 0;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  position: relative;
   z-index: 100;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  background: rgba(131, 122, 122, 0.414);
 
-  &__container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: $color-text;
   }
 
-  &__content {
+  &__container {
+    margin: 0 130px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 70px;
-  }
-
-  &__logo {
-    font-size: 24px;
-    font-weight: 700;
-    color: $color-primary;
-    transition: $transition;
-
-    &:hover {
-      color: $color-primary-dark;
-    }
+    height: 100px;
   }
 
   &__nav {
     display: flex;
     gap: 30px;
     align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 400;
   }
 
   &__link {
@@ -45,9 +41,7 @@
     transition: $transition;
     position: relative;
 
-    &:hover {
-      color: $color-primary;
-    }
+    @include hover-scale(1.08);
 
     &Badge {
       position: absolute;
@@ -63,34 +57,30 @@
     }
   }
 
+  &__logo {
+    width: 150px;
+    height: auto;
+    cursor: pointer;
+    transition: $transition;
+    filter: $icon-color;
+
+    @include hover-scale(1.08);
+  }
+
   &__actions {
     display: flex;
-    gap: 15px;
+    gap: 25px;
     align-items: center;
   }
 
-  &__button {
-    background: $color-primary;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: $border-radius;
-    font-weight: 500;
+  &__icon {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
     transition: $transition;
+    filter: $icon-color drop-shadow(0 0 0.5px white)
+      drop-shadow(0 0 0.5px white);
 
-    &:hover {
-      background: $color-primary-dark;
-    }
-
-    &--outlined {
-      background: transparent;
-      color: $color-primary;
-      border: 2px solid $color-primary;
-
-      &:hover {
-        background: $color-primary;
-        color: white;
-      }
-    }
+    @include hover-scale-opacity(1.1, 0.8);
   }
 }

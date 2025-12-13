@@ -2,15 +2,62 @@
 @use "../../styles/variables.scss" as *;
 
 .home {
-  width: 100%;
-  margin: 0 auto;
-  padding: 300px 200px;
-  background-color: $color-bg-secondary;
+  margin: 0;
+  padding: 0 100px;
+  position: relative;
+  min-height: 100vh;
 
-  &__title {
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 30px;
-    color: $color-secondary;
+  &__slogan {
+    background: bg-opacity(0.6);
+    border-radius: $border-radius;
+    padding: 20px;
+    margin: 30px 0;
+    width: 45%;
+    text-align: left;
+    display: block;
+    font-size: 40px;
+    font-weight: 500;
+    color: $color-text;
+
+    p {
+      font-size: 24px;
+      font-weight: 400;
+    }
+  }
+
+  &__logo {
+    width: 100%;
+    height: auto;
+    // display: block;
+    margin-top: -20px;
+    margin: 0 auto;
+    filter: $icon-color;
+  }
+
+  &__sections {
+    margin-top: 350px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+
+    div {
+      padding: 30px 40px;
+      text-align: justify;
+      color: $color-text;
+      border-radius: $border-radius;
+      background: bg-secondary-opacity();
+
+      h3 {
+        text-align: center;
+        font-size: 28px;
+        margin-bottom: 10px;
+      }
+
+      p {
+        padding: 5px 0;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+    }
   }
 }

@@ -16,7 +16,7 @@
   &__empty {
     text-align: center;
     padding: 60px 20px;
-    color: $color-text-light;
+    color: $color-text;
 
     h2 {
       font-size: 24px;
@@ -58,7 +58,7 @@
   &__item {
     display: flex;
     gap: 20px;
-    background: $color-bg;
+    background: $color-bg-base;
     border: 1px solid $color-border;
     border-radius: $border-radius;
     padding: 20px;
@@ -74,7 +74,7 @@
     height: 120px;
     object-fit: cover;
     border-radius: $border-radius;
-    background: $color-bg-secondary;
+    background: $color-bg-base;
   }
 
   &__itemInfo {
@@ -92,7 +92,7 @@
 
   &__itemCategory {
     font-size: 12px;
-    color: $color-text-light;
+    color: $color-text;
     text-transform: uppercase;
     margin-bottom: auto;
   }
@@ -141,7 +141,7 @@
     transition: $transition;
 
     &:hover {
-      background: $color-bg-secondary;
+      background: $color-bg-base;
     }
 
     &:disabled {
@@ -156,7 +156,7 @@
   }
 
   &__summary {
-    background: $color-bg;
+    background: $color-bg-base;
     border: 1px solid $color-border;
     border-radius: $border-radius;
     padding: 30px;

@@ -5,7 +5,7 @@
   max-width: 450px;
   margin: 60px auto;
   padding: 40px;
-  background: $color-bg;
+  background: $color-bg-base;
   border: 1px solid $color-border;
   border-radius: $border-radius;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -78,7 +78,7 @@
   &__footer {
     margin-top: 20px;
     text-align: center;
-    color: $color-text-light;
+    color: $color-text;
     font-size: 14px;
 
     a {

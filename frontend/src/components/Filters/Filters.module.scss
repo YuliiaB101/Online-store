@@ -2,7 +2,7 @@
 @use "styles/variables.scss" as *; 
 
 .filters {
-  background: $color-bg;
+  background: $color-bg-base;
   padding: 20px;
   border-radius: $border-radius;
   border: 1px solid $color-border;
@@ -36,7 +36,7 @@
     border: 1px solid $color-border;
     border-radius: $border-radius;
     font-size: 14px;
-    background: $color-bg;
+    background: $color-bg-base;
     cursor: pointer;
     transition: $transition;
     &:focus {
@@ -49,14 +49,14 @@
   &__clear {
     padding: 12px 24px;
     background: transparent;
-    color: $color-text-light;
+    color: $color-text;
     border: 1px solid $color-border;
     border-radius: $border-radius;
     font-weight: 500;
     transition: $transition;
 
     &:hover {
-      background: $color-bg-secondary;
+      background: $color-bg-base;
       color: $color-text;
     }
   }
