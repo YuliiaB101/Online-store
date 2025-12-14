@@ -7,35 +7,63 @@
   position: relative;
   min-height: 100vh;
 
-  &__slogan {
-    background: bg-opacity(0.6);
-    border-radius: $border-radius;
-    padding: 20px;
-    margin: 30px 0;
-    width: 45%;
-    text-align: left;
-    display: block;
-    font-size: 40px;
-    font-weight: 500;
-    color: $color-text;
+  &__logo {
+    width: 20%;
+    height: auto;
+    margin-top: 20px;
+    filter: $icon-color;
+    justify-self: center;
+  }
 
-    p {
-      font-size: 24px;
-      font-weight: 400;
+  &__content {
+    display: grid;
+    margin-top: 40px;
+    grid-template-columns: 50% 40%;
+    color: $color-text;
+    gap: 100px;
+
+    &_section {
+      margin-top: 40px;
+      justify-content: space-between;
+      color: $color-primary-dark;
+
+      p {
+        font-size: 20px;
+        font-weight: 400;
+      }
+
+      &_top,
+      &_bottom {
+        background: bg-opacity(0.6);
+        border-radius: $border-radius;
+        padding: 20px;
+        // margin: 20px 0;
+        text-align: left;
+        display: block;
+        font-size: 40px;
+        font-weight: 500;
+        color: $color-text;
+      }
+
+      &_bottom {
+        justify-self: end;
+        transform: translateX(80px);
+        margin-top: 100px;;
+      }
+    }
+
+    &_caroursel {
+      background: white;
+      margin-top: 40px;
+      // height: 300px;
+      border-radius: $border-radius;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
   }
 
-  &__logo {
-    width: 100%;
-    height: auto;
-    // display: block;
-    margin-top: -20px;
-    margin: 0 auto;
-    filter: $icon-color;
-  }
-
   &__sections {
-    margin-top: 350px;
+    margin-top: 150px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 60px;
@@ -45,7 +73,7 @@
       text-align: justify;
       color: $color-text;
       border-radius: $border-radius;
-      background: bg-secondary-opacity();
+      background: color-primary-opacity();
 
       h3 {
         text-align: center;
@@ -55,7 +83,7 @@
 
       p {
         padding: 5px 0;
-        font-size: 16px;
+        font-size: 18px;
         line-height: 1.6;
       }
     }

@@ -15,7 +15,7 @@ const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
     if (banners.length === 0) return;
 
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => 
+      setCurrentIndex((prevIndex) =>
         prevIndex === banners.length - 1 ? 0 : prevIndex + 1
       );
     }, 5000);
@@ -28,13 +28,13 @@ const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
   };
 
   const goToPrevious = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? banners.length - 1 : prevIndex - 1
     );
   };
 
   const goToNext = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === banners.length - 1 ? 0 : prevIndex + 1
     );
   };
@@ -49,13 +49,16 @@ const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
 
   return (
     <div className={styles.banner}>
-      <div 
-        className={styles.banner__slider}
-        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-      >
+      <img className={styles.banner__arrow} src="/icons/arrow-left.svg" alt="Previous" onClick={goToPrevious} />
+      
+      <div className={styles.banner__wrapper}>
+        <div
+          className={styles.banner__slider}
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
         {banners.map((banner) => (
-          <div 
-            key={banner.id} 
+          <div
+            key={banner.id}
             className={styles.banner__slide}
             onClick={() => handleBannerClick(banner.link)}
           >
@@ -67,36 +70,21 @@ const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
             )}
           </div>
         ))}
+        </div>
       </div>
 
-      {banners.length > 1 && (
-        <>
-          <button 
-            className={`${styles.banner__arrow} ${styles['banner__arrow--left']}`}
-            onClick={goToPrevious}
-          >
-            ‹
-          </button>
-          <button 
-            className={`${styles.banner__arrow} ${styles['banner__arrow--right']}`}
-            onClick={goToNext}
-          >
-            ›
-          </button>
+      <img className={styles.banner__arrow} src="/icons/arrow-right.svg" alt="Next" onClick={goToNext} />
 
-          <div className={styles.banner__controls}>
-            {banners.map((_, index) => (
-              <button
-                key={index}
-                className={`${styles.banner__dot} ${
-                  index === currentIndex ? styles['banner__dot--active'] : ''
-                }`}
-                onClick={() => goToSlide(index)}
-              />
-            ))}
-          </div>
-        </>
-      )}
+      <div className={styles.banner__controls}>
+        {banners.map((_, index) => (
+          <button
+            key={index}
+            className={`${styles.banner__dot} ${index === currentIndex ? styles['banner__dot--active'] : ''
+              }`}
+            onClick={() => goToSlide(index)}
+          />
+        ))}
+      </div>
     </div>
   );
 };

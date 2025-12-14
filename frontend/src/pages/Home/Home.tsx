@@ -8,8 +8,8 @@ import { fetchFavorites } from '../../store/slices/favoritesSlice';
 import { RootState } from '../../types';
 // import Filters from '../../components/Filters/Filters';
 // import ProductGrid from '../../components/ProductGrid/ProductGrid';
-// import homeBanner from "../../../public/images/background/1.jpg";
 import styles from './Home.module.scss';
+import BannerCarousel from 'components/BannerCarousel/BannerCarousel';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -33,13 +33,46 @@ const Home = () => {
   //   dispatch(fetchProducts(filters) as any);
   // }, [dispatch, filters]);
 
+  const productImages = [
+    '/images/products/plant-1.webp',
+    '/images/products/plant-2.webp',
+    '/images/products/plant-3.webp',
+    '/images/products/plant-4.webp',
+    '/images/products/plant-5.webp',
+    '/images/products/plant-6.webp',
+    '/images/products/plant-7.webp',
+    '/images/products/plant-8.webp'
+  ];
+
+  const banners = productImages.map((image, index) => ({
+    id: index + 1,
+    image_url: image,
+    title: `Plant ${index + 1}`,
+    link: '',
+    order_index: index,
+    active: true
+  }));
+
   return (
     <div className={styles.home}>
-      <span className={styles.home__slogan}>
-        <h3>We make your home feel cozy</h3>
-        <p>Coziness is more than interior design.
-          It’s a feeling — warmth, calm, and harmony that turns a space into a home.</p>
-      </span>
+      <img className={styles.home__logo} src="/icons/page-logo.svg" alt="FLORIA Logo" />
+
+      <div className={styles.home__content}>
+        <section className={styles.home__content_section}>
+          <span className={styles.home__content_section_top}>
+            <h3>We make your home feel cozy</h3>
+            <p>Coziness is more than interior design.
+              It's a feeling — warmth, calm, and harmony that turns a space into a home.</p>
+          </span>
+          <span className={styles.home__content_section_bottom}>
+            <p>Discover the perfect houseplants to enhance your home decor and create a calming atmosphere. Our curated selection brings nature indoors, effortlessly.</p>
+          </span>
+        </section>
+
+        <span className={styles.home__content_carousel}>
+          <BannerCarousel banners={banners} />
+        </span>
+      </div>
 
       <div className={styles.home__sections}>
         <div className={styles.home__about}>

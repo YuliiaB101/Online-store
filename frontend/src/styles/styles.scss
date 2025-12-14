@@ -10,7 +10,6 @@ body {
   font-family: "Cormorant Garamond", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-height: 100vh;
   color: var(--color-text);
   line-height: 1.6;
   margin: 0;
@@ -37,6 +36,17 @@ input,
 textarea,
 select {
   font-family: inherit;
+}
+
+.page {
+  flex: 1;
+  padding-bottom: 80px;
+}
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .App {
@@ -79,15 +89,4 @@ select {
   &.page-product {
     background-image: url("../../public/images/background/bg-home.jpg");
   }
-}
-
-.app-footer {
-  padding: 20px 0;
-  height: 200px;
-  text-align: center;
-  background: bg-secondary-opacity(1);
-  color: $color-text;
-  font-size: 14px;
-  position: relative;
-  z-index: 1;
 }

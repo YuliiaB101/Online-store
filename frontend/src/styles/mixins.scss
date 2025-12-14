@@ -10,3 +10,15 @@
     opacity: $opacity;
   }
 }
+
+@mixin icon-style($size: 28px) {
+  width: $size;
+  height: $size;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  filter: brightness(0) saturate(100%) invert(100%) 
+    drop-shadow(0 0 0.5px white) 
+    drop-shadow(0 0 0.5px white);
+  
+  @include hover-scale-opacity(1.1, 0.8);
+}

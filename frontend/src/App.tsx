@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
-import Header from './components/Header/Header';
+import Header from './shared/Header/Header';
 import Home from './pages/Home/Home';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
 import AuthForm from './pages/Auth/AuthForm';
@@ -12,6 +12,7 @@ import Favorites from './pages/Favorites/Favorites';
 import Checkout from 'pages/Checkout/Checkout';
 import './styles/styles.scss';
 import AboutUs from 'pages/AboutUs/AboutUs';
+import Footer from 'shared/Footer/Footer';
 
 const AppContent: React.FC = () => {
   const location = useLocation();
@@ -41,9 +42,7 @@ const AppContent: React.FC = () => {
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/about" element={<AboutUs />} />
       </Routes>
-      <footer className="app-footer">
-        <p>© 2024 FLORIA. All rights reserved.</p>
-      </footer>
+      <Footer />
     </>
   );
 };
