@@ -16,9 +16,13 @@
   height: $size;
   cursor: pointer;
   transition: all 0.5s ease;
-  filter: brightness(0) saturate(100%) invert(100%) 
-    drop-shadow(0 0 0.5px white) 
+  filter: brightness(0) saturate(100%) invert(100%) drop-shadow(0 0 0.5px white)
     drop-shadow(0 0 0.5px white);
-  
+
   @include hover-scale-opacity(1.1, 0.8);
+}
+
+@mixin plain-text-style {
+  font-size: 18px;
+  font-weight: 600;
 }

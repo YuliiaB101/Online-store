@@ -74,6 +74,19 @@ const Home = () => {
         </span>
       </div>
 
+      <div className={styles.home__topPlants}>
+        <h2>Out top plants 🌿</h2>
+        <div className={styles.home__topPlants_grid}>
+          {productImages.map((image, index) => (
+            <div key={index} className={styles.home__topPlants_item}>
+              <img src={image} alt={`Top Plant ${index + 1}`} />
+              <h4>Plant {index + 1}</h4>
+              <p>$ {(20 + index * 5).toFixed(2)}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div className={styles.home__sections}>
         <div className={styles.home__about}>
           <h3>About Us 📌</h3>

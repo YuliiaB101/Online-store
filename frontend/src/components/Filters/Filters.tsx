@@ -52,7 +52,7 @@ const Filters = () => {
           onChange={handleCategoryChange}
           className={styles.filters__select}
         >
-          <option value="">Все категории</option>
+          <option className={styles.filters__option} value="">Все категории</option>
           {categories.map((category: Category) => (
             <option key={category.id} value={category.slug}>
               {category.name}

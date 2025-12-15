@@ -29,8 +29,8 @@ const Header: React.FC = () => {
         </Link>
 
         <nav className={styles.header__nav}>
-          <Link to="/home" className={styles.header__link}>
-            Catalog
+          <Link to="/products" className={styles.header__link}>
+            Products
           </Link>
           <Link to="/about" className={styles.header__link}>
             About Us

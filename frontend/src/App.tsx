@@ -10,6 +10,7 @@ import Register from './pages/Auth/Register';
 import Cart from './pages/Cart/Cart';
 import Favorites from './pages/Favorites/Favorites';
 import Checkout from 'pages/Checkout/Checkout';
+import Products from 'pages/Products/Products';
 import './styles/styles.scss';
 import AboutUs from 'pages/AboutUs/AboutUs';
 import Footer from 'shared/Footer/Footer';
@@ -34,6 +35,7 @@ const AppContent: React.FC = () => {
       <Routes>
         <Route path="/" element={<Navigate to="/home" replace />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/products" element={<Products />} />
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/login" element={<AuthForm />} />
         <Route path="/register" element={<Register />} />

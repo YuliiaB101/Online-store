@@ -63,7 +63,7 @@ select {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: bg-opacity(0.4);
+    background-color: bg-opacity(0.2);
     pointer-events: none;
     z-index: 0;
   }
@@ -88,5 +88,13 @@ select {
 
   &.page-product {
     background-image: url("../../public/images/background/bg-home.jpg");
+  }
+
+  &.page-products {
+    background: $color-bg-beige;
+
+    &::before {
+      background-color: transparent;
+    }
   }
 }

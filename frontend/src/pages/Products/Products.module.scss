@@ -1,0 +1,29 @@
+@use "../../styles/mixins.scss" as *;
+@use "../../styles/variables.scss" as *;
+
+.products {
+  padding: 20px 100px;
+  min-height: 100vh;
+  // background: bg-white-opacity(0.75);
+
+  &__header {
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  &__title {
+    text-align: center;
+    color: $color-primary;
+  }
+
+  &__info {
+    margin-bottom: 10px;
+    text-align: right;
+  }
+
+  &__count {
+    @include plain-text-style;
+    opacity: 0.8;
+    color: $color-primary;
+  }
+}
