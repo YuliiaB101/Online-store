@@ -21,7 +21,7 @@ const AboutUs: React.FC = () => {
                     At FLORIA, we believe plants are more than décor — they create atmosphere, support well-being, and connect us to nature. Our mission is to help you build a cozy, harmonious home while staying mindful of the world around us.
                 </p>
 
-                <h2>Our Commitment to Sustainability</h2>
+                <h2 className={styles.about__title}>Our Commitment to Sustainability</h2>
                 <p>We always wanted FLORIA to be more than a plant store.</p>
                 <p>From the very beginning, our goal was not only to bring greenery into homes, but to make a positive difference beyond them. We believe that caring for plants naturally leads to caring for the world around us.</p>
 

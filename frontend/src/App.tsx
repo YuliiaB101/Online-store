@@ -17,7 +17,7 @@ import Footer from 'shared/Footer/Footer';
 
 const AppContent: React.FC = () => {
   const location = useLocation();
-  
+
   useEffect(() => {
     const app = document.querySelector('.App');
     if (app) {
@@ -25,7 +25,11 @@ const AppContent: React.FC = () => {
       app.className = 'App';
       // Add current page class
       const page = location.pathname.split('/')[1] || 'home';
-      app.classList.add(`page-${page}`);
+      if (page === 'home') {
+        app.classList.add(`page-${page}`);
+      } else {
+        app.classList.add('page');
+      }
     }
   }, [location]);
 

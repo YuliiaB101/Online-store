@@ -34,11 +34,11 @@ const Products: React.FC = () => {
         <div className={styles.products}>
             <div className={styles.products__header}>
                 <h1 className={styles.products__title}>Our products</h1>
+                <Filters />
                 <div className={styles.products__info}>
                     <span className={styles.products__count}>Zeigt 1 - {products.length} von {products.length} Ergebnissen</span>
                 </div>
             </div>
-            <Filters />
             <ProductGrid products={products} loading={loading} />
         </div>
     );

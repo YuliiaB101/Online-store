@@ -6,24 +6,22 @@
   min-height: 100vh;
   // background: bg-white-opacity(0.75);
 
-  &__header {
-    font-size: 22px;
-    font-weight: 600;
-  }
-
   &__title {
+    font-size: 60px;
     text-align: center;
     color: $color-primary;
+    margin-bottom: 20px;
   }
 
   &__info {
-    margin-bottom: 10px;
+    margin: 15px 0 30px 0;
     text-align: right;
   }
 
   &__count {
+    font-size: 24px;
+    font-weight: 700;
     @include plain-text-style;
-    opacity: 0.8;
     color: $color-primary;
   }
 }

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Banner } from '../../types';
-import styles from './BannerCarousel.module.scss';
+import styles from './Carousel.module.scss';
 
-interface BannerCarouselProps {
+interface CarouselProps {
   banners: Banner[];
 }
 
-const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
+const Carousel: React.FC<CarouselProps> = ({ banners }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const navigate = useNavigate();
 
@@ -89,4 +89,4 @@ const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
   );
 };
 
-export default BannerCarousel;
+export default Carousel;

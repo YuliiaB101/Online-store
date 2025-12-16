@@ -1,9 +1,6 @@
 export { default as IconHeart } from "./IconHeart";
 export { default as IconUser } from "./IconUser";
 export { default as IconSearch } from "./IconSearch";
-export { default as IconCart } from "./IconCart";
-export { default as IconArrowDown } from "./IconArrowDown";
-export { default as IconArrowBack } from "./IconArrowBack";
 export { default as IconArrowCheck } from "./IconArrowCheck";
 export { default as IconEye } from "./IconEye";
 export { default as IconEyeOff } from "./IconEyeOff";

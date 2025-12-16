@@ -157,7 +157,7 @@ Online-store/
 │   ├── src/
 │   │   ├── components/
 │   │   │   ├── Header/
-│   │   │   ├── BannerCarousel/
+│   │   │   ├── Carousel/
 │   │   │   ├── Filters/
 │   │   │   ├── ProductCard/
 │   │   │   └── ProductGrid/

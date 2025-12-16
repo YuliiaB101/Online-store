@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProductById, likeProduct } from '../../store/slices/productsSlice';
+import { fetchProductById } from '../../store/slices/productsSlice';
 import { addToCart } from '../../store/slices/cartSlice';
 import { addToFavorites, removeFromFavorites } from '../../store/slices/favoritesSlice';
 import { RootState, Product } from '../../types';
@@ -16,7 +16,7 @@ const ProductDetail = () => {
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
   const { items: favorites } = useSelector((state: RootState) => state.favorites);
 
-  const isFavorite = favorites.some((fav: Product) => fav.id === product?.id);  useEffect(() => {
+  const isFavorite = favorites.some((fav: Product) => fav.id === product?.id); useEffect(() => {
     dispatch(fetchProductById(id) as any);
   }, [dispatch, id]);
 
@@ -46,12 +46,6 @@ const ProductDetail = () => {
     }
   };
 
-  const handleLike = () => {
-    if (product) {
-      dispatch(likeProduct(product.id) as any);
-    }
-  };
-
   if (loading) {
     return <div className={styles.loading}>Загрузка...</div>;
   }
@@ -78,28 +72,30 @@ const ProductDetail = () => {
             {product.category_name}
           </div>
           <h1 className={styles.productDetail__title}>{product.name}</h1>
-          <div className={styles.productDetail__price}>${product.price}</div>
-          <p className={styles.productDetail__description}>
-            {product.description || 'Описание товара отсутствует.'}
-          </p>
-          
-          <div className={styles.productDetail__likes} onClick={handleLike}>
-            ❤️ <span>{product.likes}</span> нравится
+          <p className={styles.productDetail__description}>{product.description}</p>
+
+          <div className={styles.productDetail__priceRating}>
+            <div className={styles.productDetail__price}>${product.price}</div>
+
+            <div className={styles.productDetail__rating}>
+              {'★'.repeat(Math.min(5, Math.max(0, Math.round(product.rating_avg))))}
+              <span>({product.rating_count})</span>
+            </div>
           </div>
 
           <div className={styles.productDetail__actions}>
+            <input type="number" min="1" defaultValue="1" className={styles.productDetail__quantity} />
             <button
               onClick={handleAddToCart}
-              className={`${styles.productDetail__button} ${styles['productDetail__button--primary']}`}
+              className={styles.productDetail__button}
             >
-              Добавить в корзину
+              Add to Cart
             </button>
             {isAuthenticated && (
               <button
                 onClick={handleFavoriteToggle}
-                className={`${styles.productDetail__button} ${styles['productDetail__button--favorite']} ${
-                  isFavorite ? styles.active : ''
-                }`}
+                className={`${styles.productDetail__button} ${styles['productDetail__button--favorite']} ${isFavorite ? styles.active : ''
+                  }`}
               >
                 {isFavorite ? '❤️' : '🤍'}
               </button>

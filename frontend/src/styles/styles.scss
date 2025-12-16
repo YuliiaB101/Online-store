@@ -78,19 +78,15 @@ select {
     background-image: url("../../public/images/background/bg-home.jpg");
   }
 
-  &.page-about {
-    background-image: url("../../public/images/background/bg-about.jpg");
-  }
+  // &.page-about {
+  //   background-image: url("../../public/images/background/bg-about.jpg");
+  // }
 
   &.page-cart {
     background-image: url("../../public/images/background/bg-home.jpg");
   }
 
-  &.page-product {
-    background-image: url("../../public/images/background/bg-home.jpg");
-  }
-
-  &.page-products {
+  &.page {
     background: $color-bg-beige;
 
     &::before {

@@ -23,17 +23,17 @@
     height: 500px;
     object-fit: cover;
     border-radius: $border-radius;
-    background: $color-bg-base;
   }
 
   &__info {
+    color: $color-primary;
     display: flex;
     flex-direction: column;
   }
 
   &__category {
     font-size: 14px;
-    color: $color-text;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 10px;
@@ -43,21 +43,40 @@
     font-size: 36px;
     font-weight: 700;
     margin-bottom: 20px;
-    color: $color-secondary;
+    color: $color-primary-dark;
+  }
+
+  &__priceRating {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 4px;
   }
 
   &__price {
     font-size: 42px;
     font-weight: 700;
-    color: $color-primary;
     margin-bottom: 20px;
   }
 
+  &__rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 20px;
+    color: #f5c423;
+
+    span {
+      color: #5a5950;
+      margin-left: 2px;
+    }
+  }
+
   &__description {
-    font-size: 16px;
-    line-height: 1.8;
-    color: $color-text;
-    margin-bottom: 30px;
+    text-align: justify;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.6;
   }
 
   &__likes {
@@ -65,48 +84,42 @@
     align-items: center;
     gap: 10px;
     margin-bottom: 30px;
-    font-size: 18px;
-    color: $color-text;
-
-    span {
-      font-weight: 600;
-    }
   }
 
   &__actions {
     display: flex;
     gap: 15px;
-    margin-top: auto;
+  }
+
+  &__quantity {
+    width: 80px;
+    padding: 10px;
+    font-size: 26px;
+    border: 1px solid $color-primary-light;
+    border-radius: $border-radius;
+    text-align: center;
+
+    &:focus {
+      outline: none;
+      border: 2px solid $color-primary;
+    }
   }
 
   &__button {
     flex: 1;
-    padding: 16px 32px;
+    padding: 18px 32px;
     border: none;
     border-radius: $border-radius;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
     transition: $transition;
     cursor: pointer;
 
-    &--primary {
-      background: $color-primary;
-      color: white;
+    background: $color-primary-light;
+    color: white;
 
-      &:hover {
-        background: $color-primary-dark;
-      }
-    }
-
-    &--outlined {
-      background: transparent;
-      color: $color-primary;
-      border: 2px solid $color-primary;
-
-      &:hover {
-        background: $color-primary;
-        color: white;
-      }
+    &:hover {
+      background: color-primary-opacity(0.9);
     }
 
     &--favorite {
@@ -122,8 +135,8 @@
       }
 
       &.active {
-        color: #E74C3C;
-        border-color: #E74C3C;
+        color: #e74c3c;
+        border-color: #e74c3c;
       }
     }
   }
