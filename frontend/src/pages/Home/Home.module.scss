@@ -128,14 +128,14 @@
 
       p {
         margin-top: 10px;
-        font-size: 18px;
+        font-size: 24px;
         font-weight: 600;
       }
     }
   }
 
   &__sections {
-    margin-top: 150px;
+    margin: 150px 100px 100px 100px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 60px;
