@@ -2,7 +2,7 @@
 @use "../../styles/variables.scss" as *;
 
 .auth {
-  @include page-content(40px auto, 30px 40px);
+  @include page-content(60px auto, 30px 40px);
 
   max-width: 500px;
   color: $color-primary;
