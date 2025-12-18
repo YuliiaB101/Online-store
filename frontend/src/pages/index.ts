@@ -1,0 +1,10 @@
+export { default as AboutUs } from './AboutUs/AboutUs';
+export { default as ForCustomers } from './ForCustomers/ForCustomers';
+export { default as Products } from './Products/Products';
+export { default as Home } from './Home/Home';
+export { default as ProductDetail } from './ProductDetail/ProductDetail';
+export { default as Cart } from './Cart/Cart';
+export { default as Checkout } from './Checkout/Checkout';
+export { default as Favorites } from './Favorites/Favorites';
+export { default as Login } from './Auth/Login';
+export { default as Register } from './Auth/Register';

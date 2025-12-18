@@ -2,15 +2,13 @@
 @use "../../styles/variables.scss" as *;
 
 .productDetail {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 30px 20px;
+  @include page-content();
 
   &__content {
+    padding: 40px 10px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    margin-bottom: 40px;
+    gap: 80px;
 
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
@@ -106,21 +104,7 @@
   }
 
   &__button {
-    flex: 1;
-    padding: 18px 32px;
-    border: none;
-    border-radius: $border-radius;
-    font-size: 18px;
-    font-weight: 600;
-    transition: $transition;
-    cursor: pointer;
-
-    background: $color-primary-light;
-    color: white;
-
-    &:hover {
-      background: color-primary-opacity(0.9);
-    }
+    @include button-style();
 
     &--favorite {
       flex: 0;

@@ -1,205 +1,70 @@
-# Online Store
+# Online Store – FLORIA
 
-Современный онлайн-магазин с минималистичным дизайном, построенный на React, Redux, Express и PostgreSQL.
+FLORIA is a fullstack e-commerce SPA built with React, TypeScript, Node.js and PostgreSQL, designed with a warm, nature-inspired UI using soft shapes and earthy colors.
 
-## Особенности
+The project demonstrates production-oriented frontend architecture, state management,
+authentication flows and backend integration in a realistic business domain.
 
-- 🎨 Современный минималистичный дизайн (бело-серо-чёрно-голубая цветовая схема)
-- 🔍 Поиск товаров по названию
-- 📂 Фильтрация по категориям
-- 🔄 Сортировка по цене, дате добавления и количеству лайков
-- 🎠 Автоматически переключающиеся баннеры на главной странице
-- 💝 Система избранного
-- 🛒 Корзина покупок
-- 👤 Авторизация и регистрация пользователей
-- 📱 Адаптивный дизайн
+---
 
-## Технологии
+## Key Features
 
-### Backend
-- Node.js + Express
-- PostgreSQL
-- JWT для аутентификации
-- bcryptjs для хеширования паролей
+- ◻︎ React + TypeScript single-page application
+- ◻︎ Product catalog with search, filtering and sorting
+- ◻︎ User authentication and protected routes
+- ◻︎ Favorites and shopping cart functionality
+- ◻︎ REST API with Node.js and Express
+- ◻︎ PostgreSQL database integration
+- ◻︎ Responsive UI with SCSS Modules
 
-### Frontend
-- React 18
-- Redux Toolkit
-- React Router v6
-- SCSS Modules
-- Axios
+---
 
-## Установка и запуск
+## Tech Stack
 
-### Предварительные требования
-- Node.js (v14+)
-- PostgreSQL (v12+)
-- Yarn
+**Frontend:** React 18, TypeScript, Redux Toolkit, React Router, Formik, Formik, Yup, SCSS Modules
+**Backend:** Node.js, Express, TypeScript, PostgreSQL  
+**Auth:** JWT, bcrypt  
+**HTTP:** REST, Axios
 
-### 1. Клонирование репозитория
+---
 
-```bash
-cd Online-store
-```
+## Why This Project
 
-### 2. Настройка базы данных
+This project was created to simulate a real-world e-commerce application and to demonstrate how frontend and backend parts interact in a production-like environment.
 
-Создайте базу данных PostgreSQL и выполните SQL скрипт:
+In addition to technical aspects, special attention was given to usability and visual comfort.
 
-```bash
-psql -U postgres < backend/config/database.sql
-```
+The focus was on:
+- predictable state management,
+- clear separation of concerns,
+- reusable UI components,
+- robust form handling and validation (Formik, Yup),
+- secure authentication flow,
+- scalable backend structure.
 
-### 3. Настройка Backend
 
-```bash
-cd backend
-yarn install
-```
+---
 
-Создайте файл `.env` на основе `.env.example`:
+## Key Technical Decisions
 
-```env
-PORT=5000
-DB_USER=postgres
-DB_HOST=localhost
-DB_NAME=online_store
-DB_PASSWORD=your_password
-DB_PORT=5432
-JWT_SECRET=your_jwt_secret_key_here
-```
+- **React + TypeScript** for type safety and maintainability  
+- **Redux Toolkit** for predictable global state management  
+- **JWT-based authentication** to handle protected routes and user sessions  
+- **PostgreSQL** as a relational database suitable for structured product data  
+- **Modular backend architecture** to keep routes, middleware and business logic separated  
 
-Запуск сервера:
+---
 
-```bash
-# Режим разработки
-yarn dev
+## Project Status
 
-# Продакшн
-yarn start
-```
+The project is under active development.  
+Planned features include checkout flow, admin panel and order history.
 
-Сервер будет доступен на `http://localhost:5000`
+---
 
-### 4. Настройка Frontend
+## Disclaimer
 
-```bash
-cd frontend
-yarn install
-```
+This project was created for educational and portfolio purposes only.  
+All images and third-party assets are used for demonstration purposes.  
+All rights belong to their respective owners.
 
-Создайте файл `.env` на основе `.env.example`:
-
-```env
-REACT_APP_API_URL=http://localhost:5000/api
-```
-
-Запуск приложения:
-
-```bash
-yarn start
-```
-
-Приложение будет доступно на `http://localhost:3000`
-
-## API Endpoints
-
-### Аутентификация
-- `POST /api/auth/register` - Регистрация
-- `POST /api/auth/login` - Вход
-
-### Товары
-- `GET /api/products` - Получить все товары (с фильтрами и сортировкой)
-- `GET /api/products/:id` - Получить товар по ID
-- `POST /api/products/:id/like` - Лайкнуть товар
-
-### Категории
-- `GET /api/categories` - Получить все категории
-
-### Баннеры
-- `GET /api/banners` - Получить активные баннеры
-
-### Избранное (требуется авторизация)
-- `GET /api/favorites` - Получить избранные товары
-- `POST /api/favorites/:productId` - Добавить в избранное
-- `DELETE /api/favorites/:productId` - Удалить из избранного
-
-### Корзина (требуется авторизация)
-- `GET /api/cart` - Получить корзину
-- `POST /api/cart` - Добавить товар в корзину
-- `PUT /api/cart/:id` - Обновить количество
-- `DELETE /api/cart/:id` - Удалить товар из корзины
-- `DELETE /api/cart` - Очистить корзину
-
-## Структура проекта
-
-```
-Online-store/
-├── backend/
-│   ├── config/
-│   │   ├── db.js
-│   │   └── database.sql
-│   ├── middleware/
-│   │   └── auth.js
-│   ├── routes/
-│   │   ├── auth.js
-│   │   ├── products.js
-│   │   ├── categories.js
-│   │   ├── banners.js
-│   │   ├── cart.js
-│   │   └── favorites.js
-│   ├── .env.example
-│   ├── package.json
-│   └── server.js
-├── frontend/
-│   ├── public/
-│   │   └── index.html
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── Header/
-│   │   │   ├── Carousel/
-│   │   │   ├── Filters/
-│   │   │   ├── ProductCard/
-│   │   │   └── ProductGrid/
-│   │   ├── pages/
-│   │   │   ├── Home/
-│   │   │   ├── ProductDetail/
-│   │   │   ├── Auth/
-│   │   │   ├── Cart/
-│   │   │   └── Favorites/
-│   │   ├── store/
-│   │   │   ├── slices/
-│   │   │   └── index.js
-│   │   ├── utils/
-│   │   │   └── api.js
-│   │   ├── App.jsx
-│   │   ├── index.jsx
-│   │   └── index.css
-│   ├── .env.example
-│   └── package.json
-└── README.md
-```
-
-## Цветовая схема
-
-- **Primary**: #4A90E2 (голубой)
-- **Secondary**: #2C3E50 (тёмно-серый)
-- **Background**: #FFFFFF (белый)
-- **Background Secondary**: #F5F7FA (светло-серый)
-- **Border**: #E1E8ED (серый)
-- **Text**: #333333 (чёрный)
-
-## Возможности для развития
-
-- [ ] Админ-панель для управления товарами
-- [ ] Оформление заказов
-- [ ] История заказов
-- [ ] Отзывы о товарах
-- [ ] Загрузка изображений
-- [ ] Пагинация товаров
-- [ ] Уведомления
-- [ ] Восстановление пароля
-
-## Лицензия
-
-MIT

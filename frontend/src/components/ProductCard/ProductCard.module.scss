@@ -66,6 +66,7 @@
   }
 
   &__title {
+    min-height: 64px;
     font-size: 22px;
     font-weight: 800;
     color: $color-primary-dark;

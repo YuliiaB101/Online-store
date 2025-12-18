@@ -1,74 +1,129 @@
 import { useEffect } from 'react';
-import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage, FormikProps } from 'formik';
 import * as Yup from 'yup';
 import styles from './Auth.module.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../types';
-import { login } from '../../store/slices/authSlice';
+import { login, register } from '../../store/slices/authSlice';
 
-interface AuthFormValues {
-    name: string;
-    email: string;
-    password: string;
+interface AuthFormProps {
+  mode: 'login' | 'register';
 }
 
-const initialValues: AuthFormValues = {
-    name: '',
-    email: '',
-    password: '',
-};
+interface LoginValues {
+  email: string;
+  password: string;
+}
 
-const validationSchema: Yup.ObjectSchema<AuthFormValues> = Yup.object().shape({
-    name: Yup.string().min(2, 'Name should be at least 2 characters').required('Required'),
-    email: Yup.string().email('Invalid email').required('Required'),
-    password: Yup.string().min(6, 'Password should be at least 6 characters').required('Required'),
-});
+interface RegisterValues {
+  name: string;
+  email: string;
+  password: string;
+}
 
-const AuthForm: React.FC = () => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const { isAuthenticated } = useSelector((state: RootState) => state.auth);
+const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
 
-    useEffect(() => {
-        if (isAuthenticated) {
-            navigate('/home');
-        }
-    }, [isAuthenticated, navigate]);
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/home');
+    }
+  }, [isAuthenticated, navigate]);
 
+  const isRegisterMode = mode === 'register';
 
-    const handleSubmit = (values: AuthFormValues) => {
-        dispatch(login(values) as any);
-    };
+  const initialValues = isRegisterMode
+    ? { name: '', email: '', password: '' }
+    : { email: '', password: '' };
 
-    return (
-        <div className={styles.auth}>
-            <h1 className={styles.auth__title}>Login</h1>
-            <Formik<AuthFormValues>
-                initialValues={initialValues}
-                validationSchema={validationSchema}
-                onSubmit={(values) => { handleSubmit(values) }}
+  const validationSchema = isRegisterMode
+    ? Yup.object().shape({
+        name: Yup.string().min(2, 'Name should be at least 2 characters').required('Required'),
+        email: Yup.string().email('Invalid email').required('Required'),
+        password: Yup.string().min(6, 'Password should be at least 6 characters').required('Required'),
+      })
+    : Yup.object().shape({
+        email: Yup.string().email('Invalid email').required('Required'),
+        password: Yup.string().min(6, 'Password should be at least 6 characters').required('Required'),
+      });
+
+  const handleSubmit = (values: LoginValues | RegisterValues) => {
+    if (isRegisterMode) {
+      dispatch(register(values as RegisterValues) as any);
+    } else {
+      dispatch(login(values as LoginValues) as any);
+    }
+  };
+
+  return (
+    <div className={styles.auth}>
+      <h1 className={styles.auth__title}>
+        {isRegisterMode ? 'Register' : 'Login'}
+      </h1>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+        {({ isValid, dirty }: FormikProps<LoginValues | RegisterValues>) => (
+          <Form className={styles.auth__form}>
+            {isRegisterMode && (
+              <>
+                <label className={styles.auth__label} htmlFor="name">Name:</label>
+                <Field 
+                  className={styles.auth__input} 
+                  id="name" 
+                  name="name" 
+                  placeholder="Enter your name" 
+                  type="text" 
+                />
+                <ErrorMessage className={styles.auth__error} name="name" component="div" />
+              </>
+            )}
+
+            <label className={styles.auth__label} htmlFor="email">Email:</label>
+            <Field 
+              className={styles.auth__input} 
+              id="email" 
+              name="email" 
+              placeholder="Enter your email" 
+              type="email" 
+            />
+            <ErrorMessage className={styles.auth__error} name="email" component="div" />
+
+            <label className={styles.auth__label} htmlFor="password">Password:</label>
+            <Field 
+              className={styles.auth__input} 
+              id="password" 
+              name="password" 
+              placeholder="Enter your password" 
+              type="password" 
+            />
+            <ErrorMessage className={styles.auth__error} name="password" component="div" />
+            
+            <button 
+              className={styles.auth__button} 
+              type="submit"
+              disabled={!isValid || !dirty}
             >
-                {() => (
-                    <Form className={styles.auth__form}>
-                        <label className={styles.auth__label} htmlFor="email">Email:</label>
-                        <Field className={styles.auth__input} id="email" name="email" placeholder="Enter your email" type="email" />
-                        <ErrorMessage className={styles.auth__error} name="email" component="div" />
+              Submit
+            </button>
+          </Form>
+        )}
+      </Formik>
 
-                        <label className={styles.auth__label} htmlFor="password">Password:</label>
-                        <Field className={styles.auth__input} id="password" name="password" placeholder="Enter your password" type="password" />
-                        <ErrorMessage className={styles.auth__error} name="password" component="div" />
-                        <button className={styles.auth__button} type="submit">Submit</button>
-                    </Form>
-                )}
-            </Formik>
-
-            <div className={styles.auth__footer}>
-                Still don't have an account? <Link to="/register">Register</Link>
-            </div>
-        </div>
-    );
+      <div className={styles.auth__footer}>
+        {isRegisterMode ? (
+          <>Already have an account? <Link to="/login">Login</Link></>
+        ) : (
+          <>Still don't have an account? <Link to="/register">Register</Link></>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default AuthForm;

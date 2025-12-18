@@ -35,7 +35,7 @@ const Header: React.FC = () => {
           <Link to="/about" className={styles.header__link}>
             About Us
           </Link>
-          <Link to="/home" className={styles.header__link}>
+          <Link to="/for-customers" className={styles.header__link}>
             For Customers
           </Link>
           <Link to="/home" className={styles.header__link}>

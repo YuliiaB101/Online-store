@@ -3,17 +3,9 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'r
 import { Provider } from 'react-redux';
 import store from './store';
 import Header from './shared/Header/Header';
-import Home from './pages/Home/Home';
-import ProductDetail from './pages/ProductDetail/ProductDetail';
-import AuthForm from './pages/Auth/AuthForm';
-import Register from './pages/Auth/Register';
-import Cart from './pages/Cart/Cart';
-import Favorites from './pages/Favorites/Favorites';
-import Checkout from 'pages/Checkout/Checkout';
-import Products from 'pages/Products/Products';
+import { Home, Products, ProductDetail, Login, Register, Cart, Checkout, Favorites, AboutUs, ForCustomers } from './pages/index';
+import Footer from './shared/Footer/Footer';
 import './styles/styles.scss';
-import AboutUs from 'pages/AboutUs/AboutUs';
-import Footer from 'shared/Footer/Footer';
 
 const AppContent: React.FC = () => {
   const location = useLocation();
@@ -36,18 +28,21 @@ const AppContent: React.FC = () => {
   return (
     <>
       <Header />
-      <Routes>
-        <Route path="/" element={<Navigate to="/home" replace />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/product/:id" element={<ProductDetail />} />
-        <Route path="/login" element={<AuthForm />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/favorites" element={<Favorites />} />
-        <Route path="/about" element={<AboutUs />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" element={<Navigate to="/home" replace />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/for-customers" element={<ForCustomers />} />
+        </Routes>
+      </main>
       <Footer />
     </>
   );

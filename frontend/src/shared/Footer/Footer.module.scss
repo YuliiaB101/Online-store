@@ -4,14 +4,14 @@
 .footer {
   background: $color-primary;
   color: $color-text;
-  margin: 80px 0 0;
   padding: 40px 100px;
   font-size: 18px;
-  height: 400px;
+  min-height: 400px;
   text-align: center;
   background: color-primary-opacity(1);
   color: $color-text;
   position: relative;
+  margin-top: auto;
 
   a {
     color: $color-text;

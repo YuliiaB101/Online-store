@@ -43,7 +43,7 @@ const Cart = () => {
     return (
       <div className={styles.cart}>
         <div className={styles.cart__empty}>
-          <h2>Ваша корзина пуста</h2>
+          <h2>Your cart is empty</h2>
           <button onClick={() => navigate('/home')}>
             Перейти к покупкам
           </button>
@@ -54,7 +54,7 @@ const Cart = () => {
 
   return (
     <div className={styles.cart}>
-      <h1 className={styles.cart__title}>Корзина</h1>
+      <h1 className={styles.cart__title}>Cart</h1>
       
       <div className={styles.cart__content}>
         <div className={styles.cart__items}>
@@ -105,7 +105,7 @@ const Cart = () => {
           <h2 className={styles.cart__summaryTitle}>Итого</h2>
           
           <div className={styles.cart__summaryRow}>
-            <span>Товары ({items.length}):</span>
+            <span>Items ({items.length}):</span>
             <span>${total.toFixed(2)}</span>
           </div>
           
@@ -122,7 +122,7 @@ const Cart = () => {
             onClick={handleClearCart}
             className={styles.cart__clearButton}
           >
-            Очистить корзину
+            Clear Cart
           </button>
         </div>
       </div>

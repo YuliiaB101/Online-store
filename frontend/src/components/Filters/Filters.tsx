@@ -41,7 +41,7 @@ const Filters = () => {
       <div className={styles.filters__row}>
         <input
           type="text"
-          placeholder="Поиск товаров..."
+          placeholder="Search products..."
           value={localSearch}
           onChange={(e) => setLocalSearch(e.target.value)}
           className={styles.filters__search}
@@ -52,7 +52,7 @@ const Filters = () => {
           onChange={handleCategoryChange}
           className={styles.filters__select}
         >
-          <option className={styles.filters__option} value="">Все категории</option>
+          <option className={styles.filters__option} value="">All categories</option>
           {categories.map((category: Category) => (
             <option key={category.id} value={category.slug}>
               {category.name}
@@ -65,10 +65,10 @@ const Filters = () => {
           onChange={handleSortChange}
           className={styles.filters__select}
         >
-          <option value="created_at">По дате</option>
-          <option value="price">По цене</option>
-          <option value="likes">По популярности</option>
-          <option value="name">По названию</option>
+          <option value="created_at">By date</option>
+          <option value="price">By price</option>
+          <option value="likes">By popularity</option>
+          <option value="name">By name</option>
         </select>
 
         <select
@@ -76,12 +76,12 @@ const Filters = () => {
           onChange={handleOrderChange}
           className={styles.filters__select}
         >
-          <option value="DESC">По убыванию</option>
-          <option value="ASC">По возрастанию</option>
+          <option value="DESC">Descending</option>
+          <option value="ASC">Ascending</option>
         </select>
 
         <button onClick={handleClearFilters} className={styles.filters__clear}>
-          Сбросить
+          Reset
         </button>
       </div>
     </div>

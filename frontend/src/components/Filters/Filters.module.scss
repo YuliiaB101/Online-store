@@ -10,28 +10,17 @@
   }
 
   &__search {
-    flex: 1;
-    min-width: 250px;
-    padding: 12px 16px;
-    border: none;
-    border-radius: $border-radius;
-    height: 46px;
-    @include plain-text-style;
-
-    &:focus,
-    &:hover {
-      opacity: 0.9;
-      outline: none;
-    }
+    @include input-style();
   }
 
   &__select {
-    @include plain-text-style;
+    @include plain-text-style();
     padding: 12px 16px;
     border: none;
     border-radius: $border-radius;
     height: 46px;
-    background: bg-beige-opacity(0.8);;
+    width: 200px;
+    background: bg-beige-opacity(0.8);
     color: $color-text;
     cursor: pointer;
 
@@ -49,9 +38,10 @@
   }
 
   &__clear {
-    @include plain-text-style;
+    @include plain-text-style();
     padding: 12px 24px;
     height: 46px;
+    width: 150px;
     background: $color-bg-beige-dark;
     color: $color-text;
     border: none;

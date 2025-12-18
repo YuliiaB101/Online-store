@@ -47,7 +47,7 @@ const ProductDetail = () => {
   };
 
   if (loading) {
-    return <div className={styles.loading}>Загрузка...</div>;
+    return <div className={styles.loading}>Loading...</div>;
   }
 
   if (!product) {

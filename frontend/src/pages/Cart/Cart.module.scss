@@ -24,18 +24,7 @@
     }
 
     button {
-      padding: 12px 24px;
-      background: $color-primary;
-      color: white;
-      border: none;
-      border-radius: $border-radius;
-      font-weight: 600;
-      cursor: pointer;
-      transition: $transition;
-
-      &:hover {
-        background: $color-primary-dark;
-      }
+      @include button-style();
     }
   }
 

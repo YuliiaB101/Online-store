@@ -1,3 +1,5 @@
+@use "./variables.scss" as *;
+
 @mixin hover-scale($scale: 1.08) {
   &:hover {
     transform: scale($scale);
@@ -25,4 +27,45 @@
 @mixin plain-text-style {
   font-size: 18px;
   font-weight: 600;
+}
+
+@mixin page-content($margin: 40px 100px, $padding: 20px 100px, $opacity: 0.7) {
+  padding: $padding;
+  margin: $margin;
+  background: bg-white-opacity($opacity);
+  border-radius: $border-radius;
+}
+
+@mixin button-style {
+  flex: 1;
+  padding: 18px 32px;
+  border: none;
+  border-radius: $border-radius;
+  font-size: 18px;
+  font-weight: 600;
+  transition: $transition;
+  cursor: pointer;
+
+  background: $color-primary-light;
+  color: white;
+
+  &:hover {
+    background: color-primary-opacity(0.9);
+  }
+}
+
+@mixin input-style {
+  flex: 1;
+  min-width: 200px;
+  padding: 12px 16px;
+  border: none;
+  border-radius: $border-radius;
+  height: 46px;
+  @include plain-text-style();
+
+  &:focus,
+  &:hover {
+    opacity: 0.9;
+    outline: none;
+  }
 }
