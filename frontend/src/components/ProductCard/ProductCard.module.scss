@@ -2,10 +2,12 @@
 @use "../../styles/variables.scss" as *;
 
 .productCard {
+  @include hover-brightness(0.97);
   overflow: hidden;
   transition: all 0.3s ease;
   position: relative;
   border-radius: $border-radius;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
   &__imageWrapper {
     position: relative;
@@ -19,10 +21,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-
-    &:hover {
-      opacity: 0.9;
-    }
   }
 
   &__favorite {

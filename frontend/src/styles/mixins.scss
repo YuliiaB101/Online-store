@@ -69,3 +69,9 @@
     outline: none;
   }
 }
+
+@mixin hover-brightness($brightness: 0.9) {
+  &:hover {
+    filter: brightness($brightness);
+  }
+}
