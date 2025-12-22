@@ -5,16 +5,9 @@
   margin: 0;
   position: relative;
 
-  // &__logo {
-  //   width: 20%;
-  //   height: auto;
-  //   margin: 20px auto 0;
-  //   display: block;
-  //   filter: $icon-color;
-  // }
-
   &__content {
     display: grid;
+    height: 600px;
     padding: 0 100px;
     margin: 40px 0 140px 0;
     grid-template-columns: 50% 40%;
@@ -102,7 +95,7 @@
     &__categories {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      gap: 35px;
       margin-top: 30px;
 
       div {
@@ -118,6 +111,7 @@
         min-height: 460px;
         object-fit: cover;
         border-radius: $border-radius;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         cursor: pointer;
 
         &:hover {
@@ -144,7 +138,7 @@
       text-align: justify;
       color: $color-text;
       border-radius: $border-radius;
-      background: color-primary-opacity(0.9);
+      background: bg-primary-opacity(0.9);
 
       h3 {
         text-align: center;

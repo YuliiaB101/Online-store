@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 // import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 // import { useSelector, useDispatch } from 'react-redux';
@@ -29,18 +29,34 @@ const Header: React.FC = () => {
         </Link>
 
         <nav className={styles.header__nav}>
-          <Link to="/products" className={styles.header__link}>
+          <NavLink to="/products" 
+          className={({ isActive }) => isActive
+              ? `${styles.header__navLink} ${styles.active}`
+              : styles.header__navLink
+          }>
             Products
-          </Link>
-          <Link to="/about" className={styles.header__link}>
+          </NavLink>
+          <NavLink to="/about" 
+          className={({ isActive }) => isActive
+              ? `${styles.header__navLink} ${styles.active}`
+              : styles.header__navLink
+          }>
             About Us
-          </Link>
-          <Link to="/for-customers" className={styles.header__link}>
+          </NavLink>
+          <NavLink to="/for-customers" 
+          className={({ isActive }) =>isActive
+              ? `${styles.header__navLink} ${styles.active}`
+              : styles.header__navLink
+          }>
             For Customers
-          </Link>
-          <Link to="/home" className={styles.header__link}>
+          </NavLink>
+          <NavLink to="/home" 
+          className={({ isActive }) => isActive
+              ? `${styles.header__navLink} ${styles.active}`
+              : styles.header__navLink
+          }>
             Contacts
-          </Link>
+          </NavLink>
         </nav>
 
         {isAuthenticated && (
@@ -64,7 +80,7 @@ const Header: React.FC = () => {
           </>
         )}
 
-        <div className={styles.header__actions}>
+        <div className={styles.header__icons}>
           <Link to="#">
             <img className={styles.header__icon} src="/icons/search.svg" alt="Search" />
           </Link>

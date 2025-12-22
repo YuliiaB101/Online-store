@@ -3,33 +3,24 @@
 
 .forCustomers {
   @include page-content();
-  margin: 40px 60px;
-  padding: 20px 40px;
+  // margin: 40px 60px;
+  // padding: 20px 40px;
+  text-align: justify;
+  color: $color-primary;
+  font-size: 22px;
+  font-weight: 600;
 
-  &__title {
+  h1 {
     font-size: 50px;
     text-align: center;
     color: $color-primary;
     margin-bottom: 20px;
   }
 
-  &__info {
-    margin: 15px 0 30px 0;
-    text-align: right;
-  }
-
-  &__count {
-    font-size: 24px;
-    font-weight: 700;
-    @include plain-text-style;
-    color: $color-primary;
-  }
-
-  &__note {
-    font-size: 18px;
-    font-style: italic;
-    color: $color-primary-dark;
-    margin-top: 10px;
+  h2 {
+    font-size: 36px;
+    color: $color-secondary;
+    margin-bottom: 20px;
   }
 
   &__section {
@@ -42,10 +33,11 @@
       color: $color-secondary;
     }
 
-    p, ul {
+    p,
+    ul {
       font-size: 20px;
       line-height: 1.6;
-      color: $color-text;
+      color: $color-primary;
     }
 
     ul {

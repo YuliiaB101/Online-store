@@ -2,13 +2,20 @@
 @use "../../styles/variables.scss" as *;
 
 .products {
-  @include page-content(60px 80px, 20px 40px);
+  @include page-content(40px 120px, 20px 40px);
 
-  &__title {
+  h1 {
     font-size: 50px;
     text-align: center;
     color: $color-primary;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    color: $color-primary;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 40px;
   }
 
   &__info {

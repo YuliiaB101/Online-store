@@ -34,6 +34,7 @@ const Products: React.FC = () => {
         <div className={styles.products}>
             <div className={styles.products__header}>
                 <h1 className={styles.products__title}>Our products</h1>
+                <h2 className={styles.products__subtitle}>Thoughtfully selected plants for modern living</h2>
                 <Filters />
                 <div className={styles.products__info}>
                     <span className={styles.products__count}>Zeigt 1 - {products.length} von {products.length} Ergebnissen</span>

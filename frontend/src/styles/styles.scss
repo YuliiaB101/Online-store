@@ -14,6 +14,7 @@ body {
 }
 
 body {
+  background: bg-beige-opacity(0.3);
   font-family: "Cormorant Garamond", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -44,9 +45,9 @@ select {
   font-family: inherit;
 }
 
-// .page {
-//   flex: 1;
-// }
+.page {
+  flex: 1;
+}
 
 .app-layout {
   display: flex;
@@ -58,10 +59,10 @@ select {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
   position: relative;
+  max-width: 1820px;
+  margin: 0 auto;
+  width: 100%;
 
   &::before {
     content: "";
@@ -85,23 +86,19 @@ select {
   }
 
   // Page-specific backgrounds
-  &.page-home {
-    background-image: url("../../public/images/background/bg-home.jpg");
-  }
-
-  // &.page-about {
-  //   background-image: url("../../public/images/background/bg-about.jpg");
-  // }
-
-  &.page-cart {
-    background-image: url("../../public/images/background/bg-home.jpg");
-  }
-
   &.page {
-    background: $color-bg-beige;
+    background: bg-beige-opacity(0.9);
 
     &::before {
       background-color: transparent;
     }
+
+    Header {
+      background: bg-primary-opacity(0.9);
+    }
+  }
+
+  &.page-home {
+    background-image: url("../../public/images/background/bg-home.jpg");
   }
 }

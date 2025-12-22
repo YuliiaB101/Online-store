@@ -17,11 +17,7 @@ const AppContent: React.FC = () => {
       app.className = 'App';
       // Add current page class
       const page = location.pathname.split('/')[1] || 'home';
-      if (page === 'home') {
-        app.classList.add(`page-${page}`);
-      } else {
-        app.classList.add('page');
-      }
+      app.classList.add(`page`, `page-${page}`);
     }
   }, [location]);
 

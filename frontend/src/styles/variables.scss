@@ -10,7 +10,7 @@ $color-green: #134A20;
 $color-secondary: #0f1214;
 $color-text: #ffffff;
 $color-bg-base: rgb(93, 99, 96);
-$color-bg-beige: #f8e4c4;
+$color-bg-beige: rgb(248, 228, 196);
 $color-bg-beige-dark: rgba(177, 126, 82);
 
 // Function to create color with custom opacity
@@ -18,7 +18,7 @@ $color-bg-beige-dark: rgba(177, 126, 82);
   @return rgba(93, 99, 96, $opacity);
 }
 
-@function color-primary-opacity($opacity: 0.773) {
+@function bg-primary-opacity($opacity: 0.773) {
   @return rgba(41, 71, 55, $opacity);
 }
 
@@ -27,12 +27,13 @@ $color-bg-beige-dark: rgba(177, 126, 82);
 }
 
 @function bg-beige-opacity($opacity: 0.8) {
-  @return rgba(177, 126, 82, $opacity);
+  @return rgba(248, 228, 196, $opacity);
 }
 
 $color-success: #4CAF50;
 $color-error: #F44336;
 $border-radius: 10px;
 $transition: all 0.5s ease;
+$border: 1px solid bg-primary-opacity(0.5);
 
 $icon-color: brightness(0) saturate(100%) invert(100%);
