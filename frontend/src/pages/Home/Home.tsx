@@ -9,6 +9,7 @@ import { RootState, Product } from '../../types';
 import styles from './Home.module.scss';
 // import Carousel from 'components/Carousel/Carousel';
 import BannerProductCard from 'components/BannerProductCard/BannerProductCard';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -83,8 +84,8 @@ const Home = () => {
       </div>
 
       <div className={styles.home__sections}>
-        <div className={styles.home__about}>
-          <h3>About Us 📌</h3>
+        <div>
+          <Link to="/about" className={styles.home__sections__link}>About Us 📌</Link>
           <p>FLORIA is an online plant store dedicated to creating cozy, living spaces.
           </p>
           <p>
@@ -92,8 +93,8 @@ const Home = () => {
           </p>
         </div>
 
-        <div className={styles.home__delivery}>
-          <h3>Delivery 📦</h3>
+        <div>
+          <Link to="/for-customers#delivery" className={styles.home__sections__link}>Delivery 📦</Link>
           <p>
             We take special care to ensure your plants arrive healthy and beautiful 🌿
           </p>
@@ -106,8 +107,8 @@ const Home = () => {
           </p>
         </div>
 
-        <div className={styles.home__eco}>
-          <h3>Caring for the Planet 🌍</h3>
+        <div>
+          <Link to="/for-customers#eco-friendly" className={styles.home__sections__link}>Caring for the Planet 🌍</Link>
           <p>
             Plants are more than decor — they are a way to stay connected to nature, even in an urban space.
           </p>

@@ -3,6 +3,7 @@
 
 .auth {
   @include page-content(60px auto, 30px 40px);
+  margin-bottom: 80px;
 
   max-width: 500px;
   color: $color-primary;
@@ -19,18 +20,24 @@
   &__form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
   }
 
   &__input {
     @include input-style();
+    margin-bottom: 20px;
+
+    &_error {
+      border: 2px solid $color-error;
+    }
   }
 
   &__error {
     width: auto;
     color: $color-error;
     background: #ffebee;
-    border-radius: $border-radius;
+    border-radius: $border-radius-input;
+    margin-bottom: 20px;
     padding: 10px;
     font-size: 18px;
     font-weight: bold;
@@ -39,6 +46,7 @@
 
   &__button {
     @include button-style();
+    margin-top: 10px;
 
     &:disabled {
       background: $color-primary;

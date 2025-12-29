@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import styles from './AboutUs.module.scss';
 
 const AboutUs: React.FC = () => {
+    const location = useLocation();
+
+    useEffect(() => {
+        if (location.hash) {
+            const element = document.querySelector(location.hash);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        } else {
+            window.scrollTo(0, 0);
+        }
+    }, [location]);
+
     return (
         <div className={styles.about}>
             <div className={styles.about__title}>
@@ -29,11 +43,11 @@ const AboutUs: React.FC = () => {
 
                 Our key initiatives include:
                 <ul className={styles.about__ecoInitiatives}>
-                    <li><h3>🌱 1,000 trees planted every year:</h3>
+                    <li><h3>🌱 1,000 trees planted every year</h3>
                         Each year, we plant 1,000 trees in a nearby forest, contributing to healthier ecosystems and a greener future.</li>
-                    <li><h3>🌍 Environmental initiatives:</h3>
+                    <li><h3>🌍 Environmental initiatives</h3>
                         We participate in clean-up actions for polluted lakes and natural areas, working alongside local communities to protect the places we all share.</li>
-                    <li><h3>♻️ Mindful choices:</h3>
+                    <li><h3>♻️ Mindful choices</h3>
                         Sustainability is woven into our daily decisions — responsible sourcing, eco-friendly packaging, and long-term thinking over short-term solutions.</li>
                 </ul>
 
