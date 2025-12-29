@@ -12,7 +12,7 @@ authentication flows and backend integration in a realistic business domain.
 - ◻︎ React + TypeScript single-page application
 - ◻︎ Product catalog with search, filtering and sorting
 - ◻︎ User authentication and protected routes
-- ◻︎ Favorites and shopping cart functionality
+- ◻︎ Favourites and shopping cart functionality
 - ◻︎ REST API with Node.js and Express
 - ◻︎ PostgreSQL database integration
 - ◻︎ Responsive UI with SCSS Modules

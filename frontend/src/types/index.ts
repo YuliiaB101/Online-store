@@ -65,7 +65,7 @@ export interface CartState {
   error: string | null;
 }
 
-export interface FavoritesState {
+export interface FavouritesState {
   items: Product[];
   loading: boolean;
   error: string | null;
@@ -87,7 +87,7 @@ export interface RootState {
   auth: AuthState;
   products: ProductsState;
   cart: CartState;
-  favorites: FavoritesState;
+  favourites: FavouritesState;
   categories: CategoriesState;
   banners: BannersState;
 }

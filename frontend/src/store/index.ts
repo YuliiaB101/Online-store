@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import authReducer from './slices/authSlice';
 import productsReducer from './slices/productsSlice';
 import cartReducer from './slices/cartSlice';
-import favoritesReducer from './slices/favoritesSlice';
+import favouritesReducer from './slices/favouritesSlice';
 import categoriesReducer from './slices/categoriesSlice';
 import bannersReducer from './slices/bannersSlice';
 
@@ -11,7 +11,7 @@ const store = configureStore({
     auth: authReducer,
     products: productsReducer,
     cart: cartReducer,
-    favorites: favoritesReducer,
+    favourites: favouritesReducer,
     categories: categoriesReducer,
     banners: bannersReducer,
   },

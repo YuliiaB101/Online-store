@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../../store/slices/productsSlice';
 import { fetchCategories } from '../../store/slices/categoriesSlice';
 import { fetchCart } from '../../store/slices/cartSlice';
-import { fetchFavorites } from '../../store/slices/favoritesSlice';
+import { fetchFavourites } from '../../store/slices/favouritesSlice';
 import { RootState } from '../../types';
 
 
@@ -22,7 +22,7 @@ const Products: React.FC = () => {
     useEffect(() => {
         if (isAuthenticated) {
             dispatch(fetchCart() as any);
-            dispatch(fetchFavorites() as any);
+            dispatch(fetchFavourites() as any);
         }
     }, [dispatch, isAuthenticated]);
 
@@ -31,7 +31,7 @@ const Products: React.FC = () => {
     }, [dispatch, filters]);
 
     return (
-        <div className={styles.products}>
+        <main className={styles.products}>
             <div className={styles.products__header}>
                 <h1 className={styles.products__title}>Our products</h1>
                 <h2 className={styles.products__subtitle}>Thoughtfully selected plants for modern living</h2>
@@ -41,8 +41,8 @@ const Products: React.FC = () => {
                 </div>
             </div>
             <ProductGrid products={products} loading={loading} />
-        </div>
+        </main>
     );
 };
 
-export default React.memo(Products);
+export default Products;

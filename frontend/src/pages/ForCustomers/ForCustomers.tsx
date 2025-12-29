@@ -19,7 +19,7 @@ const ForCustomers: React.FC = () => {
   return (
     <main className={styles.forCustomers}>
       <section className={styles.forCustomers__hero}>
-        <h1>For Customers</h1>
+        <h1 className={styles.forCustomers__title}>For Customers</h1>
         <p>
           We want every experience with <strong>FLORIA</strong> to feel simple,
           transparent, and enjoyable. Here you'll find everything you need to
@@ -76,6 +76,21 @@ const ForCustomers: React.FC = () => {
         </ul>
       </section>
 
+      <section id="eco-friendly" className={styles.forCustomers__section}>
+        <h2>🌍 Eco-Friendly Commitment</h2>
+        <p>
+          We believe that beauty should exist in harmony with nature.
+        </p>
+        <ul>
+          <li>We prioritize recyclable and sustainable packaging</li>
+          <li>We minimize plastic whenever possible</li>
+          <li>
+            We support environmental initiatives such as tree planting and local
+            clean-up projects
+          </li>
+        </ul>
+      </section>
+
       <section className={styles.forCustomers__section}>
         <h2>🌱 Plant Care Responsibility</h2>
         <p>
@@ -93,21 +108,6 @@ const ForCustomers: React.FC = () => {
         </ul>
       </section>
 
-      <section id="eco-friendly" className={styles.forCustomers__section}>
-        <h2>🌍 Eco-Friendly Commitment</h2>
-        <p>
-          We believe that beauty should exist in harmony with nature.
-        </p>
-        <ul>
-          <li>We prioritize recyclable and sustainable packaging</li>
-          <li>We minimize plastic whenever possible</li>
-          <li>
-            We support environmental initiatives such as tree planting and local
-            clean-up projects
-          </li>
-        </ul>
-      </section>
-
       <section className={`${styles.forCustomers__section} ${styles.forCustomers__support}`}>
         <h2>🖂 Customer Support</h2>
         <p>
@@ -118,7 +118,7 @@ const ForCustomers: React.FC = () => {
 
       <section className={styles.forCustomers__footer}>
         <p>
-          At FLORIA, we don’t just sell plants — we help you create a space that
+          At FLORIA, we don't just sell plants — we help you create a space that
           feels alive, calm, and welcoming.
         </p>
         <span>Thank you for growing with us.</span>

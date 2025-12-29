@@ -6,7 +6,7 @@ import authRoutes from './routes/auth';
 import productsRoutes from './routes/products';
 import categoriesRoutes from './routes/categories';
 import bannersRoutes from './routes/banners';
-import favoritesRoutes from './routes/favorites';
+import favouritesRoutes from './routes/favourites';
 import cartRoutes from './routes/cart';
 
 dotenv.config();
@@ -22,7 +22,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/products', productsRoutes);
 app.use('/api/categories', categoriesRoutes);
 app.use('/api/banners', bannersRoutes);
-app.use('/api/favorites', favoritesRoutes);
+app.use('/api/favourites', favouritesRoutes);
 app.use('/api/cart', cartRoutes);
 
 // Health check

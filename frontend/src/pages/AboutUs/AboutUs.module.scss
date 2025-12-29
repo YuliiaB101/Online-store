@@ -4,7 +4,7 @@
 .about {
   @include page-content();
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: center;
   text-align: justify;
   color: $color-primary;
@@ -12,10 +12,7 @@
   font-weight: 600;
 
   &__title {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    text-align: center;
+    @include title-logo(46px, 46px);
   }
 
   p {
@@ -26,7 +23,8 @@
     margin-top: 30px;
     margin-bottom: 15px;
     text-align: center;
-    color: black;
+    color: $color-primary-dark;
+    font-weight: 600;
     font-size: 28px;
   }
 
@@ -38,6 +36,7 @@
     padding: 25px 50px;
     background: bg-white-opacity(0.7);
     text-align: justify;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
 
     h3 {
       color: $color-primary-dark;

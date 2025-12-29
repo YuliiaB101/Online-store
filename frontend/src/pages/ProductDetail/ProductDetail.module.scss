@@ -106,7 +106,7 @@
   &__button {
     @include button-style();
 
-    &--favorite {
+    &--favourite {
       flex: 0;
       min-width: 60px;
       font-size: 24px;

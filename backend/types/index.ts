@@ -42,7 +42,7 @@ export interface CartItem {
   created_at: Date;
 }
 
-export interface Favorite {
+export interface favourite {
   id: number;
   user_id: number;
   product_id: number;

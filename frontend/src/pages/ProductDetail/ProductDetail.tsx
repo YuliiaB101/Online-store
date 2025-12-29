@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProductById } from '../../store/slices/productsSlice';
 import { addToCart } from '../../store/slices/cartSlice';
-import { addToFavorites, removeFromFavorites } from '../../store/slices/favoritesSlice';
+import { addToFavourites, removeFromFavourites } from '../../store/slices/favouritesSlice';
 import { RootState, Product } from '../../types';
 import styles from './ProductDetail.module.scss';
 
@@ -14,9 +14,9 @@ const ProductDetail = () => {
 
   const { currentProduct: product, loading } = useSelector((state: RootState) => state.products);
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
-  const { items: favorites } = useSelector((state: RootState) => state.favorites);
+  const { items: Favourites } = useSelector((state: RootState) => state.favourites);
 
-  const isFavorite = favorites.some((fav: Product) => fav.id === product?.id); useEffect(() => {
+  const isfavourite = Favourites.some((fav: Product) => fav.id === product?.id); useEffect(() => {
     dispatch(fetchProductById(id) as any);
   }, [dispatch, id]);
 
@@ -31,17 +31,17 @@ const ProductDetail = () => {
     }
   };
 
-  const handleFavoriteToggle = () => {
+  const handlefavouriteToggle = () => {
     if (!isAuthenticated) {
       navigate('/login');
       return;
     }
 
     if (product) {
-      if (isFavorite) {
-        dispatch(removeFromFavorites(product.id) as any);
+      if (isfavourite) {
+        dispatch(removeFromFavourites(product.id) as any);
       } else {
-        dispatch(addToFavorites(product.id) as any);
+        dispatch(addToFavourites(product.id) as any);
       }
     }
   };
@@ -93,11 +93,11 @@ const ProductDetail = () => {
             </button>
             {isAuthenticated && (
               <button
-                onClick={handleFavoriteToggle}
-                className={`${styles.productDetail__button} ${styles['productDetail__button--favorite']} ${isFavorite ? styles.active : ''
+                onClick={handlefavouriteToggle}
+                className={`${styles.productDetail__button} ${styles['productDetail__button--favourite']} ${isfavourite ? styles.active : ''
                   }`}
               >
-                {isFavorite ? '❤️' : '🤍'}
+                {isfavourite ? '❤️' : '🤍'}
               </button>
             )}
           </div>

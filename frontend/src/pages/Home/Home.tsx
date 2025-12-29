@@ -4,7 +4,7 @@ import { fetchProducts } from '../../store/slices/productsSlice';
 import { fetchCategories } from '../../store/slices/categoriesSlice';
 import { fetchBanners } from '../../store/slices/bannersSlice';
 import { fetchCart } from '../../store/slices/cartSlice';
-import { fetchFavorites } from '../../store/slices/favoritesSlice';
+import { fetchFavourites } from '../../store/slices/favouritesSlice';
 import { RootState, Product } from '../../types';
 import styles from './Home.module.scss';
 // import Carousel from 'components/Carousel/Carousel';
@@ -26,7 +26,7 @@ const Home = () => {
   useEffect(() => {
     if (isAuthenticated) {
       dispatch(fetchCart() as any);
-      dispatch(fetchFavorites() as any);
+      dispatch(fetchFavourites() as any);
     }
   }, [dispatch, isAuthenticated]);
 

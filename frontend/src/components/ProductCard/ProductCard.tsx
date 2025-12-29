@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToFavorites, removeFromFavorites } from '../../store/slices/favoritesSlice';
+import { addToFavourites, removeFromFavourites } from '../../store/slices/favouritesSlice';
 import { Product, RootState } from '../../types';
 import styles from './ProductCard.module.scss';
 
@@ -13,25 +13,25 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
-  const { items: favorites } = useSelector((state: RootState) => state.favorites);
+  const { items: favourites } = useSelector((state: RootState) => state.favourites);
 
-  const isFavorite = favorites.some((fav) => fav.id === product.id);
+  const isfavourite = favourites.some((fav) => fav.id === product.id);
 
   const handleCardClick = () => {
     navigate(`/product/${product.id}`);
   };
 
-  const handleFavoriteClick = (e: React.MouseEvent) => {
+  const handlefavouriteClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (!isAuthenticated) {
       navigate('/login');
       return;
     }
 
-    if (isFavorite) {
-      dispatch(removeFromFavorites(product.id) as any);
+    if (isfavourite) {
+      dispatch(removeFromFavourites(product.id) as any);
     } else {
-      dispatch(addToFavorites(product.id) as any);
+      dispatch(addToFavourites(product.id) as any);
     }
   };
 
@@ -42,17 +42,18 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           src={product.image_url}
           alt={product.name}
           className={styles.productCard__image}
+          loading="lazy"
         />
         <button
-          onClick={handleFavoriteClick}
-          className={`${styles.productCard__favorite} ${isFavorite ? styles['productCard__favorite--active'] : ''
+          onClick={handlefavouriteClick}
+          className={`${styles.productCard__favourite} ${isfavourite ? styles['productCard__favourite--active'] : ''
             }`}
-          aria-label="Add to favorites"
+          aria-label="Add to Favourites"
         >
           <img
             src="/icons/heart.svg"
-            alt="favorite"
-            className={styles.productCard__favoriteIcon}
+            alt="favourite"
+            className={styles.productCard__favouriteIcon}
           />
         </button>
       </div>

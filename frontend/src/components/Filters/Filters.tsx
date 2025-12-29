@@ -38,7 +38,7 @@ const Filters = () => {
 
   return (
     <div className={styles.filters}>
-      <div className={styles.filters__row}>
+      <div id="search" className={styles.filters__row}>
         <input
           type="text"
           placeholder="Search products..."

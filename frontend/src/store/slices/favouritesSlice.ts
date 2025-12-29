@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { FavoritesState, Product } from '../../types';
+import { FavouritesState, Product } from '../../types';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
@@ -9,27 +9,27 @@ const getAuthHeader = () => {
   return { Authorization: `Bearer ${token}` };
 };
 
-const initialState: FavoritesState = {
+const initialState: FavouritesState = {
   items: [],
   loading: false,
   error: null,
 };
 
-export const fetchFavorites = createAsyncThunk<Product[]>(
-  'favorites/fetchFavorites',
+export const fetchFavourites = createAsyncThunk<Product[]>(
+  'Favourites/fetchFavourites',
   async () => {
-    const response = await axios.get(`${API_URL}/favorites`, {
+    const response = await axios.get(`${API_URL}/Favourites`, {
       headers: getAuthHeader(),
     });
     return response.data;
   }
 );
 
-export const addToFavorites = createAsyncThunk<Product, number>(
-  'favorites/addToFavorites',
+export const addToFavourites = createAsyncThunk<Product, number>(
+  'Favourites/addToFavourites',
   async (productId) => {
     const response = await axios.post(
-      `${API_URL}/favorites`,
+      `${API_URL}/Favourites`,
       { product_id: productId },
       { headers: getAuthHeader() }
     );
@@ -37,41 +37,41 @@ export const addToFavorites = createAsyncThunk<Product, number>(
   }
 );
 
-export const removeFromFavorites = createAsyncThunk<number, number>(
-  'favorites/removeFromFavorites',
+export const removeFromFavourites = createAsyncThunk<number, number>(
+  'Favourites/removeFromFavourites',
   async (productId) => {
-    await axios.delete(`${API_URL}/favorites/${productId}`, {
+    await axios.delete(`${API_URL}/Favourites/${productId}`, {
       headers: getAuthHeader(),
     });
     return productId;
   }
 );
 
-const favoritesSlice = createSlice({
-  name: 'favorites',
+const FavouritesSlice = createSlice({
+  name: 'Favourites',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchFavorites.pending, (state) => {
+      .addCase(fetchFavourites.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchFavorites.fulfilled, (state, action: PayloadAction<Product[]>) => {
+      .addCase(fetchFavourites.fulfilled, (state, action: PayloadAction<Product[]>) => {
         state.loading = false;
         state.items = action.payload;
       })
-      .addCase(fetchFavorites.rejected, (state, action) => {
+      .addCase(fetchFavourites.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || 'Ошибка загрузки избранного';
       })
-      .addCase(addToFavorites.fulfilled, (state, action: PayloadAction<Product>) => {
+      .addCase(addToFavourites.fulfilled, (state, action: PayloadAction<Product>) => {
         state.items.push(action.payload);
       })
-      .addCase(removeFromFavorites.fulfilled, (state, action: PayloadAction<number>) => {
+      .addCase(removeFromFavourites.fulfilled, (state, action: PayloadAction<number>) => {
         state.items = state.items.filter((item) => item.id !== action.payload);
       });
   },
 });
 
-export default favoritesSlice.reducer;
+export default FavouritesSlice.reducer;

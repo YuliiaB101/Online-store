@@ -17,10 +17,8 @@ const AboutUs: React.FC = () => {
     }, [location]);
 
     return (
-        <div className={styles.about}>
-            <div className={styles.about__title}>
-                <h1>About Us</h1>
-            </div>
+        <main className={styles.about}>
+            <h1 className={styles.about__title}>About Us</h1>
             <div className={styles.about__content}>
                 <p>
                     FLORIA was created with a simple idea: homes feel better when they are filled with life — and when that life is grown with care for the planet.
@@ -35,11 +33,11 @@ const AboutUs: React.FC = () => {
                     At FLORIA, we believe plants are more than décor — they create atmosphere, support well-being, and connect us to nature. Our mission is to help you build a cozy, harmonious home while staying mindful of the world around us.
                 </p>
 
-                <h2 className={styles.about__title}>Our Commitment to Sustainability</h2>
+                <h2>Our Commitment to Sustainability</h2>
                 <p>We always wanted FLORIA to be more than a plant store.</p>
                 <p>From the very beginning, our goal was not only to bring greenery into homes, but to make a positive difference beyond them. We believe that caring for plants naturally leads to caring for the world around us.</p>
 
-                <p>That’s why we actively take part in environmental initiatives — from planting trees to cleaning polluted lakes and supporting local eco-projects aimed at protecting and restoring nature.</p>
+                <p>That's why we actively take part in environmental initiatives — from planting trees to cleaning polluted lakes and supporting local eco-projects aimed at protecting and restoring nature.</p>
 
                 Our key initiatives include:
                 <ul className={styles.about__ecoInitiatives}>
@@ -51,10 +49,10 @@ const AboutUs: React.FC = () => {
                         Sustainability is woven into our daily decisions — responsible sourcing, eco-friendly packaging, and long-term thinking over short-term solutions.</li>
                 </ul>
 
-                <p>At FLORIA, impact is not a trend — it’s a responsibility.
+                <p>At FLORIA, impact is not a trend — it's a responsibility.
                     Because making your home feel cozy should also help make the world a better place.</p>
             </div >
-        </div>
+        </main>
     );
 };
 

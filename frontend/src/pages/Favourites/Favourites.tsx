@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchFavorites } from '../../store/slices/favoritesSlice';
+import { fetchFavourites } from '../../store/slices/favouritesSlice';
 import { RootState } from '../../types';
 import ProductGrid from '../../components/ProductGrid/ProductGrid';
-import styles from './Favorites.module.scss';
+import styles from './Favourites.module.scss';
 
-const Favorites = () => {
+const Favourites = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { items, loading } = useSelector((state: RootState) => state.favorites);
+  const { items, loading } = useSelector((state: RootState) => state.favourites);
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
 
   useEffect(() => {
@@ -17,21 +17,21 @@ const Favorites = () => {
       navigate('/login');
       return;
     }
-    dispatch(fetchFavorites() as any);
+    dispatch(fetchFavourites() as any);
   }, [dispatch, isAuthenticated, navigate]);
 
   if (loading) {
-    return <div className={styles.favorites}>Loading...</div>;
+    return <div className={styles.Favourites}>Loading...</div>;
   }
 
   if (items.length === 0) {
     return (
-      <div className={styles.favorites}>
-        <h1 className={styles.favorites__title}>Favorites</h1>
-        <div className={styles.favorites__empty}>
-          <h2>У вас пока нет избранных товаров</h2>
+      <div className={styles.Favourites}>
+        <h1 className={styles.Favourites__title}>Favourites</h1>
+        <div className={styles.Favourites__empty}>
+          <h2>There are no favourite products yet</h2>
           <button onClick={() => navigate('/home')}>
-            Перейти к покупкам
+            Go to shopping
           </button>
         </div>
       </div>
@@ -39,11 +39,11 @@ const Favorites = () => {
   }
 
   return (
-    <div className={styles.favorites}>
-      <h1 className={styles.favorites__title}>Favorites ({items.length})</h1>
+    <div className={styles.Favourites}>
+      <h1 className={styles.Favourites__title}>Favourites ({items.length})</h1>
       <ProductGrid products={items} loading={loading} />
     </div>
   );
 };
 
-export default Favorites;
+export default Favourites;

@@ -14,7 +14,7 @@ const Header: React.FC = () => {
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
   // const { isAuthenticated, user } = useSelector((state: RootState) => state.auth);
   const { items: cartItems } = useSelector((state: RootState) => state.cart);
-  const { items: favoriteItems } = useSelector((state: RootState) => state.favorites);
+  const { items: favouriteItems } = useSelector((state: RootState) => state.favourites);
 
   // const handleLogout = () => {
   //   dispatch(logout());
@@ -50,7 +50,7 @@ const Header: React.FC = () => {
           }>
             For Customers
           </NavLink>
-          <NavLink to="/home" 
+          <NavLink to="/contacts" 
           className={({ isActive }) => isActive
               ? `${styles.header__navLink} ${styles.active}`
               : styles.header__navLink
@@ -61,11 +61,11 @@ const Header: React.FC = () => {
 
         {isAuthenticated && (
           <>
-            <Link to="/favorites" className={styles.header__link}>
-              Favorites
-              {favoriteItems.length > 0 && (
+            <Link to="/Favourites" className={styles.header__link}>
+              Favourites
+              {favouriteItems.length > 0 && (
                 <span className={styles.header__linkBadge}>
-                  {favoriteItems.length}
+                  {favouriteItems.length}
                 </span>
               )}
             </Link>
@@ -84,8 +84,8 @@ const Header: React.FC = () => {
           <Link to="#">
             <img className={styles.header__icon} src="/icons/search.svg" alt="Search" />
           </Link>
-          <Link to="/favorites">
-            <img className={styles.header__icon} src="/icons/heart.svg" alt="Favorites" />
+          <Link to="/Favourites">
+            <img className={styles.header__icon} src="/icons/heart.svg" alt="Favourites" />
           </Link>
           <Link to="/cart">
             <img className={styles.header__icon} src="/icons/cart1.svg" alt="Cart" />
