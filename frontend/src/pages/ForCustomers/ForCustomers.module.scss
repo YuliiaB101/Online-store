@@ -22,7 +22,7 @@
   }
 
   &__title {
-    @include title-logo(46px, 46px);
+    @include title-logo();
   }
 
   &__section {

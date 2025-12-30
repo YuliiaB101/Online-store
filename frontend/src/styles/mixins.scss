@@ -100,7 +100,7 @@
   }
 }
 
-@mixin title-logo($size: 36px, $logo-size: 36px) {
+@mixin title-logo($size: 46px) {
   text-align: center;
   left: -10px;
   position: relative;
@@ -110,8 +110,8 @@
     display: inline-block;
     position: relative;
     top: 8px;
-    width: $logo-size;
-    height: $logo-size;
+    width: $size;
+    height: $size;
     background: url("../../public/icons/logo.svg") no-repeat center;
     background-size: contain;
     margin: 0 12px;

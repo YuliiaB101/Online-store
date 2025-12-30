@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCart, updateCartItem, removeFromCart, clearCart } from '../../store/slices/cartSlice';
 import { RootState, CartItem } from '../../types';
+import CartCard from '../../components/CartCard/CartCard';
 import styles from './Cart.module.scss';
 
 const Cart = () => {
@@ -28,7 +29,7 @@ const Cart = () => {
   };
 
   const handleClearCart = () => {
-    if (window.confirm('Вы уверены, что хотите очистить корзину?')) {
+    if (window.confirm('Are you sure you want to clear the cart?')) {
       dispatch(clearCart() as any);
     }
   };
@@ -41,7 +42,7 @@ const Cart = () => {
         <div className={styles.cart__empty}>
           <h2>Your cart is empty</h2>
           <button onClick={() => navigate('/home')}>
-            Перейти к покупкам
+            Go to shopping
           </button>
         </div>
       </div>
@@ -51,54 +52,22 @@ const Cart = () => {
   return (
     <div className={styles.cart}>
       <h1 className={styles.cart__title}>Cart</h1>
+      <span>Your items in a cart: {items.length} items</span>
       
       <div className={styles.cart__content}>
         <div className={styles.cart__items}>
           {items.map((item) => (
-            <div key={item.id} className={styles.cart__item}>
-              <img
-                src={item.image_url}
-                alt={item.name}
-                className={styles.cart__itemImage}
-              />
-              
-              <div className={styles.cart__itemInfo}>
-                <h3 className={styles.cart__itemName}>{item.name}</h3>
-                <div className={styles.cart__itemCategory}>{item.category_name}</div>
-                <div className={styles.cart__itemPrice}>${item.price}</div>
-              </div>
-
-              <div className={styles.cart__itemActions}>
-                <button
-                  onClick={() => handleRemove(item.id)}
-                  className={styles.cart__removeButton}
-                >
-                  ✕
-                </button>
-
-                <div className={styles.cart__quantity}>
-                  <button
-                    onClick={() => handleQuantityChange(item.id, item.quantity - 1)}
-                    disabled={item.quantity <= 1}
-                    className={styles.cart__quantityButton}
-                  >
-                    −
-                  </button>
-                  <span className={styles.cart__quantityValue}>{item.quantity}</span>
-                  <button
-                    onClick={() => handleQuantityChange(item.id, item.quantity + 1)}
-                    className={styles.cart__quantityButton}
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-            </div>
+            <CartCard
+              key={item.id}
+              item={item}
+              onQuantityChange={handleQuantityChange}
+              onRemove={handleRemove}
+            />
           ))}
         </div>
 
         <div className={styles.cart__summary}>
-          <h2 className={styles.cart__summaryTitle}>Итого</h2>
+          <h2 className={styles.cart__summaryTitle}>Total</h2>
           
           <div className={styles.cart__summaryRow}>
             <span>Items ({items.length}):</span>
@@ -106,12 +75,12 @@ const Cart = () => {
           </div>
           
           <div className={styles.cart__summaryRow}>
-            <span>Итого:</span>
+            <span>Total:</span>
             <span>${total.toFixed(2)}</span>
           </div>
 
           <button className={styles.cart__checkoutButton}>
-            Оформить заказ
+            Checkout
           </button>
 
           <button 
