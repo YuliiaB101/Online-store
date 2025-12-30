@@ -38,7 +38,7 @@
 
 @mixin button-style {
   flex: 1;
-  padding: 18px 32px;
+  padding: 18px 20px;
   border: none;
   border-radius: $border-radius-input;
   font-size: 18px;
@@ -46,11 +46,11 @@
   transition: $transition;
   cursor: pointer;
 
-  background: $color-primary-light;
+  background: $color-primary;
   color: white;
 
   &:hover {
-    background: bg-primary-opacity(0.9);
+    background: $color-primary-light;
   }
 }
 
@@ -102,10 +102,10 @@
 
 @mixin title-logo($size: 46px) {
   text-align: center;
-  left: -10px;
+  left: 16px;
   position: relative;
 
-  &::before {
+  &::after {
     content: "";
     display: inline-block;
     position: relative;

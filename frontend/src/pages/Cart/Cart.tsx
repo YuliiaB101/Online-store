@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCart, updateCartItem, removeFromCart, clearCart } from '../../store/slices/cartSlice';
+import { fetchCart, incrementQuantity, decrementQuantity, updateCartItem, removeFromCart, clearCart } from '../../store/slices/cartSlice';
 import { RootState, CartItem } from '../../types';
 import CartCard from '../../components/CartCard/CartCard';
 import styles from './Cart.module.scss';
@@ -20,8 +20,20 @@ const Cart = () => {
     dispatch(fetchCart() as any);
   }, [dispatch, isAuthenticated, navigate]);
 
-  const handleQuantityChange = (id: number, quantity: number) => {
-    dispatch(updateCartItem({ id, quantity }) as any);
+  const handleIncrement = (id: number) => {
+    dispatch(incrementQuantity(id));
+    const item = items.find(i => i.id === id);
+    if (item) {
+      dispatch(updateCartItem({ id, quantity: item.quantity + 1 }) as any);
+    }
+  };
+
+  const handleDecrement = (id: number) => {
+    dispatch(decrementQuantity(id));
+    const item = items.find(i => i.id === id);
+    if (item && item.quantity > 1) {
+      dispatch(updateCartItem({ id, quantity: item.quantity - 1 }) as any);
+    }
   };
 
   const handleRemove = (id: number) => {
@@ -52,7 +64,7 @@ const Cart = () => {
   return (
     <div className={styles.cart}>
       <h1 className={styles.cart__title}>Cart</h1>
-      <span>Your items in a cart: {items.length} items</span>
+      <span className={styles.cart__subtitle}>Your items in a cart:</span>
       
       <div className={styles.cart__content}>
         <div className={styles.cart__items}>
@@ -60,7 +72,8 @@ const Cart = () => {
             <CartCard
               key={item.id}
               item={item}
-              onQuantityChange={handleQuantityChange}
+              onIncrement={handleIncrement}
+              onDecrement={handleDecrement}
               onRemove={handleRemove}
             />
           ))}

@@ -128,17 +128,13 @@
 
   &__addToCart {
     @include button-style();
-    max-width: 90px;
+    max-width: 80px;
     max-height: 60px;
 
     img {
       filter: brightness(0) saturate(100%) invert(100%);
       width: 28px;
       height: 28px;
-    }
-
-    &:hover {
-      transform: scale(1.1);
     }
   }
 }

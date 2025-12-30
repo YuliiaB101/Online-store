@@ -81,7 +81,20 @@ export const clearCart = createAsyncThunk<void>(
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
-  reducers: {},
+  reducers: {
+    incrementQuantity: (state, action: PayloadAction<number>) => {
+      const item = state.items.find((item) => item.id === action.payload);
+      if (item) {
+        item.quantity += 1;
+      }
+    },
+    decrementQuantity: (state, action: PayloadAction<number>) => {
+      const item = state.items.find((item) => item.id === action.payload);
+      if (item && item.quantity > 1) {
+        item.quantity -= 1;
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCart.pending, (state) => {
@@ -116,4 +129,5 @@ const cartSlice = createSlice({
   },
 });
 
+export const { incrementQuantity, decrementQuantity } = cartSlice.actions;
 export default cartSlice.reducer;

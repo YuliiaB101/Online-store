@@ -3,11 +3,12 @@ import styles from './CartCard.module.scss';
 
 interface CartCardProps {
   item: CartItem;
-  onQuantityChange: (id: number, quantity: number) => void;
+  onIncrement: (id: number) => void;
+  onDecrement: (id: number) => void;
   onRemove: (id: number) => void;
 }
 
-const CartCard: React.FC<CartCardProps> = ({ item, onQuantityChange, onRemove }) => {
+const CartCard: React.FC<CartCardProps> = ({ item, onIncrement, onDecrement, onRemove }) => {
   return (
     <div className={styles.cartCard}>
       <img
@@ -32,7 +33,7 @@ const CartCard: React.FC<CartCardProps> = ({ item, onQuantityChange, onRemove })
 
         <div className={styles.cartCard__quantity}>
           <button
-            onClick={() => onQuantityChange(item.id, item.quantity - 1)}
+            onClick={() => onDecrement(item.id)}
             disabled={item.quantity <= 1}
             className={styles.cartCard__quantityButton}
           >
@@ -40,7 +41,7 @@ const CartCard: React.FC<CartCardProps> = ({ item, onQuantityChange, onRemove })
           </button>
           <span className={styles.cartCard__quantityValue}>{item.quantity}</span>
           <button
-            onClick={() => onQuantityChange(item.id, item.quantity + 1)}
+            onClick={() => onIncrement(item.id)}
             className={styles.cartCard__quantityButton}
           >
             +

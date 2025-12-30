@@ -71,7 +71,7 @@
     align-items: center;
     gap: 10px;
     border: 1px solid $color-primary;
-    border-radius: $border-radius;
+    border-radius: $border-radius-input;
     overflow: hidden;
   }
 
@@ -91,6 +91,7 @@
 
   &__quantityValue {
     padding: 8px 16px;
+    font-size: 20px;
     font-weight: 600;
   }
 }
