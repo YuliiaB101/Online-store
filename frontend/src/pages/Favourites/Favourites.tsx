@@ -9,7 +9,7 @@ import styles from './Favourites.module.scss';
 const Favourites = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { items, loading } = useSelector((state: RootState) => state.favourites);
+  const { items } = useSelector((state: RootState) => state.favourites);
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
 
   useEffect(() => {
@@ -19,10 +19,6 @@ const Favourites = () => {
     }
     dispatch(fetchFavourites() as any);
   }, [dispatch, isAuthenticated, navigate]);
-
-  if (loading) {
-    return <div className={styles.Favourites}>Loading...</div>;
-  }
 
   if (items.length === 0) {
     return (
@@ -41,7 +37,7 @@ const Favourites = () => {
   return (
     <div className={styles.Favourites}>
       <h1 className={styles.Favourites__title}>Favourites ({items.length})</h1>
-      <ProductGrid products={items} loading={loading} />
+      <ProductGrid products={items}/>
     </div>
   );
 };

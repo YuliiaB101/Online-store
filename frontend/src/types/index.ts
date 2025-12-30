@@ -41,7 +41,6 @@ export interface CartItem extends Product {
 export interface AuthState {
   user: User | null;
   token: string | null;
-  loading: boolean;
   error: string | null;
   isAuthenticated: boolean;
 }
@@ -49,7 +48,6 @@ export interface AuthState {
 export interface ProductsState {
   items: Product[];
   currentProduct: Product | null;
-  loading: boolean;
   error: string | null;
   filters: {
     category: string;
@@ -61,25 +59,21 @@ export interface ProductsState {
 
 export interface CartState {
   items: CartItem[];
-  loading: boolean;
   error: string | null;
 }
 
 export interface FavouritesState {
   items: Product[];
-  loading: boolean;
   error: string | null;
 }
 
 export interface CategoriesState {
   items: Category[];
-  loading: boolean;
   error: string | null;
 }
 
 export interface BannersState {
   items: Banner[];
-  loading: boolean;
   error: string | null;
 }
 

@@ -11,7 +11,6 @@ const getAuthHeader = () => {
 
 const initialState: FavouritesState = {
   items: [],
-  loading: false,
   error: null,
 };
 
@@ -54,15 +53,12 @@ const FavouritesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchFavourites.pending, (state) => {
-        state.loading = true;
         state.error = null;
       })
       .addCase(fetchFavourites.fulfilled, (state, action: PayloadAction<Product[]>) => {
-        state.loading = false;
         state.items = action.payload;
       })
       .addCase(fetchFavourites.rejected, (state, action) => {
-        state.loading = false;
         state.error = action.error.message || 'Ошибка загрузки избранного';
       })
       .addCase(addToFavourites.fulfilled, (state, action: PayloadAction<Product>) => {

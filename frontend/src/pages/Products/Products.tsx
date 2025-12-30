@@ -12,7 +12,7 @@ import { RootState } from '../../types';
 
 const Products: React.FC = () => {
     const dispatch = useDispatch();
-    const { items: products, loading, filters } = useSelector((state: RootState) => state.products);
+    const { items: products, filters } = useSelector((state: RootState) => state.products);
     const { isAuthenticated } = useSelector((state: RootState) => state.auth);
 
     useEffect(() => {
@@ -40,7 +40,7 @@ const Products: React.FC = () => {
                     <span className={styles.products__count}>Zeigt 1 - {products.length} von {products.length} Ergebnissen</span>
                 </div>
             </div>
-            <ProductGrid products={products} loading={loading} />
+            <ProductGrid products={products}/>
         </main>
     );
 };

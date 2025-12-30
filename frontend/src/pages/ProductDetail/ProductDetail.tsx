@@ -12,7 +12,7 @@ const ProductDetail = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { currentProduct: product, loading } = useSelector((state: RootState) => state.products);
+  const { currentProduct: product } = useSelector((state: RootState) => state.products);
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
   const { items: Favourites } = useSelector((state: RootState) => state.favourites);
 
@@ -45,10 +45,6 @@ const ProductDetail = () => {
       }
     }
   };
-
-  if (loading) {
-    return <div className={styles.loading}>Loading...</div>;
-  }
 
   if (!product) {
     return <div className={styles.loading}>Товар не найден</div>;

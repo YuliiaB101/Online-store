@@ -6,7 +6,6 @@ const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 const initialState: BannersState = {
   items: [],
-  loading: false,
   error: null,
 };
 
@@ -25,15 +24,12 @@ const bannersSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchBanners.pending, (state) => {
-        state.loading = true;
         state.error = null;
       })
       .addCase(fetchBanners.fulfilled, (state, action: PayloadAction<Banner[]>) => {
-        state.loading = false;
         state.items = action.payload;
       })
       .addCase(fetchBanners.rejected, (state, action) => {
-        state.loading = false;
         state.error = action.error.message || 'Ошибка загрузки баннеров';
       });
   },

@@ -8,7 +8,7 @@ import styles from './Cart.module.scss';
 const Cart = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { items, loading } = useSelector((state: RootState) => state.cart);
+  const { items } = useSelector((state: RootState) => state.cart);
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
 
   useEffect(() => {
@@ -34,10 +34,6 @@ const Cart = () => {
   };
 
   const total = items.reduce((sum: number, item: CartItem) => sum + item.price * item.quantity, 0);
-
-  if (loading) {
-    return <div className={styles.cart}>Загрузка...</div>;
-  }
 
   if (items.length === 0) {
     return (

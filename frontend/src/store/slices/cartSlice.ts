@@ -11,7 +11,6 @@ const getAuthHeader = () => {
 
 const initialState: CartState = {
   items: [],
-  loading: false,
   error: null,
 };
 
@@ -85,15 +84,12 @@ const cartSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchCart.pending, (state) => {
-        state.loading = true;
         state.error = null;
       })
       .addCase(fetchCart.fulfilled, (state, action: PayloadAction<CartItem[]>) => {
-        state.loading = false;
         state.items = action.payload;
       })
       .addCase(fetchCart.rejected, (state, action) => {
-        state.loading = false;
         state.error = action.error.message || 'Ошибка загрузки корзины';
       })
       .addCase(addToCart.fulfilled, (state, action: PayloadAction<CartItem>) => {

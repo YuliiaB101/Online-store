@@ -6,7 +6,6 @@ const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 const initialState: CategoriesState = {
   items: [],
-  loading: false,
   error: null,
 };
 
@@ -25,15 +24,12 @@ const categoriesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchCategories.pending, (state) => {
-        state.loading = true;
         state.error = null;
       })
       .addCase(fetchCategories.fulfilled, (state, action: PayloadAction<Category[]>) => {
-        state.loading = false;
         state.items = action.payload;
       })
       .addCase(fetchCategories.rejected, (state, action) => {
-        state.loading = false;
         state.error = action.error.message || 'Ошибка загрузки категорий';
       });
   },

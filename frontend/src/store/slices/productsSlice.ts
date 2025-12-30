@@ -7,7 +7,6 @@ const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 const initialState: ProductsState = {
   items: [],
   currentProduct: null,
-  loading: false,
   error: null,
   filters: {
     search: '',
@@ -62,28 +61,22 @@ const productsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, (state) => {
-        state.loading = true;
         state.error = null;
       })
       .addCase(fetchProducts.fulfilled, (state, action: PayloadAction<Product[]>) => {
-        state.loading = false;
         state.items = action.payload;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message || 'Ошибка загрузки товаров';
+        state.error = action.error.message || 'Loading products error';
       })
       .addCase(fetchProductById.pending, (state) => {
-        state.loading = true;
         state.error = null;
       })
       .addCase(fetchProductById.fulfilled, (state, action: PayloadAction<Product>) => {
-        state.loading = false;
         state.currentProduct = action.payload;
       })
       .addCase(fetchProductById.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message || 'Ошибка загрузки товара';
+        state.error = action.error.message || 'Loading product error';
       })
       .addCase(likeProduct.fulfilled, (state, action: PayloadAction<Product>) => {
         const index = state.items.findIndex((p) => p.id === action.payload.id);
