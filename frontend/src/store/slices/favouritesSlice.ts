@@ -15,9 +15,9 @@ const initialState: FavouritesState = {
 };
 
 export const fetchFavourites = createAsyncThunk<Product[]>(
-  'Favourites/fetchFavourites',
+  'favourites/fetchFavourites',
   async () => {
-    const response = await axios.get(`${API_URL}/Favourites`, {
+    const response = await axios.get(`${API_URL}/favourites`, {
       headers: getAuthHeader(),
     });
     return response.data;
@@ -25,21 +25,22 @@ export const fetchFavourites = createAsyncThunk<Product[]>(
 );
 
 export const addToFavourites = createAsyncThunk<Product, number>(
-  'Favourites/addToFavourites',
+  'favourites/addToFavourites',
   async (productId) => {
     const response = await axios.post(
-      `${API_URL}/Favourites`,
+      `${API_URL}/favourites`,
       { product_id: productId },
       { headers: getAuthHeader() }
     );
+    console.log('Added to favourites:', response.data);
     return response.data;
   }
 );
 
 export const removeFromFavourites = createAsyncThunk<number, number>(
-  'Favourites/removeFromFavourites',
+  'favourites/removeFromFavourites',
   async (productId) => {
-    await axios.delete(`${API_URL}/Favourites/${productId}`, {
+    await axios.delete(`${API_URL}/favourites/${productId}`, {
       headers: getAuthHeader(),
     });
     return productId;
@@ -59,7 +60,7 @@ const FavouritesSlice = createSlice({
         state.items = action.payload;
       })
       .addCase(fetchFavourites.rejected, (state, action) => {
-        state.error = action.error.message || 'Ошибка загрузки избранного';
+        state.error = action.error.message || 'Error loading favourites';
       })
       .addCase(addToFavourites.fulfilled, (state, action: PayloadAction<Product>) => {
         state.items.push(action.payload);

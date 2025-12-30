@@ -1,41 +1,37 @@
 @use "../../styles/mixins.scss" as *;
 @use "../../styles/variables.scss" as *;
 
-.Favourites {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 30px 20px;
+.favourites {
+  @include page-content();
+  text-align: justify;
+  color: $color-primary;
+  font-size: 22px;
+  font-weight: 600;
+
+  h1 {
+    font-size: 50px;
+    text-align: center;
+    color: $color-primary;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: 36px;
+    color: $color-secondary;
+    margin-bottom: 20px;
+  }
 
   &__title {
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 30px;
-    color: $color-secondary;
+    @include title-logo(46px, 46px);
   }
 
   &__empty {
     text-align: center;
-    padding: 60px 20px;
     color: $color-text;
 
-    h2 {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-
     button {
-      padding: 12px 24px;
-      background: $color-primary;
-      color: white;
-      border: none;
-      border-radius: $border-radius;
-      font-weight: 600;
-      cursor: pointer;
-      transition: $transition;
-
-      &:hover {
-        background: $color-primary-dark;
-      }
+      margin-top: 40px;
+      @include button-style();
     }
   }
 }

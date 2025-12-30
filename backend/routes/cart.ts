@@ -26,7 +26,9 @@ router.get('/', authMiddleware, async (req: Request & AuthRequest, res: Response
 // Add to cart
 router.post('/', authMiddleware, async (req: Request & AuthRequest, res: Response): Promise<void> => {
   try {
-    const { productId, quantity = 1 } = req.body;
+    const { product_id: productId, quantity = 1 } = req.body;
+
+    console.log('Adding to cart - productId:', productId, 'quantity:', quantity);
 
     // Check if already in cart
     const exists = await pool.query(

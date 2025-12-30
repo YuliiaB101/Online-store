@@ -9,7 +9,6 @@
   position: relative;
   z-index: 100;
   background: rgba(131, 122, 122, 0.55);
-  // border-bottom: 1px solid rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(2px);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
 
@@ -43,19 +42,6 @@
       opacity: 1;
       scale: 1.25;
     }
-
-    &Badge {
-      position: absolute;
-      top: -8px;
-      right: -12px;
-      background: $color-primary;
-      color: white;
-      font-size: 11px;
-      padding: 2px 6px;
-      border-radius: 10px;
-      min-width: 18px;
-      text-align: center;
-    }
   }
 
   &__logo {
@@ -82,5 +68,15 @@
       drop-shadow(0 0 0.5px white);
 
     @include hover-scale-opacity(1.1, 0.8);
+
+    &Badge {
+      position: absolute;
+      color: white;
+      font-size: 24px;
+      font-weight: 600;
+      padding: px;
+      min-width: 18px;
+      text-align: center;
+    }
   }
 }

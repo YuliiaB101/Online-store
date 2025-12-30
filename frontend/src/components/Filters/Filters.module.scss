@@ -30,7 +30,8 @@
   }
 
   &__clear {
-    @include filter-style();
+    @include button-style();
+    max-width: 140px;
     background: $color-primary;
 
     &:hover {

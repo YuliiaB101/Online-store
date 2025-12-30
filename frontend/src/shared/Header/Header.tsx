@@ -24,72 +24,74 @@ const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <div className={styles.header__container}>
+        {/* Logo section */}
         <Link to="/home" className={styles.header__logo}>
           <img className={styles.header__logo} src="/icons/page-logo.svg" alt="Logo" />
         </Link>
 
+        {/* Navigation links section */}
         <nav className={styles.header__nav}>
-          <NavLink to="/products" 
-          className={({ isActive }) => isActive
+          <NavLink to="/products"
+            className={({ isActive }) => isActive
               ? `${styles.header__navLink} ${styles.active}`
               : styles.header__navLink
-          }>
+            }>
             Products
           </NavLink>
-          <NavLink to="/about" 
-          className={({ isActive }) => isActive
+          <NavLink to="/about"
+            className={({ isActive }) => isActive
               ? `${styles.header__navLink} ${styles.active}`
               : styles.header__navLink
-          }>
+            }>
             About Us
           </NavLink>
-          <NavLink to="/for-customers" 
-          className={({ isActive }) =>isActive
+          <NavLink to="/for-customers"
+            className={({ isActive }) => isActive
               ? `${styles.header__navLink} ${styles.active}`
               : styles.header__navLink
-          }>
+            }>
             For Customers
           </NavLink>
-          <NavLink to="/contacts" 
-          className={({ isActive }) => isActive
+          <NavLink to="/contacts"
+            className={({ isActive }) => isActive
               ? `${styles.header__navLink} ${styles.active}`
               : styles.header__navLink
-          }>
+            }>
             Contacts
           </NavLink>
         </nav>
 
-        {isAuthenticated && (
-          <>
-            <Link to="/Favourites" className={styles.header__link}>
-              Favourites
-              {favouriteItems.length > 0 && (
-                <span className={styles.header__linkBadge}>
-                  {favouriteItems.length}
-                </span>
-              )}
-            </Link>
-            <Link to="/cart" className={styles.header__link}>
-              Cart
-              {cartItems.length > 0 && (
-                <span className={styles.header__linkBadge}>
-                  {cartItems.length}
-                </span>
-              )}
-            </Link>
-          </>
-        )}
-
+        {/* Header icons section */}
         <div className={styles.header__icons}>
           <Link to="#">
             <img className={styles.header__icon} src="/icons/search.svg" alt="Search" />
           </Link>
-          <Link to="/Favourites">
-            <img className={styles.header__icon} src="/icons/heart.svg" alt="Favourites" />
+
+          <Link to="/favourites">
+            {isAuthenticated ? (
+              <>
+                <img className={styles.header__icon} src="/icons/heart-full.svg" alt="Favourites" />
+                {favouriteItems.length > 0 && (
+                  <span className={styles.header__iconBadge}>
+                    {favouriteItems.length}
+                  </span>
+                )}
+              </>
+            )
+              :
+              <img className={styles.header__icon} src="/icons/heart.svg" alt="Favourites" />
+            }
           </Link>
+
           <Link to="/cart">
             <img className={styles.header__icon} src="/icons/cart1.svg" alt="Cart" />
+            {isAuthenticated && cartItems.length > 0 && (
+              <span className={styles.header__iconBadge}>
+                {cartItems.length}
+              </span>
+            )}
           </Link>
+
           <Link to="/login">
             <img className={styles.header__icon} src="/icons/user.svg" alt="User" />
           </Link>

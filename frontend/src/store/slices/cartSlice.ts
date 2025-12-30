@@ -42,6 +42,7 @@ export const addToCart = createAsyncThunk<CartItem, AddToCartParams>(
       { product_id: productId, quantity },
       { headers: getAuthHeader() }
     );
+    console.log('Added to cart:', productId, 'Response:', response.data);
     return response.data;
   }
 );

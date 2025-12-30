@@ -54,31 +54,33 @@ const Home = () => {
         </span>
       </div>
 
-      <div className={styles.home__top}>
-        <h2>Our Top products for You</h2>
-        <div className={styles.home__top__products}>
-          {categoryProducts.map((product) => (
-            <BannerProductCard key={product.id} product={product} />
-          ))}
-        </div>
+      <div className={styles.home__top__wrapper}>
+        <div className={styles.home__top__content}>
+          <h2 className={styles.home__top__content__title}>Our Top products for You</h2>
+          <div className={styles.home__top__products}>
+            {categoryProducts.map((product) => (
+              <BannerProductCard key={product.id} product={product} />
+            ))}
+          </div>
 
-        <h2>Top Categories</h2>
-        <div className={styles.home__top__categories}>
-          <div>
-            <img src="/images/categories/category-plants-indoor.jpg" alt="indoor_plants" />
-            <p>Indoor Plants</p>
-          </div>
-          <div>
-            <img src="/images/categories/category-plants-outdoor.jpg" alt="outdoor_plants" />
-            <p>Outdoor Plants</p>
-          </div>
-          <div>
-            <img src="/images/categories/category-pots.jpg" alt="pots" />
-            <p>Pots</p>
-          </div>
-          <div>
-            <img src="/images/categories/category-accessories.jpg" alt="accessories" />
-            <p>Accessories</p>
+        <h2 className={styles.home__top__content__title}>Top Categories</h2>
+          <div className={styles.home__top__categories}>
+            <div>
+              <img src="/images/categories/category-plants-indoor.jpg" alt="indoor_plants" />
+              <p>Indoor Plants</p>
+            </div>
+            <div>
+              <img src="/images/categories/category-plants-outdoor.jpg" alt="outdoor_plants" />
+              <p>Outdoor Plants</p>
+            </div>
+            <div>
+              <img src="/images/categories/category-pots.jpg" alt="pots" />
+              <p>Pots</p>
+            </div>
+            <div>
+              <img src="/images/categories/category-accessories.jpg" alt="accessories" />
+              <p>Accessories</p>
+            </div>
           </div>
         </div>
       </div>

@@ -86,7 +86,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
 
             <label className={styles.auth__label} htmlFor="email">Email:</label>
             <Field 
-              className={`${styles.auth__input} ${errors.email && touched.email ? styles.auth__input_error : ''}`}
+              className={`${styles.auth__input} ${isValid ? styles.auth__input_success : ''} ${errors.email && touched.email ? styles.auth__input_error : ''}`}
               id="email" 
               name="email" 
               placeholder="Enter your email" 
@@ -96,7 +96,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
 
             <label className={styles.auth__label} htmlFor="password">Password:</label>
             <Field 
-              className={`${styles.auth__input} ${errors.password && touched.password ? styles.auth__input_error : ''}`}
+              className={`${styles.auth__input} ${isValid ? styles.auth__input_success : ''} ${errors.password && touched.password ? styles.auth__input_error : ''}`}
               id="password" 
               name="password" 
               placeholder="Enter your password" 

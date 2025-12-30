@@ -52,11 +52,26 @@
   }
 
   &__top {
-    padding: 40px 100px 80px 100px;
-    background: $color-bg-beige;
-    font-size: 28px;
-    font-weight: 700;
-    color: $color-primary-dark;
+    &__wrapper {
+      background: $color-bg-beige;
+      overflow: hidden;
+    }
+
+    &__content {
+      margin: 40px 80px 80px 80px;
+      padding: 20px 40px 40px 40px;
+      background: bg-white-opacity(0.7);
+      border-radius: $border-radius;
+      font-size: 28px;
+      font-weight: 700;
+      color: $color-primary-dark;
+
+      &__title {
+        @include title-logo(46px, 46px);
+        text-align: left;
+        color: $color-primary-dark;
+      }
+    }
 
     &__products {
       display: flex;

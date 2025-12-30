@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToFavourites, removeFromFavourites } from '../../store/slices/favouritesSlice';
 import { Product, RootState } from '../../types';
 import styles from './ProductCard.module.scss';
+import { addToCart } from 'store/slices/cartSlice';
 
 interface ProductCardProps {
   product: Product;
@@ -21,7 +22,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     navigate(`/product/${product.id}`);
   };
 
-  const handlefavouriteClick = (e: React.MouseEvent) => {
+  const handleFavouriteClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (!isAuthenticated) {
       navigate('/login');
@@ -35,6 +36,17 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     }
   };
 
+  const handleCartClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!isAuthenticated) {
+      navigate('/login');
+      return;
+    } else {
+      console.log('Adding to cart:', product.id);
+      dispatch(addToCart({ productId: product.id, quantity: 1 }) as any);
+    }
+  };
+
   return (
     <div className={styles.productCard}>
       <div className={styles.productCard__imageWrapper} onClick={handleCardClick}>
@@ -45,7 +57,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           loading="lazy"
         />
         <button
-          onClick={handlefavouriteClick}
+          onClick={handleFavouriteClick}
           className={`${styles.productCard__favourite} ${isfavourite ? styles['productCard__favourite--active'] : ''
             }`}
           aria-label="Add to Favourites"
@@ -72,16 +84,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </div>
           <button
             className={styles.productCard__addToCart}
-            onClick={(e) => {
-              e.stopPropagation();
-              // dispatch add to cart action
-            }}
+            onClick={handleCartClick}
+            aria-label="Add to Cart"
           >
-            <img src="/icons/cart1.svg" alt="Add to cart" />
-          </button>
-        </div>
+          <img src="/icons/cart1.svg" alt="Add to cart" />
+        </button>
       </div>
     </div>
+    </div >
   );
 };
 

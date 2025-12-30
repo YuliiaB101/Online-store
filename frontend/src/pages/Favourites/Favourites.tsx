@@ -22,9 +22,9 @@ const Favourites = () => {
 
   if (items.length === 0) {
     return (
-      <div className={styles.Favourites}>
-        <h1 className={styles.Favourites__title}>Favourites</h1>
-        <div className={styles.Favourites__empty}>
+      <div className={styles.favourites}>
+        <h1 className={styles.favourites__title}>Favourites</h1>
+        <div className={styles.favourites__empty}>
           <h2>There are no favourite products yet</h2>
           <button onClick={() => navigate('/home')}>
             Go to shopping
@@ -35,8 +35,8 @@ const Favourites = () => {
   }
 
   return (
-    <div className={styles.Favourites}>
-      <h1 className={styles.Favourites__title}>Favourites ({items.length})</h1>
+    <div className={styles.favourites}>
+      <h1 className={styles.favourites__title}>Favourites ({items.length})</h1>
       <ProductGrid products={items}/>
     </div>
   );

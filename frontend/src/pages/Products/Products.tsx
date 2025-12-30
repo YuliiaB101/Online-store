@@ -37,7 +37,7 @@ const Products: React.FC = () => {
                 <h2 className={styles.products__subtitle}>Thoughtfully selected plants for modern living</h2>
                 <Filters />
                 <div className={styles.products__info}>
-                    <span className={styles.products__count}>Zeigt 1 - {products.length} von {products.length} Ergebnissen</span>
+                    <span className={styles.products__count}>Showed 1 - {products.length} of {products.length} results</span>
                 </div>
             </div>
             <ProductGrid products={products}/>

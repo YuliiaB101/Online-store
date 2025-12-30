@@ -29,6 +29,10 @@
     &_error {
       border: 2px solid $color-error;
     }
+
+    &_success {
+      border: 2px solid $color-success;
+    }
   }
 
   &__error {

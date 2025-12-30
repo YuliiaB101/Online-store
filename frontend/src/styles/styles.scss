@@ -114,5 +114,9 @@ select {
 
   &.page-home {
     background-image: url("../../public/images/background/bg-home.jpg");
+
+    Header {
+      background: rgba(131, 122, 122, 0.55);
+    }
   }
 }
