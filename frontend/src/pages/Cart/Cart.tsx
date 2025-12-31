@@ -65,7 +65,7 @@ const Cart = () => {
     <div className={styles.cart}>
       <h1 className={styles.cart__title}>Cart</h1>
       <span className={styles.cart__subtitle}>Your items in a cart:</span>
-      
+
       <div className={styles.cart__content}>
         <div className={styles.cart__items}>
           {items.map((item) => (
@@ -81,13 +81,19 @@ const Cart = () => {
 
         <div className={styles.cart__summary}>
           <h2 className={styles.cart__summaryTitle}>Total</h2>
-          
-          <div className={styles.cart__summaryRow}>
-            <span>Items ({items.length}):</span>
-            <span>${total.toFixed(2)}</span>
+
+          <div className={styles.cart__summaryContent}>
+            <span>Items ({items.map(item => item.quantity).reduce((a, b) => a + b, 0)}):</span>
           </div>
-          
-          <div className={styles.cart__summaryRow}>
+
+          {items.map((item) => (
+            <div key={item.id} className={styles.cart__summaryRow}>
+              <span>{item.name}:{'\u00A0\u00A0'}<strong>{item.quantity} x ${item.price}</strong></span>
+              <span><strong>${(item.quantity * item.price).toFixed(2)}</strong></span>
+            </div>
+          ))}
+
+          <div className={styles.cart__summaryTotal}>
             <span>Total:</span>
             <span>${total.toFixed(2)}</span>
           </div>
@@ -96,7 +102,7 @@ const Cart = () => {
             Checkout
           </button>
 
-          <button 
+          <button
             onClick={handleClearCart}
             className={styles.cart__clearButton}
           >

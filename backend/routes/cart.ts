@@ -28,8 +28,6 @@ router.post('/', authMiddleware, async (req: Request & AuthRequest, res: Respons
   try {
     const { product_id: productId, quantity = 1 } = req.body;
 
-    console.log('Adding to cart - productId:', productId, 'quantity:', quantity);
-
     // Check if already in cart
     const exists = await pool.query(
       'SELECT * FROM cart WHERE user_id = $1 AND product_id = $2',

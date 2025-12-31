@@ -13,8 +13,6 @@
 
   h2 {
     text-align: center;
-    font-size: 30px;
-    margin-bottom: 40px;
   }
 
   &__title {
@@ -45,8 +43,8 @@
 
   &__content {
     display: grid;
-    grid-template-columns: 1fr 350px;
-    gap: 30px;
+    grid-template-columns: 1fr 460px;
+    gap: 50px;
 
     @media (max-width: 968px) {
       grid-template-columns: 1fr;
@@ -60,34 +58,47 @@
   }
 
   &__summary {
+    position: sticky;
     background: white;
     border: 1px solid $color-primary;
     border-radius: $border-radius;
     padding: 30px;
     height: fit-content;
-    // position: sticky;
     top: 100px;
   }
 
   &__summaryTitle {
     font-weight: 700;
-    margin-bottom: 20px;
+    font-size: 42px;
   }
 
-  &__summaryRow {
+  &__summaryContent {
     font-size: 20px;
-    display: flex;
-    justify-content: space-between;
     padding: 12px 0;
     border-bottom: 1px solid $color-primary;
 
-    &:last-of-type {
-      border-bottom: none;
-      padding-top: 20px;
-      margin-top: 10px;
-      font-size: 20px;
+    span {
       font-weight: 700;
     }
+  }
+
+  &__summaryRow {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  &__summaryTotal {
+    display: flex;
+    color: $color-primary-dark;
+    justify-content: space-between;
+    padding: 20px 0 12px 0;
+    margin-top: 10px;
+    font-size: 26px;
+    font-weight: 700;
+    border-top: 1px solid $color-primary;
   }
 
   &__checkoutButton {

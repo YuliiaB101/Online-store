@@ -1,25 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-// import { Link, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { logout } from '../../store/slices/authSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../../store/slices/authSlice';
 import { RootState } from '../../types';
-// import { IconSearch, IconHeart, IconCart, IconUser } from '../icons';
 import styles from './Header.module.scss';
 
 const Header: React.FC = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   // const navigate = useNavigate();
-  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
-  // const { isAuthenticated, user } = useSelector((state: RootState) => state.auth);
+  const { isAuthenticated, user } = useSelector((state: RootState) => state.auth);
   const { items: cartItems } = useSelector((state: RootState) => state.cart);
   const { items: favouriteItems } = useSelector((state: RootState) => state.favourites);
 
-  // const handleLogout = () => {
-  //   dispatch(logout());
-  //   navigate('/home');
-  // };
+  const handleLogout = () => {
+    dispatch(logout());
+    setIsDropdownOpen(false);
+    // navigate('/home');
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
 
   return (
     <header className={styles.header}>
@@ -87,14 +89,34 @@ const Header: React.FC = () => {
             <img className={styles.header__icon} src="/icons/cart1.svg" alt="Cart" />
             {isAuthenticated && cartItems.length > 0 && (
               <span className={styles.header__iconBadge}>
-                {cartItems.length}
+                {cartItems.map(item => item.quantity).reduce((a, b) => a + b, 0)}
               </span>
             )}
           </Link>
 
-          <Link to="/login">
-            <img className={styles.header__icon} src="/icons/user.svg" alt="User" />
-          </Link>
+          <div className={styles.header__userWrapper}>
+            {isAuthenticated ? (
+              <>
+                <img 
+                  className={styles.header__icon} 
+                  src="/icons/user.svg" 
+                  alt="User"
+                  onClick={toggleDropdown}
+                  style={{ cursor: 'pointer' }}
+                />
+                <div className={`${styles.header__dropdown} ${isDropdownOpen ? styles.header__dropdown_open : ''}`}>
+                  <span className={styles.header__userName}>{user?.name}</span>
+                  <button onClick={handleLogout} className={styles.header__logoutButton}>
+                    Logout
+                  </button>
+                </div>
+              </>
+            ) : (
+              <Link to="/login">
+                <img className={styles.header__icon} src="/icons/user.svg" alt="User" />
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </header >

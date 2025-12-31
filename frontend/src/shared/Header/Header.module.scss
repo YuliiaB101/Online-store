@@ -79,4 +79,58 @@
       text-align: center;
     }
   }
+
+  &__userWrapper {
+    position: relative;
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: 100%;
+    right: -16px;
+    margin-top: 20px;
+    padding: 15px 20px;
+    background: white;
+    border: 1px solid $color-primary;
+    border-radius: $border-radius;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    min-width: 150px;
+
+    &_open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+
+  &__userName {
+    display: block;
+    color: $color-primary;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  &__logoutButton {
+    width: 100%;
+    padding: 8px 16px;
+    background: $color-primary;
+    color: white;
+    border: none;
+    border-radius: $border-radius;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: $transition;
+
+    &:hover {
+      background: $color-primary-dark;
+    }
+  }
 }
