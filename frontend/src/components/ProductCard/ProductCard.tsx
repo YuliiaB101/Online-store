@@ -16,7 +16,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
   const { items: favourites } = useSelector((state: RootState) => state.favourites);
 
-  const isfavourite = favourites.some((fav) => fav.id === product.id);
+  const isFavourite = favourites.some((fav) => fav.id === product.id);
 
   const handleCardClick = () => {
     navigate(`/product/${product.id}`);
@@ -29,9 +29,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       return;
     }
 
-    if (isfavourite) {
+    if (isFavourite) {
       dispatch(removeFromFavourites(product.id) as any);
     } else {
+      console.log('Adding to favourites:', product.id);
       dispatch(addToFavourites(product.id) as any);
     }
   };
@@ -58,15 +59,22 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         />
         <button
           onClick={handleFavouriteClick}
-          className={`${styles.productCard__favourite} ${isfavourite ? styles['productCard__favourite--active'] : ''
-            }`}
+          className={styles.productCard__favourite}
           aria-label="Add to Favourites"
         >
-          <img
-            src="/icons/heart.svg"
-            alt="favourite"
-            className={styles.productCard__favouriteIcon}
-          />
+          {isFavourite ? (
+            <img
+              src="/icons/heart.svg"
+              alt="favourite"
+              className={styles.productCard__favouriteIcon}
+            />
+          ) : (
+            <img
+              src="/icons/heart-full.svg"
+              alt="favourite"
+              className={styles.productCard__favouriteIcon}
+            />
+          )}
         </button>
       </div>
       <div className={styles.productCard__content}>
@@ -87,10 +95,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             onClick={handleCartClick}
             aria-label="Add to Cart"
           >
-          <img src="/icons/cart1.svg" alt="Add to cart" />
-        </button>
+            <img src="/icons/cart1.svg" alt="Add to cart" />
+          </button>
+        </div>
       </div>
-    </div>
     </div >
   );
 };

@@ -51,17 +51,12 @@
       transform: scale(1.1);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
-
-    &--active .productCard__favouriteIcon {
-      filter: brightness(0) saturate(100%) invert(27%) sepia(98%)
-        saturate(2500%) hue-rotate(335deg) brightness(95%) contrast(90%);
-    }
   }
 
   &__favouriteIcon {
     width: 20px;
     height: 20px;
-    filter: brightness(0) saturate(100%) invert(60%);
+    filter: invert(24%) sepia(14%) saturate(1186%) hue-rotate(98deg) brightness(93%) contrast(90%);
     transition: filter 0.3s ease;
   }
 

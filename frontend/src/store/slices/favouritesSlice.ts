@@ -27,12 +27,14 @@ export const fetchFavourites = createAsyncThunk<Product[]>(
 export const addToFavourites = createAsyncThunk<Product, number>(
   'favourites/addToFavourites',
   async (productId) => {
+    console.log('! Added to favourites:', productId);
+    console.log(`${API_URL}/favourites/${productId}`);
     const response = await axios.post(
-      `${API_URL}/favourites`,
-      { product_id: productId },
+      `${API_URL}/favourites/${productId}`,
+      {},
       { headers: getAuthHeader() }
     );
-    console.log('Added to favourites:', response.data);
+    console.log('!!! Added to favourites:', response.data);
     return response.data;
   }
 );

@@ -14,9 +14,18 @@ const Header: React.FC = () => {
   const { items: favouriteItems } = useSelector((state: RootState) => state.favourites);
 
   const handleLogout = () => {
+    console.log('Logout clicked');
     dispatch(logout());
     setIsDropdownOpen(false);
+    console.log('Logout completed');
     // navigate('/home');
+  };
+
+  const handleLogoutClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log('Logout button clicked');
+    handleLogout();
   };
 
   const toggleDropdown = () => {
@@ -96,7 +105,7 @@ const Header: React.FC = () => {
 
           <div className={styles.header__userWrapper}>
             {isAuthenticated ? (
-              <>
+              <div>
                 <img 
                   className={styles.header__icon} 
                   src="/icons/user.svg" 
@@ -106,11 +115,15 @@ const Header: React.FC = () => {
                 />
                 <div className={`${styles.header__dropdown} ${isDropdownOpen ? styles.header__dropdown_open : ''}`}>
                   <span className={styles.header__userName}>{user?.name}</span>
-                  <button onClick={handleLogout} className={styles.header__logoutButton}>
+                  <button 
+                    onClick={handleLogoutClick} 
+                    className={styles.header__logoutButton}
+                    type="button"
+                  >
                     Logout
                   </button>
                 </div>
-              </>
+              </div>
             ) : (
               <Link to="/login">
                 <img className={styles.header__icon} src="/icons/user.svg" alt="User" />

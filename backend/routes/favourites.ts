@@ -26,6 +26,7 @@ router.get('/', authMiddleware, async (req: Request & AuthRequest, res: Response
 // Add to favourites
 router.post('/:productId', authMiddleware, async (req: Request & AuthRequest, res: Response): Promise<void> => {
   try {
+    console.log('BACKEND: add fav:', req.params);
     const { productId } = req.params;
     
     // Check if already in favourites

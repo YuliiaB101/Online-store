@@ -26,7 +26,7 @@ const Favourites = () => {
         <h1 className={styles.favourites__title}>Favourites</h1>
         <div className={styles.favourites__empty}>
           <h2>There are no favourite products yet</h2>
-          <button onClick={() => navigate('/home')}>
+          <button onClick={() => navigate('/products')}>
             Go to shopping
           </button>
         </div>
