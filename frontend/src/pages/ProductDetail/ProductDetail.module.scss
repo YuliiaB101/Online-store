@@ -24,6 +24,7 @@
   }
 
   &__info {
+    position: relative;
     color: $color-primary;
     display: flex;
     flex-direction: column;
@@ -42,6 +43,37 @@
     font-weight: 700;
     margin-bottom: 20px;
     color: $color-primary-dark;
+  }
+
+  &__favourite {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: bg-beige-opacity(0.8);
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  &__favouriteIcon {
+    width: 32px;
+    height: 32px;
+    filter: invert(24%) sepia(14%) saturate(1186%) hue-rotate(98deg)
+      brightness(93%) contrast(90%);
+    transition: filter 0.3s ease;
   }
 
   &__priceRating {

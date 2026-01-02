@@ -26,7 +26,6 @@ router.get('/', authMiddleware, async (req: Request & AuthRequest, res: Response
 // Add to favourites
 router.post('/:productId', authMiddleware, async (req: Request & AuthRequest, res: Response): Promise<void> => {
   try {
-    console.log('BACKEND: add fav:', req.params);
     const { productId } = req.params;
     
     // Check if already in favourites
@@ -45,7 +44,16 @@ router.post('/:productId', authMiddleware, async (req: Request & AuthRequest, re
       [req.userId, productId]
     );
 
-    res.status(201).json({ message: 'Added to favourites' });
+    // Fetch the product details to return
+    const product = await pool.query(
+      `SELECT p.*, c.name as category_name, c.slug as category_slug 
+       FROM products p 
+       LEFT JOIN categories c ON p.category_id = c.id 
+       WHERE p.id = $1`,
+      [productId]
+    );
+
+    res.status(201).json(product.rows[0]);
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: (error as Error).message });
   }
@@ -66,6 +74,7 @@ router.delete('/:productId', authMiddleware, async (req: Request & AuthRequest, 
       return;
     }
 
+    console.log('!!! Removed from favourites:', productId);
     res.json({ message: 'Removed from favourites' });
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: (error as Error).message });

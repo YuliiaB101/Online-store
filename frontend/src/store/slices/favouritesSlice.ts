@@ -27,14 +27,11 @@ export const fetchFavourites = createAsyncThunk<Product[]>(
 export const addToFavourites = createAsyncThunk<Product, number>(
   'favourites/addToFavourites',
   async (productId) => {
-    console.log('! Added to favourites:', productId);
-    console.log(`${API_URL}/favourites/${productId}`);
     const response = await axios.post(
       `${API_URL}/favourites/${productId}`,
       {},
       { headers: getAuthHeader() }
     );
-    console.log('!!! Added to favourites:', response.data);
     return response.data;
   }
 );
@@ -52,7 +49,12 @@ export const removeFromFavourites = createAsyncThunk<number, number>(
 const FavouritesSlice = createSlice({
   name: 'Favourites',
   initialState,
-  reducers: {},
+  reducers: {
+    clearFavouritesState: (state) => {
+      state.items = [];
+      state.error = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchFavourites.pending, (state) => {
@@ -73,4 +75,5 @@ const FavouritesSlice = createSlice({
   },
 });
 
+export const { clearFavouritesState } = FavouritesSlice.actions;
 export default FavouritesSlice.reducer;

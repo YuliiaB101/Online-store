@@ -2,7 +2,7 @@
 @use "../../styles/variables.scss" as *;
 
 .products {
-  @include page-content(40px 120px, 20px 40px);
+  @include page-content(60px 120px 120px 120px, 20px 40px);
 
   h1 {
     font-size: 50px;

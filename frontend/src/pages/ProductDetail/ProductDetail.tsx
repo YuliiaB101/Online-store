@@ -16,7 +16,7 @@ const ProductDetail = () => {
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
   const { items: Favourites } = useSelector((state: RootState) => state.favourites);
 
-  const isfavourite = Favourites.some((fav: Product) => fav.id === product?.id); useEffect(() => {
+  const isFavourite = Favourites.some((fav: Product) => fav.id === product?.id); useEffect(() => {
     dispatch(fetchProductById(id) as any);
   }, [dispatch, id]);
 
@@ -31,14 +31,14 @@ const ProductDetail = () => {
     }
   };
 
-  const handlefavouriteToggle = () => {
+  const handleFavouriteClick = () => {
     if (!isAuthenticated) {
       navigate('/login');
       return;
     }
 
     if (product) {
-      if (isfavourite) {
+      if (isFavourite) {
         dispatch(removeFromFavourites(product.id) as any);
       } else {
         dispatch(addToFavourites(product.id) as any);
@@ -68,6 +68,25 @@ const ProductDetail = () => {
             {product.category_name}
           </div>
           <h1 className={styles.productDetail__title}>{product.name}</h1>
+          <button
+            onClick={handleFavouriteClick}
+            className={styles.productDetail__favourite}
+            aria-label="Add to Favourites"
+          >
+            {isFavourite ? (
+              <img
+                src="/icons/heart-full.svg"
+                alt="favourite"
+                className={styles.productDetail__favouriteIcon}
+              />
+            ) : (
+              <img
+                src="/icons/heart.svg"
+                alt="favourite"
+                className={styles.productDetail__favouriteIcon}
+              />
+            )}
+          </button>
           <p className={styles.productDetail__description}>{product.description}</p>
 
           <div className={styles.productDetail__priceRating}>
@@ -87,15 +106,6 @@ const ProductDetail = () => {
             >
               Add to Cart
             </button>
-            {isAuthenticated && (
-              <button
-                onClick={handlefavouriteToggle}
-                className={`${styles.productDetail__button} ${styles['productDetail__button--favourite']} ${isfavourite ? styles.active : ''
-                  }`}
-              >
-                {isfavourite ? '❤️' : '🤍'}
-              </button>
-            )}
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ import { AuthState, User } from '../../types';
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 const initialState: AuthState = {
-  user: null,
+  user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')!) : null,
   token: localStorage.getItem('token'),
   isAuthenticated: !!localStorage.getItem('token'),
   error: null,
@@ -33,6 +33,7 @@ export const register = createAsyncThunk<AuthResponse, RegisterCredentials>(
     try {
       const response = await axios.post(`${API_URL}/auth/register`, credentials);
       localStorage.setItem('token', response.data.token);
+      localStorage.setItem('user', JSON.stringify(response.data.user));
       return response.data;
     } catch (error: any) {
       return rejectWithValue(error.response?.data?.message || 'Ошибка регистрации');
@@ -45,6 +46,7 @@ export const login = createAsyncThunk<AuthResponse, LoginCredentials>(
   async (credentials, { rejectWithValue }) => {
     try {
       const response = await axios.post(`${API_URL}/auth/login`, credentials);
+      localStorage.setItem('user', JSON.stringify(response.data.user));
       localStorage.setItem('token', response.data.token);
       return response.data;
     } catch (error: any) {
@@ -58,12 +60,11 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     logout: (state) => {
-      console.log('Logout action called');
+      localStorage.removeItem('user');
       localStorage.removeItem('token');
       state.user = null;
       state.token = null;
       state.isAuthenticated = false;
-      console.log('User logged out, state updated');
     },
     clearError: (state) => {
       state.error = null;

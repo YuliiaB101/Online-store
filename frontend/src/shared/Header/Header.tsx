@@ -1,24 +1,33 @@
-import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../store/slices/authSlice';
+import { fetchCart, clearCartState } from '../../store/slices/cartSlice';
+import { fetchFavourites, clearFavouritesState } from '../../store/slices/favouritesSlice';
 import { RootState } from '../../types';
 import styles from './Header.module.scss';
 
 const Header: React.FC = () => {
   const dispatch = useDispatch();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const { isAuthenticated, user } = useSelector((state: RootState) => state.auth);
   const { items: cartItems } = useSelector((state: RootState) => state.cart);
   const { items: favouriteItems } = useSelector((state: RootState) => state.favourites);
 
+  useEffect(() => {
+    if (isAuthenticated) {
+      dispatch(fetchCart() as any);
+      dispatch(fetchFavourites() as any);
+    }
+  }, [isAuthenticated, dispatch]);
+
   const handleLogout = () => {
-    console.log('Logout clicked');
     dispatch(logout());
+    dispatch(clearCartState());
+    dispatch(clearFavouritesState());
     setIsDropdownOpen(false);
-    console.log('Logout completed');
-    // navigate('/home');
+    navigate('/home');
   };
 
   const handleLogoutClick = (e: React.MouseEvent) => {
@@ -28,7 +37,11 @@ const Header: React.FC = () => {
     handleLogout();
   };
 
-  const toggleDropdown = () => {
+  const toggleDropdown = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log('Toggle dropdown, current state:', isDropdownOpen);
+    console.log('User:', user);
     setIsDropdownOpen(!isDropdownOpen);
   };
 

@@ -36,7 +36,7 @@ const Favourites = () => {
 
   return (
     <div className={styles.favourites}>
-      <h1 className={styles.favourites__title}>Favourites ({items.length})</h1>
+      <h1 className={styles.favourites__title}>Favourite items ({items.length})</h1>
       <ProductGrid products={items}/>
     </div>
   );

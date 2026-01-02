@@ -42,7 +42,6 @@ export const addToCart = createAsyncThunk<CartItem, AddToCartParams>(
       { product_id: productId, quantity },
       { headers: getAuthHeader() }
     );
-    console.log('Added to cart:', productId, 'Response:', response.data);
     return response.data;
   }
 );
@@ -82,6 +81,10 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
+    clearCartState: (state) => {
+      state.items = [];
+      state.error = null;
+    },
     incrementQuantity: (state, action: PayloadAction<number>) => {
       const item = state.items.find((item) => item.id === action.payload);
       if (item) {
@@ -129,5 +132,5 @@ const cartSlice = createSlice({
   },
 });
 
-export const { incrementQuantity, decrementQuantity } = cartSlice.actions;
+export const { incrementQuantity, decrementQuantity, clearCartState } = cartSlice.actions;
 export default cartSlice.reducer;

@@ -32,7 +32,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     if (isFavourite) {
       dispatch(removeFromFavourites(product.id) as any);
     } else {
-      console.log('Adding to favourites:', product.id);
       dispatch(addToFavourites(product.id) as any);
     }
   };
@@ -43,7 +42,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       navigate('/login');
       return;
     } else {
-      console.log('Adding to cart:', product.id);
       dispatch(addToCart({ productId: product.id, quantity: 1 }) as any);
     }
   };
@@ -64,13 +62,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         >
           {isFavourite ? (
             <img
-              src="/icons/heart.svg"
+              src="/icons/heart-full.svg"
               alt="favourite"
               className={styles.productCard__favouriteIcon}
             />
           ) : (
             <img
-              src="/icons/heart-full.svg"
+              src="/icons/heart.svg"
               alt="favourite"
               className={styles.productCard__favouriteIcon}
             />
