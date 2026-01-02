@@ -65,22 +65,22 @@ const Home = () => {
 
         <h2 className={styles.home__top__content__title}>Top Categories</h2>
           <div className={styles.home__top__categories}>
-            <div>
+            <Link to="/products?category=foliage,succulents,flowering-plants,pothos" className={styles.home__top__categories__link}>
               <img src="/images/categories/category-plants-indoor.jpg" alt="indoor_plants" />
               <p>Indoor Plants</p>
-            </div>
-            <div>
+            </Link>
+            <Link to="/products?category=outdoor-plants,cacti,herbs" className={styles.home__top__categories__link}>
               <img src="/images/categories/category-plants-outdoor.jpg" alt="outdoor_plants" />
               <p>Outdoor Plants</p>
-            </div>
-            <div>
+            </Link>
+            <Link to="/products?category=planters-pots" className={styles.home__top__categories__link}>
               <img src="/images/categories/category-pots.jpg" alt="pots" />
               <p>Pots</p>
-            </div>
-            <div>
+            </Link>
+            <Link to="/products?category=gardening-tools" className={styles.home__top__categories__link}>
               <img src="/images/categories/category-accessories.jpg" alt="accessories" />
               <p>Accessories</p>
-            </div>
+            </Link>
           </div>
         </div>
       </div>

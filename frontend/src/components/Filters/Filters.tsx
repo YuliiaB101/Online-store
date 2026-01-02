@@ -36,8 +36,47 @@ const Filters = () => {
     dispatch(clearFilters());
   };
 
+  const handleQuickFilter = (categories: string) => {
+    // If the filter is already active, deactivate it
+    if (filters.category === categories) {
+      dispatch(setFilter({ category: '' }));
+    } else {
+      dispatch(setFilter({ category: categories }));
+    }
+  };
+
+  const isActiveFilter = (categories: string) => {
+    return filters.category === categories;
+  };
+
   return (
     <div className={styles.filters}>
+      <div className={styles.filters__quick}>
+        <button 
+          onClick={() => handleQuickFilter('foliage,succulents,flowering-plants,pothos')}
+          className={`${styles.filters__quickBtn} ${isActiveFilter('foliage,succulents,flowering-plants,pothos') ? styles['filters__quickBtn--active'] : ''}`}
+        >
+          Indoor Plants
+        </button>
+        <button 
+          onClick={() => handleQuickFilter('outdoor-plants,cacti,herbs')}
+          className={`${styles.filters__quickBtn} ${isActiveFilter('outdoor-plants,cacti,herbs') ? styles['filters__quickBtn--active'] : ''}`}
+        >
+          Outdoor Plants
+        </button>
+        <button 
+          onClick={() => handleQuickFilter('planters-pots')}
+          className={`${styles.filters__quickBtn} ${isActiveFilter('planters-pots') ? styles['filters__quickBtn--active'] : ''}`}
+        >
+          Pots
+        </button>
+        <button 
+          onClick={() => handleQuickFilter('gardening-tools')}
+          className={`${styles.filters__quickBtn} ${isActiveFilter('gardening-tools') ? styles['filters__quickBtn--active'] : ''}`}
+        >
+          Accessories
+        </button>
+      </div>
       <div id="search" className={styles.filters__row}>
         <input
           type="text"

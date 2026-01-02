@@ -19,9 +19,12 @@ router.get('/', async (req: Request, res: Response): Promise<void> => {
     let paramCount = 1;
 
     if (category) {
-      query += ` AND c.slug = $${paramCount}`;
-      params.push(category);
-      paramCount++;
+      // Support multiple categories separated by comma
+      const categories = (category as string).split(',').map(c => c.trim());
+      const placeholders = categories.map((_, index) => `$${paramCount + index}`).join(', ');
+      query += ` AND c.slug IN (${placeholders})`;
+      params.push(...categories);
+      paramCount += categories.length;
     }
 
     if (search) {

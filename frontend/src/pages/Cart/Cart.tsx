@@ -53,7 +53,7 @@ const Cart = () => {
       <div className={styles.cart}>
         <div className={styles.cart__empty}>
           <h2>Your cart is empty</h2>
-          <button onClick={() => navigate('/home')}>
+          <button onClick={() => navigate('/products')}>
             Go to shopping
           </button>
         </div>
@@ -75,6 +75,7 @@ const Cart = () => {
               onIncrement={handleIncrement}
               onDecrement={handleDecrement}
               onRemove={handleRemove}
+              onClick={() => navigate(`/product/${item.id}`)}
             />
           ))}
         </div>

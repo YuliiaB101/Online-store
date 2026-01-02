@@ -84,13 +84,13 @@ router.put('/:id', authMiddleware, async (req: Request & AuthRequest, res: Respo
 });
 
 // Remove from cart
-router.delete('/:id', authMiddleware, async (req: Request & AuthRequest, res: Response): Promise<void> => {
+router.delete('/:productId', authMiddleware, async (req: Request & AuthRequest, res: Response): Promise<void> => {
   try {
-    const { id } = req.params;
+    const { productId } = req.params;
     
     const result = await pool.query(
-      'DELETE FROM cart WHERE id = $1 AND user_id = $2',
-      [id, req.userId]
+      'DELETE FROM cart WHERE product_id = $1 AND user_id = $2',
+      [productId, req.userId]
     );
 
     if (result.rowCount === 0) {

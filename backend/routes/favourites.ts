@@ -74,7 +74,6 @@ router.delete('/:productId', authMiddleware, async (req: Request & AuthRequest, 
       return;
     }
 
-    console.log('!!! Removed from favourites:', productId);
     res.json({ message: 'Removed from favourites' });
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: (error as Error).message });

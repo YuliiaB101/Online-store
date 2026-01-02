@@ -6,11 +6,12 @@
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
-  
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  border: 1px solid bg-primary-opacity(0.3);
 
   &:hover {
-    filter: brightness(0.95);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 12px rgba(0, 0, 0, 0.06);
   }
 
   &__imageWrapper {

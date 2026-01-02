@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProductById } from '../../store/slices/productsSlice';
@@ -11,13 +11,13 @@ const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [quantity, setQuantity] = useState(1);
 
   const { currentProduct: product } = useSelector((state: RootState) => state.products);
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
   const { items: Favourites } = useSelector((state: RootState) => state.favourites);
 
   const isFavourite = Favourites.some((fav: Product) => fav.id === product?.id); useEffect(() => {
-    window.scrollTo(0, 0);
     dispatch(fetchProductById(id) as any);
   }, [dispatch, id]);
 
@@ -27,7 +27,7 @@ const ProductDetail = () => {
       return;
     }
     if (product) {
-      dispatch(addToCart({ productId: product.id, quantity: 1 }) as any);
+      dispatch(addToCart({ productId: product.id, quantity }) as any);
       navigate('/cart');
     }
   };
@@ -101,7 +101,13 @@ const ProductDetail = () => {
           </div>
 
           <div className={styles.productDetail__actions}>
-            <input type="number" min="1" defaultValue="1" className={styles.productDetail__quantity} />
+            <input 
+              type="number" 
+              min="1" 
+              value={quantity} 
+              onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
+              className={styles.productDetail__quantity} 
+            />
             <button
               onClick={handleAddToCart}
               className={styles.productDetail__button}
