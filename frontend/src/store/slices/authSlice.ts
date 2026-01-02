@@ -36,7 +36,7 @@ export const register = createAsyncThunk<AuthResponse, RegisterCredentials>(
       localStorage.setItem('user', JSON.stringify(response.data.user));
       return response.data;
     } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'Ошибка регистрации');
+      return rejectWithValue(error.response?.data?.message || 'Registration error');
     }
   }
 );
@@ -50,7 +50,7 @@ export const login = createAsyncThunk<AuthResponse, LoginCredentials>(
       localStorage.setItem('token', response.data.token);
       return response.data;
     } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'Ошибка входа');
+      return rejectWithValue(error.response?.data?.message || 'Login error');
     }
   }
 );

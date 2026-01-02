@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProductById } from '../../store/slices/productsSlice';
 import { addToCart } from '../../store/slices/cartSlice';
@@ -17,6 +17,7 @@ const ProductDetail = () => {
   const { items: Favourites } = useSelector((state: RootState) => state.favourites);
 
   const isFavourite = Favourites.some((fav: Product) => fav.id === product?.id); useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(fetchProductById(id) as any);
   }, [dispatch, id]);
 
@@ -47,14 +48,15 @@ const ProductDetail = () => {
   };
 
   if (!product) {
-    return <div className={styles.loading}>Товар не найден</div>;
+    return <div className={styles.loading}>Product not found</div>;
   }
 
   return (
     <div className={styles.productDetail}>
-      <button onClick={() => navigate('/home')} className={styles.productDetail__back}>
-        ← Назад к каталогу
-      </button>
+      <Link to='/products' className={styles.productDetail__back}>
+        <img className={styles.productDetail__backIcon} src="/icons/arrow-left.svg" alt="Previous"/>
+        Back to Products
+      </Link>
 
       <div className={styles.productDetail__content}>
         <img
