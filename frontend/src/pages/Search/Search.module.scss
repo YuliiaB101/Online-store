@@ -1,0 +1,112 @@
+@use "../../styles/mixins.scss" as *;
+@use "../../styles/variables.scss" as *;
+
+.search {
+  @include page-content();
+
+  &__header {
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    @include title-logo();
+    font-size: 50px;
+    text-align: center;
+    color: $color-primary;
+    margin-bottom: 10px;
+  }
+
+  &__subtitle {
+    color: $color-primary;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+
+  &__inputWrapper {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  &__input {
+    @include input-style();
+    flex: 8;
+    font-size: 18px;
+    padding: 16px 20px;
+  }
+
+  &__button {
+    @include button-style();
+    background: $color-primary;
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+    gap: 8px;
+    padding: 16px 32px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+  }
+
+  &__clearButton {
+    @include button-style();
+    background: transparent;
+    color: $color-primary;
+    border: 1px solid $color-primary;
+    padding: 16px 24px;
+    font-size: 18px;
+
+    &:hover {
+      background: $color-primary-light;
+      color: white;
+    }
+  }
+
+  &__info {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  &__count {
+    font-size: 20px;
+    font-weight: 600;
+    color: $color-primary;
+  }
+
+  &__empty {
+    text-align: center;
+    padding: 60px 20px;
+    
+    p {
+      font-size: 22px;
+      color: $color-primary;
+      margin-bottom: 10px;
+
+      &:first-child {
+        font-weight: 600;
+        font-size: 26px;
+      }
+    }
+  }
+
+  &__placeholder {
+    text-align: center;
+    padding: 80px 20px;
+    
+    p {
+      font-size: 24px;
+      color: $color-primary;
+      opacity: 0.8;
+    }
+  }
+}

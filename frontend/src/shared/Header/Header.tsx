@@ -87,7 +87,7 @@ const Header: React.FC = () => {
 
         {/* Header icons section */}
         <div className={styles.header__icons}>
-          <Link to="#">
+          <Link to="/search">
             <img className={styles.header__icon} src="/icons/search.svg" alt="Search" />
           </Link>
 

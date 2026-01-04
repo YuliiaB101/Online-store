@@ -7,7 +7,7 @@
   justify-content: space-between;
   margin: 0 auto;
   position: relative;
-  z-index: 100;
+  z-index: 9999;
   background: rgba(131, 122, 122, 0.55);
   backdrop-filter: blur(2px);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
@@ -90,20 +90,22 @@
     right: 0px;
     margin-top: 17px;
     padding: 15px 20px;
-    background: bg-white-opacity(0.9);
+    background: rgba(255, 255, 255, 0.95);
     border: 1px solid $color-primary;
     border-radius: $border-radius;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
     transform: translateY(-10px);
     transition: all 0.3s ease;
-    z-index: 1000;
+    z-index: 10000;
     min-width: 150px;
 
     &_open {
       opacity: 1;
       visibility: visible;
+      pointer-events: auto;
       transform: translateY(0);
     }
   }

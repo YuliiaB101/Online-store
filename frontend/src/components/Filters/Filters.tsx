@@ -77,6 +77,7 @@ const Filters = () => {
           Accessories
         </button>
       </div>
+      
       <div id="search" className={styles.filters__row}>
         <input
           type="text"
