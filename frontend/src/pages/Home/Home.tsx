@@ -8,7 +8,7 @@ import { fetchFavourites } from '../../store/slices/favouritesSlice';
 import { RootState, Product } from '../../types';
 import styles from './Home.module.scss';
 // import Carousel from 'components/Carousel/Carousel';
-import BannerProductCard from 'components/BannerProductCard/BannerProductCard';
+import SmallProductCard from 'components/SmallProductCard/SmallProductCard';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
@@ -36,7 +36,7 @@ const Home = () => {
   }).filter((product): product is Product => product !== undefined);
 
   return (
-    <div className={styles.home}>
+    <main className={styles.home}>
 
       <div className={styles.home__content}>
         <section className={styles.home__content__section}>
@@ -59,7 +59,7 @@ const Home = () => {
           <h2 className={styles.home__top__content__title}>Our Top products for You</h2>
           <div className={styles.home__top__products}>
             {categoryProducts.map((product) => (
-              <BannerProductCard key={product.id} product={product} />
+              <SmallProductCard key={product.id} product={product} />
             ))}
           </div>
 
@@ -119,7 +119,7 @@ const Home = () => {
           </p>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

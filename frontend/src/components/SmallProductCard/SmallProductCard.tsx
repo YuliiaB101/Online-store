@@ -1,13 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Product } from '../../types';
-import styles from './BannerProductCard.module.scss';
+import styles from './SmallProductCard.module.scss';
 
-interface BannerProductCardProps {
+interface SmallProductCardProps {
   product: Product;
 }
 
-const BannerProductCard: React.FC<BannerProductCardProps> = ({ product }) => {
+const SmallProductCard: React.FC<SmallProductCardProps> = ({ product }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -36,4 +36,4 @@ const BannerProductCard: React.FC<BannerProductCardProps> = ({ product }) => {
   );
 };
 
-export default BannerProductCard;
+export default SmallProductCard;
