@@ -8,14 +8,6 @@
     margin-bottom: 40px;
   }
 
-  &__title {
-    @include title-logo();
-    font-size: 50px;
-    text-align: center;
-    color: $color-primary;
-    margin-bottom: 10px;
-  }
-
   &__subtitle {
     color: $color-primary;
     text-align: center;

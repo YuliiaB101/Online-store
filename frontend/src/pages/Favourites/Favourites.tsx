@@ -22,21 +22,21 @@ const Favourites = () => {
 
   if (items.length === 0) {
     return (
-      <div className={styles.favourites}>
-        <h1 className={styles.favourites__title}>Favourites</h1>
+      <main className={styles.favourites}>
+        <h1>Favourites</h1>
         <div className={styles.favourites__empty}>
-          <h2>There are no favourite products yet</h2>
+          <p>There are no favourite products yet</p>
           <button onClick={() => navigate('/products')}>
             Go to shopping
           </button>
         </div>
-      </div>
+      </main>
     );
   }
 
   return (
     <div className={styles.favourites}>
-      <h1 className={styles.favourites__title}>Favourite items ({items.length})</h1>
+      <h1>Favourite items ({items.length})</h1>
       <ProductGrid products={items}/>
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../store/slices/authSlice';
 import { fetchCart, clearCartState } from '../../store/slices/cartSlice';
@@ -11,6 +11,7 @@ const Header: React.FC = () => {
   const dispatch = useDispatch();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const { isAuthenticated, user } = useSelector((state: RootState) => state.auth);
   const { items: cartItems } = useSelector((state: RootState) => state.cart);
   const { items: favouriteItems } = useSelector((state: RootState) => state.favourites);
@@ -21,6 +22,11 @@ const Header: React.FC = () => {
       dispatch(fetchFavourites() as any);
     }
   }, [isAuthenticated, dispatch]);
+
+  // Close dropdown when route changes
+  useEffect(() => {
+    setIsDropdownOpen(false);
+  }, [location.pathname]);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -33,15 +39,12 @@ const Header: React.FC = () => {
   const handleLogoutClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log('Logout button clicked');
     handleLogout();
   };
 
   const toggleDropdown = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log('Toggle dropdown, current state:', isDropdownOpen);
-    console.log('User:', user);
     setIsDropdownOpen(!isDropdownOpen);
   };
 

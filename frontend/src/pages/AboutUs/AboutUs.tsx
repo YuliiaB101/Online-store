@@ -18,7 +18,7 @@ const AboutUs: React.FC = () => {
 
     return (
         <main className={styles.about}>
-            <h1 className={styles.about__title}>About Us</h1>
+            <h1>About Us</h1>
             <div className={styles.about__content}>
                 <p>
                     FLORIA was created with a simple idea: homes feel better when they are filled with life — and when that life is grown with care for the planet.

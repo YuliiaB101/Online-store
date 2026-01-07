@@ -6,7 +6,8 @@
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 9999;
   background: rgba(131, 122, 122, 0.55);
   backdrop-filter: blur(2px);
@@ -90,7 +91,7 @@
     right: 0px;
     margin-top: 17px;
     padding: 15px 20px;
-    background: rgba(255, 255, 255, 0.95);
+    background: white;
     border: 1px solid $color-primary;
     border-radius: $border-radius;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -112,7 +113,6 @@
 
   &__userName {
     display: block;
-    color: $color-primary;
     font-weight: 700;
     font-size: 18px;
     margin-bottom: 10px;
@@ -120,19 +120,13 @@
   }
 
   &__logoutButton {
+    @include button-style();
     width: 100%;
     padding: 8px 16px;
-    background: $color-primary;
-    color: white;
-    border: none;
-    border-radius: $border-radius;
+    border-radius: $border-radius-input;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
     transition: $transition;
-
-    &:hover {
-      background: $color-primary-dark;
-    }
   }
 }

@@ -5,6 +5,7 @@ import { addToFavourites, removeFromFavourites } from '../../store/slices/favour
 import { Product, RootState } from '../../types';
 import styles from './ProductCard.module.scss';
 import { addToCart } from 'store/slices/cartSlice';
+import { addToast } from '../../store/slices/toastSlice';
 
 interface ProductCardProps {
   product: Product;
@@ -43,6 +44,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       return;
     } else {
       dispatch(addToCart({ productId: product.id, quantity: 1 }) as any);
+      dispatch(addToast({
+        message: `${product.name} added to cart!`,
+        type: 'success',
+        duration: 3000
+      }));
     }
   };
 

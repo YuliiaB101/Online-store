@@ -58,7 +58,7 @@ const Search = () => {
     return (
         <main className={styles.search}>
             <div className={styles.search__header}>
-                <h1 className={styles.search__title}>Search Products</h1>
+                <h1>Search Products</h1>
                 <h2 className={styles.search__subtitle}>
                     Find your perfect plant
                 </h2>

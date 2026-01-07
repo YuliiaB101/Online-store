@@ -2,14 +2,7 @@
 @use "../../styles/variables.scss" as *;
 
 .favourites {
-  @include page-content(60px 120px 120px 120px, 20px 40px);
-
-  h1 {
-    font-size: 50px;
-    text-align: center;
-    color: $color-primary;
-    margin-bottom: 20px;
-  }
+  @include page-content(60px 120px 120px 120px, 40px);
 
   h2 {
     font-size: 36px;
@@ -17,13 +10,15 @@
     margin-bottom: 20px;
   }
 
-  &__title {
-    @include title-logo();
-  }
-
   &__empty {
     text-align: center;
-    color: $color-text;
+    padding: 80px 20px;
+    
+    p {
+      font-size: 24px;
+      color: $color-primary;
+      opacity: 0.8;
+    }
 
     button {
       width: 210px;

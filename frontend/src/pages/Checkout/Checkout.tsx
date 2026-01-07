@@ -113,7 +113,7 @@ const Checkout: React.FC = () => {
 
     return (
         <div className={styles.checkout}>
-            <h1 className={styles.checkout__title}>Checkout</h1>
+            <h1>Checkout</h1>
             <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
@@ -127,7 +127,7 @@ const Checkout: React.FC = () => {
             >
                 {() => (
                     <Form>
-                        <h1 className={styles.checkout__title}>{steps[currentStep]}</h1>
+                        <h1>{steps[currentStep]}</h1>
                         {renderStep(currentStep)}
                         <div>
                             <button className={styles.checkout__button} onClick={prevStep} disabled={currentStep === 0}>

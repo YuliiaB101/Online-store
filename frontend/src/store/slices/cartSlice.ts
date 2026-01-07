@@ -1,13 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import axios from 'axios';
+import axiosInstance from '../../utils/axiosConfig';
 import { CartState, CartItem } from '../../types';
-
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
-
-const getAuthHeader = () => {
-  const token = localStorage.getItem('token');
-  return { Authorization: `Bearer ${token}` };
-};
 
 const initialState: CartState = {
   items: [],
@@ -27,9 +20,7 @@ interface UpdateCartParams {
 export const fetchCart = createAsyncThunk<CartItem[]>(
   'cart/fetchCart',
   async () => {
-    const response = await axios.get(`${API_URL}/cart`, {
-      headers: getAuthHeader(),
-    });
+    const response = await axiosInstance.get('/cart');
     return response.data;
   }
 );
@@ -37,11 +28,10 @@ export const fetchCart = createAsyncThunk<CartItem[]>(
 export const addToCart = createAsyncThunk<CartItem, AddToCartParams>(
   'cart/addToCart',
   async ({ productId, quantity = 1 }) => {
-    const response = await axios.post(
-      `${API_URL}/cart`,
-      { product_id: productId, quantity },
-      { headers: getAuthHeader() }
-    );
+    const response = await axiosInstance.post('/cart', {
+      product_id: productId,
+      quantity,
+    });
     return response.data;
   }
 );
@@ -49,11 +39,7 @@ export const addToCart = createAsyncThunk<CartItem, AddToCartParams>(
 export const updateCartItem = createAsyncThunk<CartItem, UpdateCartParams>(
   'cart/updateCartItem',
   async ({ id, quantity }) => {
-    const response = await axios.put(
-      `${API_URL}/cart/${id}`,
-      { quantity },
-      { headers: getAuthHeader() }
-    );
+    const response = await axiosInstance.put(`/cart/${id}`, { quantity });
     return response.data;
   }
 );
@@ -61,9 +47,7 @@ export const updateCartItem = createAsyncThunk<CartItem, UpdateCartParams>(
 export const removeFromCart = createAsyncThunk<number, number>(
   'cart/removeFromCart',
   async (id) => {
-    await axios.delete(`${API_URL}/cart/${id}`, {
-      headers: getAuthHeader(),
-    });
+    await axiosInstance.delete(`/cart/${id}`);
     return id;
   }
 );
@@ -71,9 +55,7 @@ export const removeFromCart = createAsyncThunk<number, number>(
 export const clearCart = createAsyncThunk<void>(
   'cart/clearCart',
   async () => {
-    await axios.delete(`${API_URL}/cart`, {
-      headers: getAuthHeader(),
-    });
+    await axiosInstance.delete('/cart');
   }
 );
 

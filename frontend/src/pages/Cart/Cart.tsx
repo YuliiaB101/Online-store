@@ -50,20 +50,21 @@ const Cart = () => {
 
   if (items.length === 0) {
     return (
-      <div className={styles.cart}>
+      <main className={styles.cart}>
+        <h1>Cart</h1>
         <div className={styles.cart__empty}>
-          <h2>Your cart is empty</h2>
+          <p>Your cart is empty</p>
           <button onClick={() => navigate('/products')}>
             Go to shopping
           </button>
         </div>
-      </div>
+      </main>
     );
   }
 
   return (
-    <div className={styles.cart}>
-      <h1 className={styles.cart__title}>Cart</h1>
+    <main className={styles.cart}>
+      <h1>Cart</h1>
       <span className={styles.cart__subtitle}>Your items in a cart:</span>
 
       <div className={styles.cart__content}>
@@ -111,7 +112,7 @@ const Cart = () => {
           </button>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

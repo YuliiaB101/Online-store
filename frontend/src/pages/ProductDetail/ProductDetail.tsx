@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchProductById } from '../../store/slices/productsSlice';
 import { addToCart } from '../../store/slices/cartSlice';
 import { addToFavourites, removeFromFavourites } from '../../store/slices/favouritesSlice';
+import { addToast } from '../../store/slices/toastSlice';
 import { RootState, Product } from '../../types';
 import styles from './ProductDetail.module.scss';
 
@@ -28,6 +29,11 @@ const ProductDetail = () => {
     }
     if (product) {
       dispatch(addToCart({ productId: product.id, quantity }) as any);
+      dispatch(addToast({
+        message: `${product.name} (x${quantity}) added to cart!`,
+        type: 'success',
+        duration: 3000
+      }));
       navigate('/cart');
     }
   };

@@ -1,13 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import axios from 'axios';
+import axiosInstance from '../../utils/axiosConfig';
 import { FavouritesState, Product } from '../../types';
-
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
-
-const getAuthHeader = () => {
-  const token = localStorage.getItem('token');
-  return { Authorization: `Bearer ${token}` };
-};
 
 const initialState: FavouritesState = {
   items: [],
@@ -17,9 +10,7 @@ const initialState: FavouritesState = {
 export const fetchFavourites = createAsyncThunk<Product[]>(
   'favourites/fetchFavourites',
   async () => {
-    const response = await axios.get(`${API_URL}/favourites`, {
-      headers: getAuthHeader(),
-    });
+    const response = await axiosInstance.get('/favourites');
     return response.data;
   }
 );
@@ -27,11 +18,7 @@ export const fetchFavourites = createAsyncThunk<Product[]>(
 export const addToFavourites = createAsyncThunk<Product, number>(
   'favourites/addToFavourites',
   async (productId) => {
-    const response = await axios.post(
-      `${API_URL}/favourites/${productId}`,
-      {},
-      { headers: getAuthHeader() }
-    );
+    const response = await axiosInstance.post(`/favourites/${productId}`);
     return response.data;
   }
 );
@@ -39,9 +26,7 @@ export const addToFavourites = createAsyncThunk<Product, number>(
 export const removeFromFavourites = createAsyncThunk<number, number>(
   'favourites/removeFromFavourites',
   async (productId) => {
-    await axios.delete(`${API_URL}/favourites/${productId}`, {
-      headers: getAuthHeader(),
-    });
+    await axiosInstance.delete(`/favourites/${productId}`);
     return productId;
   }
 );

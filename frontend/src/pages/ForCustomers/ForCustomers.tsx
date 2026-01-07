@@ -19,7 +19,7 @@ const ForCustomers: React.FC = () => {
   return (
     <main className={styles.forCustomers}>
       <section className={styles.forCustomers__hero}>
-        <h1 className={styles.forCustomers__title}>For Customers</h1>
+        <h1>For Customers</h1>
         <p>
           We want every experience with <strong>FLORIA</strong> to feel simple,
           transparent, and enjoyable. Here you'll find everything you need to

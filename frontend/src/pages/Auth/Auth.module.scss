@@ -2,29 +2,26 @@
 @use "../../styles/variables.scss" as *;
 
 .auth {
-  @include page-content(60px auto 80px auto, 30px 40px);
+  @include page-content(60px auto 80px auto, 40px);
 
-  max-width: 500px;
+  max-width: 540px;
   color: $color-primary;
   font-weight: 600;
   font-size: 20px;
-
-  &__title {
-    font-size: 36px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    text-align: center;
-  }
 
   &__form {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    padding: 10px;
   }
 
   &__input {
     @include input-style();
     margin-bottom: 20px;
+    border: 1px solid $color-primary;
+    outline: 1px solid transparent;
+    outline-offset: 0;
 
     &_error {
       border: 2px solid $color-error;

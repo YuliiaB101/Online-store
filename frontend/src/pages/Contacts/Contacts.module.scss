@@ -12,13 +12,6 @@
     @include link-style();
   }
 
-  h1 {
-    font-size: 50px;
-    text-align: center;
-    color: $color-primary;
-    margin-bottom: 10px;
-  }
-
   h2 {
     text-align: center;
     font-size: 28px;
@@ -31,10 +24,6 @@
     font-size: 20px;
     line-height: 1.6;
     color: $color-primary;
-  }
-
-  &__title {
-    @include title-logo();
   }
 
   &__highlight {

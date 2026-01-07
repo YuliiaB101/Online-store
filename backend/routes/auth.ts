@@ -8,11 +8,11 @@ const router: Router = express.Router();
 
 // Register
 router.post('/register', [
-  body('email').isEmail(),
-  body('password').isLength({ min: 6 }),
-  body('name').notEmpty()
+  body('email').isEmail().withMessage('Please enter a valid email'),
+  body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters'),
+  body('name').notEmpty().withMessage('Name is required')
 ], async (req: Request, res: Response): Promise<void> => {
-  try {
+  try {    
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       res.status(400).json({ errors: errors.array() });
@@ -49,6 +49,7 @@ router.post('/register', [
       user: newUser.rows[0]
     });
   } catch (error) {
+    console.log('[Register] Error:', error);
     res.status(500).json({ message: 'Server error', error: (error as Error).message });
   }
 });

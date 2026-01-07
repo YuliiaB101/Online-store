@@ -77,6 +77,17 @@ export interface BannersState {
   error: string | null;
 }
 
+export interface Toast {
+  id: string;
+  message: string;
+  type: 'success' | 'error' | 'info';
+  duration: number;
+}
+
+export interface ToastState {
+  toasts: Toast[];
+}
+
 export interface RootState {
   auth: AuthState;
   products: ProductsState;
@@ -84,4 +95,5 @@ export interface RootState {
   favourites: FavouritesState;
   categories: CategoriesState;
   banners: BannersState;
+  toast: ToastState;
 }

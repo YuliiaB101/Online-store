@@ -36,6 +36,12 @@ export const register = createAsyncThunk<AuthResponse, RegisterCredentials>(
       localStorage.setItem('user', JSON.stringify(response.data.user));
       return response.data;
     } catch (error: any) {
+      // Handle validation errors from express-validator
+      if (error.response?.data?.errors) {
+        const validationErrors = error.response.data.errors;
+        const errorMessages = validationErrors.map((err: any) => err.msg).join(', ');
+        return rejectWithValue(errorMessages);
+      }
       return rejectWithValue(error.response?.data?.message || 'Registration error');
     }
   }
@@ -50,6 +56,12 @@ export const login = createAsyncThunk<AuthResponse, LoginCredentials>(
       localStorage.setItem('token', response.data.token);
       return response.data;
     } catch (error: any) {
+      // Handle validation errors from express-validator
+      if (error.response?.data?.errors) {
+        const validationErrors = error.response.data.errors;
+        const errorMessages = validationErrors.map((err: any) => err.msg).join(', ');
+        return rejectWithValue(errorMessages);
+      }
       return rejectWithValue(error.response?.data?.message || 'Login error');
     }
   }

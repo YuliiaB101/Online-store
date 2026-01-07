@@ -42,11 +42,21 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
   const validationSchema = isRegisterMode
     ? Yup.object().shape({
         name: Yup.string().min(2, 'Name should be at least 2 characters').required('Required'),
-        email: Yup.string().email('Invalid email').required('Required'),
+        email: Yup.string()
+          .matches(
+            /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+            'Please enter a valid email address (e.g., user@example.com)'
+          )
+          .required('Email is required'),
         password: Yup.string().min(6, 'Password should be at least 6 characters').required('Required'),
       })
     : Yup.object().shape({
-        email: Yup.string().email('Invalid email').required('Required'),
+        email: Yup.string()
+          .matches(
+            /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+            'Please enter a valid email address (e.g., user@example.com)'
+          )
+          .required('Email is required'),
         password: Yup.string().min(6, 'Password should be at least 6 characters').required('Required'),
       });
 
@@ -59,8 +69,8 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
   };
 
   return (
-    <div className={styles.auth}>
-      <h1 className={styles.auth__title}>
+    <main className={styles.auth}>
+      <h1>
         {isRegisterMode ? 'Register' : 'Login'}
       </h1>
       <Formik
@@ -122,7 +132,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
           <>Still don't have an account? <Link to="/register">Register</Link></>
         )}
       </div>
-    </div>
+    </main>
   );
 };
 

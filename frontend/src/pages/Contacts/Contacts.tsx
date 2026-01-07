@@ -5,7 +5,7 @@ const Contacts: React.FC = () => {
     return (
         <main className={styles.contacts}>
             {/* Header */}
-            <h1 className={styles.contacts__title}>Contacts</h1>
+            <h1>Contacts</h1>
 
             {/* Intro */}
             <p className={styles.contacts__intro}>

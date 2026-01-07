@@ -46,7 +46,7 @@ const Products: React.FC = () => {
     return (
         <main className={styles.products}>
             <div className={styles.products__header}>
-                <h1 className={styles.products__title}>Our products</h1>
+                <h1>Our products</h1>
                 <h2 className={styles.products__subtitle}>Thoughtfully selected plants for modern living</h2>
                 <Filters />
                 <div className={styles.products__info}>

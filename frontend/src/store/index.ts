@@ -5,6 +5,7 @@ import cartReducer from './slices/cartSlice';
 import favouritesReducer from './slices/favouritesSlice';
 import categoriesReducer from './slices/categoriesSlice';
 import bannersReducer from './slices/bannersSlice';
+import toastReducer from './slices/toastSlice';
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     favourites: favouritesReducer,
     categories: categoriesReducer,
     banners: bannersReducer,
+    toast: toastReducer,
   },
 });
 

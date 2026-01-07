@@ -29,8 +29,11 @@
   font-weight: 600;
 }
 
-@mixin page-content($margin: 60px 120px 120px 120px, $padding: 20px 100px 60px 100px, $opacity: 0.7) {
-  padding: $padding;
+@mixin page-content($margin: 60px 120px 120px 120px, $padding-side: 100px, $opacity: 0.7) {
+  padding-right: $padding-side;
+  padding-left: $padding-side;
+  padding-top: 20px;
+  padding-bottom: 60px;
   margin: $margin;
   background: bg-white-opacity($opacity);
   border-radius: $border-radius;
@@ -39,7 +42,7 @@
 @mixin button-style {
   flex: 1;
   padding: 18px 20px;
-  border: none;
+  border: 1px solid transparent;
   border-radius: $border-radius-input;
   font-size: 18px;
   font-weight: 600;
@@ -51,6 +54,7 @@
 
   &:hover {
     background: $color-primary-light;
+    border: 1px solid $color-primary;
   }
 }
 
@@ -98,6 +102,13 @@
     color: $hover-color;
     font-weight: 900;
   }
+}
+
+@mixin page-title {
+  font-size: 50px;
+  text-align: center;
+  color: $color-primary;
+  margin-bottom: 16px;
 }
 
 @mixin title-logo($size: 46px) {

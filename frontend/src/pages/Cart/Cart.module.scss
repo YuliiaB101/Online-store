@@ -5,18 +5,8 @@
   @include page-content();
   color: $color-primary;
 
-  h1 {
-    font-size: 50px;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-
   h2 {
     text-align: center;
-  }
-
-  &__title {
-    @include title-logo();
   }
 
   &__subtitle {
@@ -28,15 +18,18 @@
 
   &__empty {
     text-align: center;
-    padding: 60px 20px;
-    color: $color-primary;
+    padding: 80px 20px;
 
-    h2 {
+    p {
       font-size: 24px;
-      margin-bottom: 20px;
+      color: $color-primary;
+      opacity: 0.8;
     }
 
     button {
+      width: 210px;
+      height: 56px;
+      margin: 40px 0;
       @include button-style();
     }
   }
@@ -105,12 +98,6 @@
     @include button-style();
     width: 100%;
     padding: 16px;
-    border-radius: $border-radius-input;
-    background: $color-primary;
-
-    &:hover {
-      background: $color-primary-light;
-    }
   }
 
   &__clearButton {
@@ -121,14 +108,12 @@
     background: transparent;
     color: $color-error;
     border: 1px solid $color-error;
-    border-radius: $border-radius-input;
     font-weight: 600;
-    cursor: pointer;
-    transition: $transition;
     margin-top: 10px;
 
     &:hover {
       background: $color-error;
+      border: 1px solid $color-error;
       color: white;
     }
   }
