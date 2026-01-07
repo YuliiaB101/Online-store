@@ -32,8 +32,16 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
     if (isFavourite) {
       dispatch(removeFromFavourites(product.id) as any);
+      dispatch(addToast({
+        message: `${product.name} removed from <strong>favourites</strong>!`,
+        type: 'info',
+      }));
     } else {
       dispatch(addToFavourites(product.id) as any);
+      dispatch(addToast({
+        message: `${product.name} added to <strong>favourites</strong>!`,
+        type: 'success',
+      }));
     }
   };
 
@@ -45,9 +53,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     } else {
       dispatch(addToCart({ productId: product.id, quantity: 1 }) as any);
       dispatch(addToast({
-        message: `${product.name} added to cart!`,
+        message: `${product.name} added to <strong>cart</strong>!`,
         type: 'success',
-        duration: 3000
       }));
     }
   };

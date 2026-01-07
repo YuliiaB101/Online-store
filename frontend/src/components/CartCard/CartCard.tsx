@@ -1,4 +1,6 @@
+import { addToast } from 'store/slices/toastSlice';
 import { CartItem } from '../../types';
+import { useDispatch } from 'react-redux';
 import styles from './CartCard.module.scss';
 
 interface CartCardProps {
@@ -10,6 +12,8 @@ interface CartCardProps {
 }
 
 const CartCard: React.FC<CartCardProps> = ({ item, onIncrement, onDecrement, onRemove, onClick }) => {
+  const dispatch = useDispatch();
+  
   return (
     <div className={styles.cartCard} onClick={onClick} style={{ cursor: 'pointer' }}>
       <img
@@ -17,7 +21,7 @@ const CartCard: React.FC<CartCardProps> = ({ item, onIncrement, onDecrement, onR
         alt={item.name}
         className={styles.cartCard__image}
       />
-      
+
       <div className={styles.cartCard__info}>
         <h3 className={styles.cartCard__name}>{item.name}</h3>
         <div className={styles.cartCard__category}>{item.category_name}</div>
@@ -26,7 +30,13 @@ const CartCard: React.FC<CartCardProps> = ({ item, onIncrement, onDecrement, onR
 
       <div className={styles.cartCard__actions}>
         <button
-          onClick={(e) => { e.stopPropagation(); onRemove(item.id); }}
+          onClick={(e) => {
+            e.stopPropagation(); onRemove(item.id);
+            dispatch(addToast({
+              message: `${item.name} removed from <strong>favourites</strong>!`,
+              type: 'info',
+            }));
+          }}
           className={styles.cartCard__removeButton}
         >
           ✕

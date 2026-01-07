@@ -13,6 +13,7 @@ const toastSlice = createSlice({
       const id = Date.now().toString() + Math.random().toString(36).substr(2, 9);
       state.toasts.push({
         id,
+        duration: 2000,
         ...action.payload,
       });
     },

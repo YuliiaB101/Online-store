@@ -32,9 +32,7 @@ const ProductDetail = () => {
       dispatch(addToast({
         message: `${product.name} (x${quantity}) added to cart!`,
         type: 'success',
-        duration: 3000
       }));
-      navigate('/cart');
     }
   };
 
@@ -47,8 +45,16 @@ const ProductDetail = () => {
     if (product) {
       if (isFavourite) {
         dispatch(removeFromFavourites(product.id) as any);
+        dispatch(addToast({
+          message: `${product.name} removed from favourites!`,
+          type: 'info'
+        }))
       } else {
         dispatch(addToFavourites(product.id) as any);
+        dispatch(addToast({
+          message: `${product.name} added to favourites!`,
+          type: 'success'
+        }))
       }
     }
   };
@@ -58,9 +64,9 @@ const ProductDetail = () => {
   }
 
   return (
-    <div className={styles.productDetail}>
+    <main className={styles.productDetail}>
       <Link to='/products' className={styles.productDetail__back}>
-        <img className={styles.productDetail__backIcon} src="/icons/arrow-left.svg" alt="Previous"/>
+        <img className={styles.productDetail__backIcon} src="/icons/arrow-left.svg" alt="Previous" />
         Back to Products
       </Link>
 
@@ -75,7 +81,7 @@ const ProductDetail = () => {
           <div className={styles.productDetail__category}>
             {product.category_name}
           </div>
-          <h1 className={styles.productDetail__title}>{product.name}</h1>
+          <h2 className={styles.productDetail__title}>{product.name}</h2>
           <button
             onClick={handleFavouriteClick}
             className={styles.productDetail__favourite}
@@ -107,12 +113,12 @@ const ProductDetail = () => {
           </div>
 
           <div className={styles.productDetail__actions}>
-            <input 
-              type="number" 
-              min="1" 
-              value={quantity} 
+            <input
+              type="number"
+              min="1"
+              value={quantity}
               onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-              className={styles.productDetail__quantity} 
+              className={styles.productDetail__quantity}
             />
             <button
               onClick={handleAddToCart}
@@ -123,7 +129,7 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

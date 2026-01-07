@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import Header from './shared/Header/Header';
 import ScrollToTop from './components/ScrollToTop';
-import ToastContainer from './components/ToastContainer/ToastContainer';
+import Toast from './components/Toast/Toast';
 import { Home, Products, ProductDetail, Login, Register, Cart, Checkout, Favourites, AboutUs, ForCustomers, Contacts, Search } from './pages/index';
 import Footer from './shared/Footer/Footer';
 import './styles/styles.scss';
@@ -27,7 +27,7 @@ const AppContent: React.FC = () => {
     <>
       <ScrollToTop />
       <Header />
-      <ToastContainer />
+      <Toast />
       <main>
         <Routes>
           <Route path="/" element={<Navigate to="/home" replace />} />
