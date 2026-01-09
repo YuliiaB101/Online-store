@@ -5,72 +5,92 @@
   margin: 0;
   position: relative;
 
-  &__content {
-    display: grid;
-    height: 600px;
-    padding: 0 100px;
-    margin: 40px 0 140px 0;
-    grid-template-columns: 50% 40%;
-    color: $color-text;
-    gap: 100px;
+  &__hero {
+    height: 700px;
+    padding: 0 120px;
+    margin: 42px 0;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 80px;
+    color: $color-primary-dark;
 
-    &__section {
-      margin-top: 40px;
-      justify-content: space-between;
-      color: $color-primary-dark;
+    h3 {
+      font-size: 38px;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
 
-      p {
-        font-size: 20px;
-        font-weight: 400;
-      }
+    p {
+      font-size: 20px;
+      line-height: 1.6;
+      font-weight: 600;
+      color: $color-primary;
+    }
 
-      &_top,
-      &_bottom {
-        background: bg-opacity(0.6);
-        border-radius: $border-radius;
-        padding: 20px;
-        text-align: left;
-        display: block;
-        font-size: 40px;
-        font-weight: 500;
-        color: $color-text;
-      }
+    &__top,
+    &__bottom {
+      background: bg-white-opacity(0.38);
+      backdrop-filter: blur(8px);
+      border-radius: $border-radius;
+      padding: 26px 40px;
+      display: flex;
+      flex-direction: column;
+    }
 
-      &_bottom {
-        justify-self: end;
-        transform: translateX(80px);
-        margin-top: 100px;
+    &__top {
+      margin-top: 80px;
+      width: 76%;
+    }
+
+    &__button {
+      transform: translateX(340%);
+      align-self: flex-start;
+      background: bg-white-opacity(0.4);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      font-size: 28px;
+      font-weight: 600;
+      padding: 18px 36px;
+      border-radius: $border-radius-input;
+      text-decoration: none;
+      border: 1px solid $color-primary;
+      transition: all 0.25s ease;
+
+      &:hover {
+        // text-decoration: underline;
+        background: bg-white-opacity(0.6);
       }
     }
 
-    &__carousel {
-      margin-top: 40px;
-      border-radius: $border-radius;
-      overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    &__bottom {
+      transform: translateX(70%);
+      width: 56%;
+      margin-top: 10px;
     }
   }
 
-  &__top {
-    &__wrapper {
-      background: $color-bg-beige;
-      overflow: hidden;
-    }
+  &__main {
+    background: linear-gradient(
+      to bottom,
+      $color-bg-beige 0%,
+      $color-bg-beige-dark 100%
+    );
+    overflow: hidden;
 
-    &__content {
-      margin: 40px 80px 80px 80px;
-      padding: 20px 40px 40px 40px;
+    &__block {
+      margin: 60px 80px 80px 80px;
+      padding: 40px 60px;
       background: bg-white-opacity(0.7);
       border-radius: $border-radius;
-      font-size: 28px;
+    }
+
+    &__title {
+      text-align: left;
+      font-size: 40px;
       font-weight: 700;
       color: $color-primary-dark;
-
-      &__title {
-        @include title-logo();
-        text-align: left;
-        color: $color-primary-dark;
-      }
     }
 
     &__products {
@@ -146,7 +166,7 @@
     }
   }
 
-  &__sections {
+  &__footer {
     margin: 150px 100px 100px 100px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);

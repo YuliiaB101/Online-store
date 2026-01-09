@@ -4,14 +4,11 @@ $desktop: 1024px;
 $wide: 1440px;
   
 $color-primary: rgb(41, 71, 55);
-$color-primary-dark: rgb(17, 31, 23);
+$color-primary-dark: rgb(31, 61, 43);
 $color-primary-light: rgb(87, 151, 117);
-$color-green: #134A20;
-$color-secondary: #0f1214;
 $color-text: #ffffff;
-$color-bg-base: rgb(93, 99, 96);
-$color-bg-beige: rgb(248, 228, 196);
-$color-bg-beige-dark: rgba(177, 126, 82);
+$color-bg-beige: #f8e4c4;
+$color-bg-beige-dark: #e1c695;
 
 // Function to create color with custom opacity
 @function bg-opacity($opacity: 0.3) {

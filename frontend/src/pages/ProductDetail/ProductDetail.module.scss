@@ -163,28 +163,6 @@
       border: 2px solid $color-primary;
     }
   }
-
-  &__button {
-    @include button-style();
-
-    &--favourite {
-      flex: 0;
-      min-width: 60px;
-      font-size: 24px;
-      background: $color-bg-base;
-      border: 2px solid $color-primary;
-
-      &:hover {
-        background: $color-bg-base;
-        transform: scale(1.05);
-      }
-
-      &.active {
-        color: #e74c3c;
-        border-color: #e74c3c;
-      }
-    }
-  }
 }
 
 .loading {

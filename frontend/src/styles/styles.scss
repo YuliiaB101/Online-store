@@ -125,7 +125,8 @@ select {
     background-image: url("../../public/images/background/bg-home.jpg");
 
     Header {
-      background: rgba(131, 122, 122, 0.55);
+      background: bg-primary-opacity(0.7);
+      backdrop-filter: blur(6px);
     }
   }
 }

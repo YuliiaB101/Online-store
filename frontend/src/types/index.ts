@@ -25,15 +25,6 @@ export interface Category {
   slug: string;
 }
 
-export interface Banner {
-  id: number;
-  image_url: string;
-  title: string;
-  link: string;
-  order_index: number;
-  active: boolean;
-}
-
 export interface CartItem extends Product {
   quantity: number;
 }
@@ -72,11 +63,6 @@ export interface CategoriesState {
   error: string | null;
 }
 
-export interface BannersState {
-  items: Banner[];
-  error: string | null;
-}
-
 export interface Toast {
   id: string;
   message: string;
@@ -94,6 +80,5 @@ export interface RootState {
   cart: CartState;
   favourites: FavouritesState;
   categories: CategoriesState;
-  banners: BannersState;
   toast: ToastState;
 }

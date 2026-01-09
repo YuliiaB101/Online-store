@@ -2,12 +2,10 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../../store/slices/productsSlice';
 import { fetchCategories } from '../../store/slices/categoriesSlice';
-import { fetchBanners } from '../../store/slices/bannersSlice';
 import { fetchCart } from '../../store/slices/cartSlice';
 import { fetchFavourites } from '../../store/slices/favouritesSlice';
 import { RootState, Product } from '../../types';
 import styles from './Home.module.scss';
-// import Carousel from 'components/Carousel/Carousel';
 import SmallProductCard from 'components/SmallProductCard/SmallProductCard';
 import { Link } from 'react-router-dom';
 
@@ -19,7 +17,6 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(fetchCategories() as any);
-    dispatch(fetchBanners() as any);
     dispatch(fetchProducts({}) as any);
   }, [dispatch]);
 
@@ -38,34 +35,34 @@ const Home = () => {
   return (
     <main className={styles.home}>
 
-      <div className={styles.home__content}>
-        <section className={styles.home__content__section}>
-          <span className={styles.home__content__section_top}>
-            <h3>We make your home feel cozy</h3>
-            <p>Coziness is more than interior design.
-              It's a feeling — warmth, calm, and harmony that turns a space into a home.</p>
-          </span>
-          <span className={styles.home__content__section_bottom}>
-            <p>Discover the perfect houseplants to enhance your home decor and create a calming atmosphere. Our curated selection brings nature indoors, effortlessly.</p>
-          </span>
-        </section>
-
-        <span className={styles.home__content__carousel}>
+      <div className={styles.home__hero}>
+        <span className={styles.home__hero__top}>
+          <h3>We make your home feel cozy</h3>
+          <p>Coziness is more than interior design.
+            It's a feeling — warmth, calm, and harmony that turns a space into a home.</p>
+        </span>
+        <span className={styles.home__hero__button}>
+          <Link to="/products">
+            Start shopping
+          </Link>
+        </span>
+        <span className={styles.home__hero__bottom}>
+          <p>Discover the perfect houseplants to enhance your home decor and create a calming atmosphere. Our curated selection brings nature indoors, effortlessly.</p>
         </span>
       </div>
 
-      <div className={styles.home__top__wrapper}>
-        <div className={styles.home__top__content}>
-          <h2 className={styles.home__top__content__title}>Our Top products for You</h2>
-          <div className={styles.home__top__products}>
+      <div className={styles.home__main}>
+        <div className={styles.home__main__block}>
+          <h1 className={styles.home__main__title}>Our Top products for You</h1>
+          <div className={styles.home__main__products}>
             {categoryProducts.map((product) => (
               <SmallProductCard key={product.id} product={product} />
             ))}
           </div>
 
-        <h2 className={styles.home__top__content__title}>Top Categories</h2>
-          <div className={styles.home__top__categories}>
-            <Link to="/products?category=foliage,succulents,flowering-plants,pothos" className={styles.home__top__categories__link}>
+          <h1 className={styles.home__main__title}>Top Categories</h1>
+          <div className={styles.home__main__categories}>
+            <Link to="/products?category=foliage,succulents,flowering-plants,pothos" className={styles.home__main__categories__link}>
               <img src="/images/categories/category-plants-indoor.jpg" alt="indoor_plants" />
               <p>Indoor Plants</p>
             </Link>
@@ -85,9 +82,9 @@ const Home = () => {
         </div>
       </div>
 
-      <div className={styles.home__sections}>
+      <div className={styles.home__footer}>
         <div>
-          <Link to="/about" className={styles.home__sections__link}>About Us 📌</Link>
+          <Link to="/about" className={styles.home__footer__link}>About Us 📌</Link>
           <p>FLORIA is an online plant store dedicated to creating cozy, living spaces.
           </p>
           <p>
@@ -96,7 +93,7 @@ const Home = () => {
         </div>
 
         <div>
-          <Link to="/for-customers#delivery" className={styles.home__sections__link}>Delivery 📦</Link>
+          <Link to="/for-customers#delivery" className={styles.home__footer__link}>Delivery 📦</Link>
           <p>
             We take special care to ensure your plants arrive healthy and beautiful 🌿
           </p>
@@ -110,7 +107,7 @@ const Home = () => {
         </div>
 
         <div>
-          <Link to="/for-customers#eco-friendly" className={styles.home__sections__link}>Caring for the Planet 🌍</Link>
+          <Link to="/for-customers#eco-friendly" className={styles.home__footer__link}>Caring for the Planet 🌍</Link>
           <p>
             Plants are more than decor — they are a way to stay connected to nature, even in an urban space.
           </p>

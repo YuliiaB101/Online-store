@@ -25,15 +25,6 @@ export interface Category {
   slug: string;
 }
 
-export interface Banner {
-  id: number;
-  image_url: string;
-  title: string;
-  link: string;
-  order_index: number;
-  active: boolean;
-}
-
 export interface CartItem {
   id: number;
   user_id: number;
