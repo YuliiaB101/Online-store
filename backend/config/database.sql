@@ -141,3 +141,11 @@ VALUES
 ('Textured Stone Pot', 10, 'This stone-finish planter adds a natural, earthy feel to your space. Ideal for medium-sized plants.', 32.50, 100, 'stone-pot.jpg', NOW()),
 ('Hanging Macrame Planter', 10, 'Handcrafted macrame planter designed for hanging plants. Adds warmth and texture to any room.', 27.99, 100, 'macrame-planter.jpg', NOW()),
 ('Large Concrete Floor Planter', 10, 'A bold concrete planter ideal for statement plants. Its neutral tone complements modern and industrial interiors.', 59.99, 100, 'concrete-planter.jpg', NOW());
+
+-- Orchids
+INSERT INTO products (name, category_id, description, price, stock, image_url, created_at, rating_avg, rating_count)
+VALUES
+('Oncidium Dancing Lady Orchid', 11, 'The Oncidium “Dancing Lady” Orchid is known for its delicate, bright yellow flowers that resemble dancing figures. Light, elegant, and full of movement, this orchid adds a cheerful accent to any interior. It thrives in bright, indirect light and moderate watering.', 57.00, 70, 'oncidium_dancing_lady.jpg', NOW(), 4.9, 128),
+('Phalaenopsis Pink Orchid', 11, 'This Phalaenopsis Pink Orchid features soft pink petals that add warmth and charm to your living space. Its delicate appearance is balanced by its resilience, making it a perfect choice for both beginners and experienced plant lovers.', 58.00, 75, 'phalaenopsis_pink.jpg', NOW(), 4.7, 96),
+('Dendrobium Orchid', 11, 'The Dendrobium Orchid is admired for its slender stems and clusters of vibrant flowers. It brings an exotic and fresh feel to modern interiors and prefers bright light with gentle watering. A beautiful accent plant for shelves or tables.', 62.00, 60, 'dendrobium_orchid.jpg', NOW(), 4.5, 73),
+('Cattleya Orchid', 11, 'Known as the queen of orchids, the Cattleya Orchid boasts large, fragrant blooms with rich colors and dramatic shapes. This orchid is perfect for creating a statement and thrives in well-lit spaces with good air circulation.', 70.00, 50, 'cattleya_orchid.jpg', NOW(), 4.8, 112);

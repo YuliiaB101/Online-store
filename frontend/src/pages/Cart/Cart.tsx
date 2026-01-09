@@ -100,7 +100,9 @@ const Cart = () => {
             <span>${total.toFixed(2)}</span>
           </div>
 
-          <button className={styles.cart__checkoutButton}>
+          <button
+            onClick={() => navigate('/checkout')}
+            className={styles.cart__checkoutButton}>
             Checkout
           </button>
 

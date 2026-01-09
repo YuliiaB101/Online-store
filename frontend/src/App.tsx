@@ -43,6 +43,7 @@ const AppContent: React.FC = () => {
           <Route path="/for-customers" element={<ForCustomers />} />
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </main>
       <Footer />

@@ -2,92 +2,267 @@
 @use "../../styles/variables.scss" as *;
 
 .checkout {
-  max-width: 450px;
-  margin: 60px auto;
-  padding: 40px;
-  background: $color-bg-beige;
-  border: 1px solid $color-primary;
-  border-radius: $border-radius;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  @include page-content(60px auto 80px auto, 60px);
+  max-width: 720px;
+  color: $color-primary;
+  font-weight: 600;
+  font-size: 20px;
 
-  &__title {
+  &__steps {
+    display: flex;
+    justify-content: space-between;
+    margin: 26px 0 36px 0;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      left: 40px;
+      right: 40px;
+      height: 2px;
+      background: $color-primary-dark;
+      z-index: 0;
+    }
+  }
+
+  &__step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+
+    &__number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: white;
+      border: 2px solid $color-primary-dark;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+      color: $color-primary;
+      transition: all 0.3s ease;
+    }
+
+    &__label {
+      font-size: 14px;
+      font-weight: 600;
+      color: $color-primary;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    &_active &__number {
+      background: $color-primary;
+      border-color: $color-primary;
+      color: white;
+    }
+
+    &_active &__label {
+      color: $color-primary;
+    }
+
+    &_completed &__number {
+      background: $color-primary;
+      border-color: $color-primary;
+      color: white;
+    }
+
+    &_completed &__label {
+      color: $color-primary;
+    }
+  }
+
+  &__subtitle {
+    display: block;
     font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 30px;
+    font-weight: 600;
     text-align: center;
   }
 
   &__form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-  }
-  
-  &__label {
-    font-size: 14px;
-    font-weight: 500;
-    color: $color-text;
+    gap: 4px;
+    margin-bottom: 20px;
   }
 
   &__input {
-    padding: 12px 16px;
+    @include input-style();
+    margin-bottom: 10px;
     border: 1px solid $color-primary;
-    border-radius: $border-radius;
-    font-size: 14px;
-    transition: $transition;
+    outline: 1px solid transparent;
+    outline-offset: 0;
 
-    &:focus {
-      outline: none;
-      border-color: $color-primary;
-      box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+    &_error {
+      border: 2px solid $color-error;
+    }
+
+    &_success {
+      border: 2px solid $color-success;
     }
   }
 
   &__error {
-    background: #FFEBEE;
+    width: auto;
     color: $color-error;
-    padding: 12px;
-    border-radius: $border-radius;
-    font-size: 14px;
+    background: #ffebee;
+    border-radius: $border-radius-input;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
     text-align: center;
   }
 
-  &__button {
-    padding: 14px;
-    background: $color-primary;
-    color: white;
-    border: none;
+  &__summary {
+    background: white;
+    border: 1px solid $color-primary;
     border-radius: $border-radius;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: $transition;
-    margin-top: 10px;
+    padding: 26px;
+    margin: 20px 0;
+  }
 
-    &:hover {
-      background: $color-primary-dark;
+  &__summaryTitle {
+    font-weight: 700;
+    font-size: 42px;
+  }
+
+  &__summaryContent {
+    font-size: 24px;
+    color: black;
+    padding: 12px 0;
+    border-bottom: 1px solid $color-primary;
+
+    span {
+      font-weight: 700;
+    }
+  }
+
+  &__summaryRow {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  &__summaryTotal {
+    display: flex;
+    color: black;
+    justify-content: space-between;
+    padding: 20px 0 12px 0;
+    margin-top: 10px;
+    font-size: 30px;
+    font-weight: 700;
+    border-top: 1px solid $color-primary;
+  }
+
+  &__buttons {
+    height: 50px;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+
+    &__back {
+      flex: 1;
+      padding: 8px 16px;
+      border: 1px solid $color-primary;
+      background: transparent;
+      color: $color-primary;
+      border-radius: $border-radius-input;
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+
+      &:hover:not(:disabled) {
+        background: $color-primary;
+        color: white;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+      }
     }
 
-    &:disabled {
-      background: $color-primary;
-      cursor: not-allowed;
+    &__next {
+      @include button-style();
+      width: 200px;
+      padding: 16px;
     }
   }
 
   &__footer {
-    margin-top: 20px;
+    margin-top: 30px;
     text-align: center;
-    color: $color-text;
-    font-size: 14px;
+    font-size: 20px;
 
     a {
-      color: $color-primary;
-      font-weight: 500;
-      transition: $transition;
+      @include link-style();
+    }
+  }
 
-      &:hover {
-        color: $color-primary-dark;
+  &__success {
+    text-align: center;
+    margin: 20px 0;
+    padding: 20px;
+    background: lighten($color-primary, 60%);
+    border-radius: $border-radius;
+    border: 2px solid $color-primary;
+
+    &__icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: $color-primary;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 50px;
+      font-weight: bold;
+    }
+
+    &__title {
+      font-size: 32px;
+      font-weight: 700;
+      color: $color-primary-dark;
+      margin-bottom: 16px;
+    }
+
+    &__message {
+      font-size: 18px;
+      color: $color-primary;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    &__details {
+      background: white;
+      padding: 20px;
+      border: 1px solid $color-primary;
+      border-radius: $border-radius-input;
+      margin: 20px 0;
+
+      p {
+        font-size: 18px;
+        margin: 8px 0;
+        color: $color-primary;
       }
+    }
+
+    &__info {
+      font-size: 16px;
+      color: $color-primary-light;
+      font-style: italic;
     }
   }
 }
