@@ -5,7 +5,7 @@ import store from './store';
 import Header from './shared/Header/Header';
 import ScrollToTop from './components/ScrollToTop';
 import Toast from './components/Toast/Toast';
-import { Home, Products, ProductDetail, Login, Register, Cart, Checkout, Favourites, AboutUs, ForCustomers, Contacts, Search } from './pages/index';
+import { Home, Products, ProductDetail, Login, Register, Cart, Checkout, Favourites, AboutUs, ForCustomers, Contacts, Search, PlantCare } from './pages/index';
 import Footer from './shared/Footer/Footer';
 import './styles/styles.scss';
 
@@ -41,6 +41,7 @@ const AppContent: React.FC = () => {
           <Route path="/favourites" element={<Favourites />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/for-customers" element={<ForCustomers />} />
+          <Route path="/plant-care" element={<PlantCare />} />
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/search" element={<Search />} />
           <Route path="/checkout" element={<Checkout />} />

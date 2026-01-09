@@ -7,10 +7,12 @@ const ForCustomers: React.FC = () => {
 
   useEffect(() => {
     if (location.hash) {
-      const element = document.querySelector(location.hash);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      setTimeout(() => {
+        const element = document.querySelector(location.hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
     } else {
       window.scrollTo(0, 0);
     }
@@ -25,6 +27,24 @@ const ForCustomers: React.FC = () => {
           transparent, and enjoyable. Here you'll find everything you need to
           know about shopping with us.
         </p>
+      </section>
+
+      <section id="terms-conditions" className={styles.forCustomers__section}>
+        <h2>📜 Terms & Conditions</h2>
+        <p>
+          By placing an order with FLORIA, you agree to our terms and conditions.
+        </p>
+        <ul>
+          <li>All sales are subject to product availability</li>
+          <li>Prices and promotions may change without prior notice</li>
+          <li>
+            We reserve the right to refuse or cancel orders at our discretion
+          </li>
+          <li>
+            It is the customer's responsibility to provide accurate shipping
+            information
+          </li>
+        </ul>
       </section>
 
       <section id="delivery" className={styles.forCustomers__section}>
@@ -45,7 +65,7 @@ const ForCustomers: React.FC = () => {
         </p>
       </section>
 
-      <section className={styles.forCustomers__section}>
+      <section id="returns" className={styles.forCustomers__section}>
         <h2>🔄 Returns & Refunds</h2>
         <p>Your satisfaction matters to us.</p>
         <ul>
@@ -62,7 +82,7 @@ const ForCustomers: React.FC = () => {
         </ul>
       </section>
 
-      <section className={styles.forCustomers__section}>
+      <section id="ordering-payment" className={styles.forCustomers__section}>
         <h2>🛒 Ordering & Payment</h2>
         <p className={styles.forCustomers__note}>
           Once an order is placed, changes may not be possible, as plants are

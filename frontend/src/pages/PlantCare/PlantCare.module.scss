@@ -1,7 +1,7 @@
 @use "../../styles/mixins.scss" as *;
 @use "../../styles/variables.scss" as *;
 
-.forCustomers {
+.plantCare {
   @include page-content();
   text-align: justify;
   color: $color-primary;
@@ -12,6 +12,28 @@
     font-size: 36px;
     color: $color-primary-dark;
     margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: 24px;
+    color: $color-primary-dark;
+    margin: 20px 0 10px 0;
+    font-weight: 700;
+  }
+
+  &__hero {
+    text-align: center;
+    margin-bottom: 40px;
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 24px;
+      color: $color-primary;
+      line-height: 1.6;
+    }
   }
 
   &__section {
@@ -52,16 +74,15 @@
     }
   }
 
-  &__support {
-    background: bg-white-opacity(0.9);
-    padding: 20px;
-    border-radius: $border-radius;
-  }
-
   &__footer {
     text-align: center;
     font-size: 22px;
     font-weight: 600;
     color: $color-primary-dark;
+    margin-top: 40px;
+
+    a {
+      @include link-style();
+    }
   }
 }

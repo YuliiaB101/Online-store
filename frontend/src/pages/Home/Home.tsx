@@ -62,7 +62,7 @@ const Home = () => {
 
           <h1 className={styles.home__main__title}>Top Categories</h1>
           <div className={styles.home__main__categories}>
-            <Link to="/products?category=foliage,succulents,flowering-plants,pothos" className={styles.home__main__categories__link}>
+            <Link to="/products?category=foliage,succulents,flowering-plants,orchids,pothos" className={styles.home__main__categories__link}>
               <img src="/images/categories/category-plants-indoor.jpg" alt="indoor_plants" />
               <p>Indoor Plants</p>
             </Link>

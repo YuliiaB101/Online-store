@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const ScrollToTop = () => {
-  const { pathname, hash } = useLocation();
+  const { pathname, hash, search } = useLocation();
 
   useEffect(() => {
     // If there's a hash, don't scroll to top
@@ -14,7 +14,7 @@ const ScrollToTop = () => {
     window.scrollTo(0, 0);
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
-  }, [pathname, hash]);
+  }, [pathname, hash, search]);
 
   return null;
 };

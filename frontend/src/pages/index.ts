@@ -10,3 +10,4 @@ export { default as Login } from './Auth/Login';
 export { default as Register } from './Auth/Register';
 export { default as Contacts } from './Contacts/Contacts';
 export { default as Search } from './Search/Search';
+export { default as PlantCare } from './PlantCare/PlantCare';
