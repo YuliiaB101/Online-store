@@ -107,7 +107,7 @@ const Filters = () => {
         >
           <option value="created_at">By date</option>
           <option value="price">By price</option>
-          <option value="likes">By popularity</option>
+          <option value="rating_avg">By popularity</option>
           <option value="name">By name</option>
         </select>
 

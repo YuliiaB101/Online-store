@@ -34,7 +34,7 @@ router.get('/', async (req: Request, res: Response): Promise<void> => {
     }
 
     // Validate sortBy to prevent SQL injection
-    const validSortFields = ['created_at', 'price', 'likes', 'name'];
+    const validSortFields = ['created_at', 'price', 'rating_avg', 'name'];
     const sortField = validSortFields.includes(sortBy as string) ? sortBy : 'created_at';
     const sortOrder = (order as string).toUpperCase() === 'ASC' ? 'ASC' : 'DESC';
 
