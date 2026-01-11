@@ -10,16 +10,16 @@ FLORIA demonstrates a **production-oriented frontend architecture**, structured 
 
 ## Key Features
 
-✅ React + TypeScript single-page application
-✅ Product catalog with search, filtering and sorting
-✅ User authentication (Login / Registration) with validation
-✅ Favourites and shopping cart functionality
-✅ Multi-step checkout flow with form validation
-- ✓ Search functionality with clear user feedback
-- ✓ Informational pages commonly used in modern e-commerce
-- ✓ REST API built with Node.js and Express
-- ✓ PostgreSQL database integration
-- ✓ Fully responsive UI with SCSS Modules (mobile-first)
+✔ React + TypeScript single-page application  
+✔ Product catalog with search, filtering and sorting  
+✔ User authentication (Login / Registration) with validation  
+✔ Favourites and shopping cart functionality  
+✔ Multi-step checkout flow with form validation  
+✔ Search functionality with clear user feedback  
+✔ Informational pages commonly used in modern e-commerce  
+✔ REST API built with Node.js and Express  
+✔ PostgreSQL database integration  
+✔ Fully responsive UI with SCSS Modules (mobile-first)  
 
 ---
 
