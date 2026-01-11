@@ -17,6 +17,7 @@
 
   &__inputWrapper {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     align-items: center;
     justify-content: center;
@@ -26,22 +27,20 @@
   &__input {
     @include input-style();
     flex: 8;
+    min-width: 400px;
     font-size: 18px;
     padding: 16px 20px;
   }
 
   &__button {
     @include button-style();
-    background: $color-primary;
-    flex: 2;
     display: flex;
+    flex: 2;
+    min-width: 384px;
     align-items: center;
     justify-content: center;
-    height: 56px;
-    gap: 8px;
+    gap: 10px;
     padding: 16px 32px;
-    font-size: 18px;
-    font-weight: 600;
   }
 
   &__icon {
@@ -78,7 +77,7 @@
   &__empty {
     text-align: center;
     padding: 60px 20px;
-    
+
     p {
       font-size: 22px;
       color: $color-primary;
@@ -94,11 +93,208 @@
   &__placeholder {
     text-align: center;
     padding: 80px 20px;
-    
+
     p {
       font-size: 24px;
       color: $color-primary;
       opacity: 0.8;
+    }
+  }
+
+  // Responsive styles
+  @media (max-width: $desktop) {
+    &__header {
+      margin-bottom: 35px;
+    }
+
+    &__subtitle {
+      font-size: 22px;
+      margin-bottom: 35px;
+    }
+
+    &__inputWrapper {
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    &__input {
+      font-size: 17px;
+      padding: 15px 18px;
+    }
+
+    &__button {
+      height: 52px;
+      gap: 7px;
+      padding: 14px 28px;
+      font-size: 17px;
+    }
+
+    &__icon {
+      width: 19px;
+      height: 19px;
+    }
+
+    &__clearButton {
+      padding: 14px 22px;
+      font-size: 17px;
+    }
+
+    &__count {
+      font-size: 19px;
+    }
+
+    &__empty {
+      padding: 55px 18px;
+
+      p {
+        font-size: 20px;
+
+        &:first-child {
+          font-size: 24px;
+        }
+      }
+    }
+
+    &__placeholder {
+      padding: 70px 18px;
+
+      p {
+        font-size: 22px;
+      }
+    }
+  }
+
+  @media (max-width: $tablet) {
+    &__header {
+      margin-bottom: 30px;
+    }
+
+    &__subtitle {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    &__inputWrapper {
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    &__input {
+      width: 100%;
+      min-width: 260px;
+      font-size: 16px;
+      padding: 14px 16px;
+    }
+
+    &__button {
+      min-width: 200px;
+      height: 48px;
+      gap: 6px;
+      padding: 12px 24px;
+      font-size: 16px;
+    }
+
+    &__icon {
+      width: 18px;
+      height: 18px;
+    }
+
+    &__clearButton {
+      padding: 12px 20px;
+      font-size: 16px;
+    }
+
+    &__count {
+      font-size: 18px;
+    }
+
+    &__empty {
+      padding: 50px 16px;
+
+      p {
+        font-size: 18px;
+        margin-bottom: 8px;
+
+        &:first-child {
+          font-size: 22px;
+        }
+      }
+    }
+
+    &__placeholder {
+      padding: 60px 16px;
+
+      p {
+        font-size: 20px;
+      }
+    }
+  }
+
+  @media (max-width: $mobile) {
+    &__header {
+      margin-bottom: 25px;
+    }
+
+    &__subtitle {
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    &__inputWrapper {
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    &__input {
+      font-size: 15px;
+      padding: 12px 14px;
+    }
+
+    &__button {
+      height: 44px;
+      gap: 5px;
+      padding: 10px 20px;
+      font-size: 15px;
+    }
+
+    &__icon {
+      width: 16px;
+      height: 16px;
+    }
+
+    &__clearButton {
+      padding: 10px 18px;
+      font-size: 15px;
+    }
+
+    &__info {
+      margin-top: 16px;
+    }
+
+    &__count {
+      font-size: 16px;
+    }
+
+    &__empty {
+      padding: 45px 14px;
+
+      p {
+        font-size: 16px;
+        margin-bottom: 7px;
+
+        &:first-child {
+          font-size: 20px;
+        }
+      }
+    }
+
+    &__placeholder {
+      padding: 50px 14px;
+
+      p {
+        font-size: 18px;
+      }
     }
   }
 }

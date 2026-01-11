@@ -31,9 +31,9 @@
 
   &__columns {
     display: flex;
-    gap: 130px;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: space-between;
+    width: 50%;
     text-align: left;
   }
 
@@ -127,5 +127,189 @@
 
   &__icon {
     @include icon-style;
+  }
+
+  // Responsive styles
+  @media (max-width: $desktop) {
+    padding: 35px 80px;
+
+    &__top {
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    &__columns {
+      width: 100%;
+    }
+
+    &__title {
+      font-size: 19px;
+      margin-bottom: 20px;
+    }
+
+    &__list li {
+      margin-bottom: 12px;
+      font-size: 17px;
+    }
+
+    &__newsletter {
+      max-width: 700px;
+      margin: 0 auto;
+
+      &_text {
+        margin-bottom: 20px;
+        font-size: 17px;
+      }
+    }
+
+    &__bottom {
+      font-size: 17px;
+    }
+
+    &__links {
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: $tablet) {
+    padding: 30px 40px;
+    font-size: 16px;
+
+    &__top {
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    &__columns {
+      flex-wrap: wrap;
+    }
+
+    &__column {
+      min-width: 140px;
+    }
+
+    &__title {
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    &__list li {
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    &__newsletter {
+      max-width: 100%;
+      text-align: center;
+
+      &_text {
+        margin-bottom: 16px;
+        font-size: 16px;
+      }
+
+      &_form {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      &_input {
+        width: 100%;
+      }
+
+      &_button {
+        width: 100%;
+        padding: 12px 20px;
+      }
+    }
+
+    &__divider {
+      margin: 36px 0 20px;
+    }
+
+    &__bottom {
+      flex-direction: column;
+      gap: 20px;
+      font-size: 16px;
+    }
+
+    &__links {
+      gap: 16px;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: $mobile) {
+    padding: 25px 20px;
+    font-size: 14px;
+
+    &__top {
+      gap: 30px;
+    }
+
+    &__columns {
+      gap: 30px;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    &__column {
+      min-width: auto;
+      width: 100%;
+    }
+
+    &__title {
+      font-size: 17px;
+      margin-bottom: 14px;
+    }
+
+    &__list li {
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+
+    &__newsletter {
+      &_text {
+        margin-bottom: 14px;
+        font-size: 15px;
+      }
+
+      &_form {
+        gap: 10px;
+      }
+
+      &_input {
+        height: 44px;
+        font-size: 15px;
+      }
+
+      &_button {
+        padding: 10px 18px;
+        font-size: 15px;
+      }
+    }
+
+    &__divider {
+      margin: 28px 0 16px;
+    }
+
+    &__bottom {
+      gap: 16px;
+      font-size: 14px;
+    }
+
+    &__links {
+      gap: 12px;
+      flex-direction: column;
+    }
+
+    &__socials {
+      gap: 14px;
+    }
+
+    &__icon {
+      width: 24px;
+      height: 24px;
+    }
   }
 }

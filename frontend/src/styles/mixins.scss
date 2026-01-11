@@ -29,7 +29,17 @@
   font-weight: 600;
 }
 
-@mixin page-content($margin: 60px 120px 120px 120px, $padding-side: 100px, $opacity: 0.7) {
+@mixin page-content(
+  $margin: 60px 120px 120px 120px,
+  $padding-side: 100px,
+  $opacity: 0.7,
+  $desktop-margin: 50px 80px 100px 80px,
+  $desktop-padding: 60px,
+  $tablet-margin: 30px 30px 60px 30px,
+  $tablet-padding: 40px,
+  $mobile-margin: 30px 20px 60px 20px,
+  $mobile-padding: 40px
+) {
   padding-right: $padding-side;
   padding-left: $padding-side;
   padding-top: 20px;
@@ -37,14 +47,91 @@
   margin: $margin;
   background: bg-white-opacity($opacity);
   border-radius: $border-radius;
+
+  @media (max-width: $desktop-large) {
+    padding-right: 80px;
+    padding-left: 80px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    margin: 40px;
+  }
+
+  @media (max-width: $desktop) {
+    margin: $desktop-margin;
+    padding-right: $desktop-padding;
+    padding-left: $desktop-padding;
+  }
+
+  @media (max-width: $tablet) {
+    margin: $tablet-margin;
+    padding-right: $tablet-padding;
+    padding-left: $tablet-padding;
+  }
+
+  @media (max-width: $mobile) {
+    margin: $mobile-margin;
+    padding-right: $mobile-padding;
+    padding-left: $mobile-padding;
+  }
 }
 
-@mixin button-style {
+@mixin page-content-centered(
+  $margin-top: 60px,
+  $margin-bottom: 80px,
+  $padding-side: 60px,
+  $opacity: 0.7,
+  $desktop-margin-top: 50px,
+  $desktop-margin-bottom: 60px,
+  $desktop-padding: 40px,
+  $tablet-margin-top: 40px,
+  $tablet-margin-bottom: 60px,
+  $tablet-padding: 30px,
+  $mobile-margin-top: 30px,
+  $mobile-margin-bottom: 46px,
+  $mobile-padding: 20px
+) {
+  padding-right: $padding-side;
+  padding-left: $padding-side;
+  padding-top: 20px;
+  padding-bottom: 60px;
+  margin: $margin-top auto $margin-bottom auto;
+  background: bg-white-opacity($opacity);
+  border-radius: $border-radius;
+
+  @media (max-width: $desktop) {
+    margin: $desktop-margin-top auto $desktop-margin-bottom auto;
+    padding-right: $desktop-padding;
+    padding-left: $desktop-padding;
+  }
+
+  @media (max-width: $tablet) {
+    margin: $tablet-margin-top auto $tablet-margin-bottom auto;
+    padding-right: $tablet-padding;
+    padding-left: $tablet-padding;
+  }
+
+  @media (max-width: $mobile) {
+    margin: $mobile-margin-top auto $mobile-margin-bottom auto;
+    padding-right: $mobile-padding;
+    padding-left: $mobile-padding;
+  }
+}
+
+@mixin button-style(
+  $padding: 18px 20px,
+  $font-size: 18px,
+  $desktop-padding: 16px 18px,
+  $desktop-font-size: 17px,
+  $tablet-padding: 14px 16px,
+  $tablet-font-size: 16px,
+  $mobile-padding: 12px 14px,
+  $mobile-font-size: 15px
+) {
   flex: 1;
-  padding: 18px 20px;
+  padding: $padding;
   border: 1px solid transparent;
   border-radius: $border-radius-input;
-  font-size: 18px;
+  font-size: $font-size;
   font-weight: 600;
   transition: $transition;
   cursor: pointer;
@@ -56,14 +143,43 @@
     background: $color-primary-light;
     border: 1px solid $color-primary;
   }
+
+  @media (max-width: $desktop) {
+    padding: $desktop-padding;
+    font-size: $desktop-font-size;
+  }
+
+  @media (max-width: $tablet) {
+    padding: $tablet-padding;
+    font-size: $tablet-font-size;
+  }
+
+  @media (max-width: $mobile) {
+    padding: $mobile-padding;
+    font-size: $mobile-font-size;
+  }
 }
 
-@mixin input-style {
-  @include plain-text-style();
+@mixin input-style(
+  $padding: 12px 16px,
+  $height: 56px,
+  $font-size: 18px,
+  $desktop-padding: 11px 15px,
+  $desktop-height: 50px,
+  $desktop-font-size: 17px,
+  $tablet-padding: 10px 14px,
+  $tablet-height: 48px,
+  $tablet-font-size: 16px,
+  $mobile-padding: 9px 12px,
+  $mobile-height: 44px,
+  $mobile-font-size: 15px
+) {
   flex: 1;
   min-width: 200px;
-  padding: 12px 16px;
-  height: 56px;
+  padding: $padding;
+  height: $height;
+  font-size: $font-size;
+  font-weight: 600;
   border-radius: $border-radius-input;
   border: $border;
 
@@ -72,18 +188,75 @@
     opacity: 0.9;
     outline: none;
   }
+
+  @media (max-width: $desktop) {
+    padding: $desktop-padding;
+    height: $desktop-height;
+    font-size: $desktop-font-size;
+  }
+
+  @media (max-width: $tablet) {
+    padding: $tablet-padding;
+    height: $tablet-height;
+    font-size: $tablet-font-size;
+  }
+
+  @media (max-width: $mobile) {
+    padding: $mobile-padding;
+    height: $mobile-height;
+    font-size: $mobile-font-size;
+  }
 }
 
-@mixin filter-style {
-  @include plain-text-style();
+@mixin filter-style(
+  $padding: 12px 18px,
+  $height: 56px,
+  $width: 180px,
+  $font-size: 18px,
+  $desktop-padding: 11px 16px,
+  $desktop-height: 50px,
+  $desktop-width: 170px,
+  $desktop-font-size: 17px,
+  $tablet-padding: 10px 14px,
+  $tablet-height: 48px,
+  $tablet-width: 160px,
+  $tablet-font-size: 16px,
+  $mobile-padding: 9px 12px,
+  $mobile-height: 44px,
+  $mobile-width: 100%,
+  $mobile-font-size: 15px
+) {
   background: $color-primary-light;
-  padding: 12px 18px;
+  padding: $padding;
   border: $border;
-  height: 56px;
-  width: 180px;
+  height: $height;
+  width: $width;
+  font-size: $font-size;
+  font-weight: 600;
   border-radius: $border-radius-input;
   color: $color-text;
   cursor: pointer;
+
+  @media (max-width: $desktop) {
+    padding: $desktop-padding;
+    height: $desktop-height;
+    width: $desktop-width;
+    font-size: $desktop-font-size;
+  }
+
+  @media (max-width: $tablet) {
+    padding: $tablet-padding;
+    height: $tablet-height;
+    width: $tablet-width;
+    font-size: $tablet-font-size;
+  }
+
+  @media (max-width: $mobile) {
+    padding: $mobile-padding;
+    height: $mobile-height;
+    width: $mobile-width;
+    font-size: $mobile-font-size;
+  }
 }
 
 @mixin hover($brightness: 0.9) {
@@ -104,11 +277,29 @@
   }
 }
 
-@mixin page-title {
-  font-size: 50px;
+@mixin page-title(
+  $font-size: 50px,
+  $desktop-font-size: 44px,
+  $tablet-font-size: 38px,
+  $mobile-font-size: 32px
+) {
+  font-size: $font-size;
   text-align: center;
   color: $color-primary;
   margin-bottom: 16px;
+
+  @media (max-width: $desktop) {
+    font-size: $desktop-font-size;
+  }
+
+  @media (max-width: $tablet) {
+    font-size: $tablet-font-size;
+  }
+
+  @media (max-width: $mobile) {
+    font-size: $mobile-font-size;
+    margin-bottom: 12px;
+  }
 }
 
 @mixin title-logo($size: 46px) {

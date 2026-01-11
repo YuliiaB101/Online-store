@@ -2,7 +2,7 @@
 @use "../../styles/variables.scss" as *;
 
 .favourites {
-  @include page-content(60px 120px 120px 120px, 40px);
+  @include page-content($padding-side: 50px);
 
   h2 {
     font-size: 36px;
@@ -25,6 +25,71 @@
       height: 56px;
       margin: 40px 0;
       @include button-style();
+    }
+  }
+
+  // Responsive styles
+  @media (max-width: $desktop) {
+    h2 {
+      font-size: 32px;
+      margin-bottom: 18px;
+    }
+
+    &__empty {
+      padding: 70px 18px;
+      
+      p {
+        font-size: 22px;
+      }
+
+      button {
+        width: 200px;
+        height: 54px;
+        margin: 35px 0;
+      }
+    }
+  }
+
+  @media (max-width: $tablet) {
+    h2 {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    &__empty {
+      padding: 60px 16px;
+      
+      p {
+        font-size: 20px;
+      }
+
+      button {
+        width: 190px;
+        height: 52px;
+        margin: 30px 0;
+      }
+    }
+  }
+
+  @media (max-width: $mobile) {
+    h2 {
+      font-size: 24px;
+      margin-bottom: 14px;
+    }
+
+    &__empty {
+      padding: 50px 14px;
+      
+      p {
+        font-size: 18px;
+      }
+
+      button {
+        width: 180px;
+        height: 48px;
+        margin: 25px 0;
+        font-size: 15px;
+      }
     }
   }
 }

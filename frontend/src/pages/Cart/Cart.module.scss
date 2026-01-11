@@ -2,7 +2,7 @@
 @use "../../styles/variables.scss" as *;
 
 .cart {
-  @include page-content();
+  @include page-content($padding-side: 100px, $desktop-padding: 60px, $tablet-padding: 16px, $mobile-padding: 10px);
   color: $color-primary;
 
   h2 {
@@ -36,7 +36,7 @@
 
   &__content {
     display: grid;
-    grid-template-columns: 1fr 460px;
+    grid-template-columns: 1fr minmax(300px, 460px);
     gap: 50px;
 
     @media (max-width: 968px) {
@@ -58,6 +58,8 @@
     padding: 30px;
     height: fit-content;
     top: 100px;
+    max-width: 460px;
+    width: 100%;
   }
 
   &__summaryTitle {
@@ -115,6 +117,192 @@
       background: $color-error;
       border: 1px solid $color-error;
       color: white;
+    }
+  }
+
+  // Responsive styles          
+  @media (max-width: $desktop) {
+    &__subtitle {
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+
+    &__empty {
+      padding: 70px 18px;
+
+      p {
+        font-size: 22px;
+      }
+
+      button {
+        width: 200px;
+        height: 54px;
+        margin: 35px 0;
+      }
+    }
+
+    &__content {
+      gap: 40px;
+    }
+
+    &__items {
+      gap: 25px;
+    }
+
+    &__summary {
+      padding: 26px;
+      top: 90px;
+      max-width: none;
+    }
+
+    &__summaryTitle {
+      font-size: 38px;
+    }
+
+    &__summaryContent {
+      font-size: 18px;
+    }
+
+    &__summaryRow {
+      font-size: 17px;
+    }
+
+    &__summaryTotal {
+      font-size: 24px;
+      padding: 18px 0 10px 0;
+    }
+
+    &__checkoutButton {
+      padding: 10px;
+    }
+
+    &__clearButton {
+      padding: 10px;
+    }
+  }
+
+  @media (max-width: $tablet) {
+    &__subtitle {
+      font-size: 20px;
+      margin-bottom: 14px;
+    }
+
+    &__empty {
+      padding: 60px 16px;
+
+      p {
+        font-size: 20px;
+      }
+
+      button {
+        width: 190px;
+        height: 52px;
+        margin: 30px 0;
+      }
+    }
+
+    &__content {  
+      gap: 30px;
+    }
+
+    &__items {
+      gap: 30px;
+    }
+
+    &__summary {
+      position: static;
+      padding: 22px;
+    }
+
+    &__summaryTitle {
+      font-size: 34px;
+    }
+
+    &__summaryContent {
+      font-size: 17px;
+    }
+
+    &__summaryRow {
+      font-size: 16px;
+    }
+
+    &__summaryTotal {
+      font-size: 22px;
+      padding: 16px 0 8px 0;
+    }
+
+    &__checkoutButton {
+      padding: 13px;
+    }
+
+    &__clearButton {
+      padding: 13px;
+    }
+  }
+
+  @media (max-width: $mobile) {
+    &__subtitle {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    &__empty {
+      padding: 50px 14px;
+
+      p {
+        font-size: 18px;
+      }
+
+      button {
+        width: 180px;
+        height: 48px;
+        margin: 25px 0;
+        font-size: 15px;
+      }
+    }
+
+    &__content {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    &__items {
+      gap: 20px;
+    }
+
+    &__summary {
+      padding: 18px;
+    }
+
+    &__summaryTitle {
+      font-size: 28px;
+    }
+
+    &__summaryContent {
+      font-size: 16px;
+      padding: 10px 0;
+    }
+
+    &__summaryRow {
+      font-size: 15px;
+      padding: 6px 0;
+    }
+
+    &__summaryTotal {
+      font-size: 20px;
+      padding: 14px 0 6px 0;
+      margin-top: 8px;
+    }
+
+    &__checkoutButton {
+      padding: 12px;
+      font-size: 16px;
+    }
+
+    &__clearButton {
+      padding: 12px;
+      font-size: 16px;
+      margin-top: 8px;
     }
   }
 }

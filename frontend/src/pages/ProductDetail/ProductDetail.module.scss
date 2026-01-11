@@ -36,7 +36,7 @@
     padding: 15px 10px 40px 10px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: 7%;
 
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
@@ -46,7 +46,6 @@
 
   &__image {
     width: 100%;
-    height: 500px;
     object-fit: cover;
     border: 1px solid $color-primary;
     border-radius: $border-radius;
@@ -71,12 +70,13 @@
     font-size: 36px;
     font-weight: 700;
     margin-bottom: 20px;
+    line-height: normal;
     color: $color-primary-dark;
   }
 
   &__favourite {
     position: absolute;
-    top: -20px;
+    top: -40px;
     right: -10px;
     background: bg-beige-opacity(0.8);
     border: none;
@@ -163,6 +163,188 @@
       border: 2px solid $color-primary;
     }
   }
+
+  &__button {
+    @include button-style();
+  }
+
+  // Responsive styles
+  @media (max-width: $desktop) {
+    &__back {
+      font-size: 24px;
+      gap: 8px;
+
+      &Icon {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    &__content {
+      padding: 12px 8px;
+    }
+
+    &__title {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    &__favourite {
+      width: 56px;
+      height: 56px;
+    }
+
+    &__favouriteIcon {
+      width: 30px;
+      height: 30px;
+    }
+
+    &__price {
+      font-size: 38px;
+      margin-bottom: 18px;
+    }
+
+    &__rating {
+      font-size: 18px;
+    }
+
+    &__description {
+      font-size: 17px;
+    }
+
+    &__quantity {
+      width: 74px;
+      font-size: 24px;
+    }
+  }
+
+  @media (max-width: $tablet) {
+    &__back {
+      font-size: 22px;
+      gap: 6px;
+
+      &Icon {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    &__content {
+      grid-template-columns: 1fr;
+      gap: 30px;
+      padding: 10px 6px 30px 6px;
+    }
+
+    &__image {
+      height: 400px;
+    }
+
+    &__title {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    &__favourite {
+      width: 48px;
+      height: 48px;
+      top: -16px;
+      right: -6px;
+    }
+
+    &__favouriteIcon {
+      width: 26px;
+      height: 26px;
+    }
+
+    &__price {
+      font-size: 34px;
+      margin-bottom: 16px;
+    }
+
+    &__rating {
+      font-size: 17px;
+    }
+
+    &__description {
+      font-size: 16px;
+    }
+
+    &__likes {
+      margin-bottom: 25px;
+    }
+
+    &__quantity {
+      width: 70px;
+      font-size: 22px;
+    }
+  }
+
+  @media (max-width: $mobile) {
+    &__back {
+      font-size: 18px;
+      gap: 5px;
+      padding: 8px;
+
+      &Icon {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    &__content {
+      gap: 20px;
+      padding: 8px 4px 25px 4px;
+    }
+
+    &__image {
+      height: 300px;
+    }
+
+    &__category {
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    &__title {
+      font-size: 22px;
+      margin-bottom: 14px;
+    }
+
+    &__favourite {
+      width: 36px;
+      height: 36px;
+      top: -12px;
+      right: -4px;
+    }
+
+    &__favouriteIcon {
+      width: 20px;
+      height: 20px;
+    }
+
+    &__price {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    &__rating {
+      font-size: 15px;
+
+      span {
+        font-size: 15px;
+      }
+    }
+
+    &__description {
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    &__likes {
+      margin-bottom: 20px;
+      gap: 8px;
+    }
+  }
 }
 
 .loading {
@@ -172,4 +354,9 @@
   min-height: 60vh;
   font-size: 18px;
   color: $color-text;
+
+  @media (max-width: $mobile) {
+    font-size: 16px;
+    min-height: 50vh;
+  }
 }

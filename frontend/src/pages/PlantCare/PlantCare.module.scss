@@ -85,4 +85,176 @@
       @include link-style();
     }
   }
+
+  // Responsive styles
+  @media (max-width: $desktop) {
+    font-size: 20px;
+
+    h2 {
+      font-size: 32px;
+      margin-bottom: 18px;
+    }
+
+    h3 {
+      font-size: 22px;
+      margin: 18px 0 9px 0;
+    }
+
+    &__hero {
+      margin-bottom: 35px;
+
+      h1 {
+        margin-bottom: 18px;
+      }
+
+      p {
+        font-size: 22px;
+      }
+    }
+
+    &__section {
+      margin: 22px auto;
+      padding: 22px 40px;
+      margin-bottom: 35px;
+
+      h2 {
+        font-size: 26px;
+        margin-bottom: 13px;
+      }
+
+      p,
+      ul {
+        padding: 0 18px;
+        font-size: 19px;
+      }
+
+      ul {
+        margin: 18px 35px;
+
+        li {
+          margin-bottom: 7px;
+        }
+      }
+    }
+
+    &__footer {
+      font-size: 20px;
+      margin-top: 35px;
+    }
+  }
+
+  @media (max-width: $tablet) {
+    font-size: 18px;
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      font-size: 20px;
+      margin: 16px 0 8px 0;
+    }
+
+    &__hero {
+      margin-bottom: 30px;
+
+      h1 {
+        margin-bottom: 16px;
+      }
+
+      p {
+        font-size: 20px;
+      }
+    }
+
+    &__section {
+      margin: 10px auto;
+      padding: 10px 15px;
+      margin-bottom: 20px;
+
+      h2 {
+        font-size: 24px;
+        margin-bottom: 12px;
+      }
+
+      p,
+      ul {
+        padding: 0 15px;
+        font-size: 18px;
+      }
+
+      ul {
+        margin: 16px 30px;
+
+        li {
+          margin-bottom: 6px;
+        }
+      }
+    }
+
+    &__footer {
+      font-size: 18px;
+      margin-top: 30px;
+    }
+  }
+
+  @media (max-width: $mobile) {
+    font-size: 16px;
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      font-size: 18px;
+      margin: 14px 0 7px 0;
+    }
+
+    &__hero {
+      margin-bottom: 25px;
+
+      h1 {
+        margin-bottom: 14px;
+      }
+
+      p {
+        font-size: 18px;
+        line-height: 1.5;
+      }
+    }
+
+    &__section {
+      margin: 18px auto;
+      padding: 18px 20px;
+      margin-bottom: 25px;
+      scroll-margin-top: 80px;
+
+      h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      p,
+      ul {
+        padding: 0 10px;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      ul {
+        margin: 14px 20px;
+
+        li {
+          margin-bottom: 5px;
+        }
+      }
+    }
+
+    &__footer {
+      font-size: 16px;
+      margin-top: 25px;
+    }
+  }
 }

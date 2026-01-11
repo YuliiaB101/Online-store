@@ -3,7 +3,7 @@
 
 .filters {
   &__quick {
-    height: 50px;
+    min-height: 50px;
     display: flex;
     gap: 10px;
     margin-bottom: 16px;
@@ -11,6 +11,7 @@
 
   &__quickBtn {
     flex: 1;
+    min-width: 140px;
     padding: 8px 16px;
     border: 1px solid $color-primary;
     background: transparent;
@@ -66,6 +67,96 @@
 
     &:hover {
       opacity: 0.9;
+    }
+  }
+
+  // Responsive styles
+  @media (max-width: $desktop) {
+    &__quick {
+      min-height: 44px;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    &__quickBtn {
+      padding: 7px 14px;
+      font-size: 18px;
+    }
+
+    &__row {
+      gap: 12px;
+    }
+
+    &__search,
+    &__select {
+      width: 140px;
+      height: 52px;
+      font-size: 17px;
+    }
+
+    &__select {
+      width: 170px;
+    }
+
+    &__clear {
+      max-width: 130px;
+    }
+  }
+
+  @media (max-width: $tablet) {
+    &__quickBtn {
+      padding: 6px 12px;
+      font-size: 16px;
+      flex: 1 1 calc(50% - 4px);
+    }
+
+    &__row {
+      gap: 10px;
+      justify-content: center;
+    }
+
+    &__search,
+    &__select {
+      min-width: 160px;
+      height: 48px;
+      font-size: 16px;
+    }
+
+    &__clear {
+      max-width: 120px;
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: $mobile) {
+    &__quick {
+      display: none;
+    }
+
+    &__row {
+      gap: 8px;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    &__search,
+    &__select {
+      width: 100%;
+      min-width: auto;
+      height: 44px;
+      font-size: 15px;
+      padding: 10px 14px;
+    }
+
+    &__select {
+      width: 100%;
+    }
+
+    &__clear {
+      max-width: none;
+      width: 100%;
+      font-size: 15px;
     }
   }
 }

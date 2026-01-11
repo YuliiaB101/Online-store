@@ -2,7 +2,8 @@
 @use "../../styles/variables.scss" as *;
 
 .products {
-  @include page-content(60px 120px 120px 120px, 40px);
+  @include page-content($padding-side: 50px, $desktop-margin: 40px, $tablet-margin: 20px, $mobile-margin: 15px,
+    $desktop-padding: 40px, $tablet-padding: 30px, $mobile-padding: 20px);
 
   h2 {
     color: $color-primary;
@@ -21,5 +22,54 @@
     font-weight: 700;
     @include plain-text-style;
     color: $color-primary;
+  }
+
+  // Responsive styles
+  @media (max-width: $desktop) {
+    h2 {
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+
+    &__info {
+      margin: 12px 0 25px 0;
+    }
+
+    &__count {
+      font-size: 22px;
+    }
+  }
+
+  @media (max-width: $tablet) {
+    h2 {
+      font-size: 20px;
+      margin-bottom: 25px;
+    }
+
+    &__info {
+      margin: 10px 0 20px 0;
+      text-align: center;
+    }
+
+    &__count {
+      font-size: 20px;
+    }
+  }
+
+  @media (max-width: $mobile) {
+    @include page-content(30px 20px 40px 20px, 15px);
+
+    h2 {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    &__info {
+      margin: 8px 0 16px 0;
+    }
+
+    &__count {
+      font-size: 18px;
+    }
   }
 }
