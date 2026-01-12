@@ -6,7 +6,7 @@ The project focuses on a calm, nature-inspired user interface with soft shapes a
 
 FLORIA demonstrates a **production-oriented frontend architecture**, structured state management, secure authentication flows and seamless backend integration within a realistic business domain.
 
-🌐 **[Live Demo](your-deployment-url-here)** 
+🌐 **[Live Demo](your-deployment-url-here)**
 
 ---
 
@@ -21,13 +21,14 @@ FLORIA demonstrates a **production-oriented frontend architecture**, structured 
 ✔ Informational pages commonly used in modern e-commerce  
 ✔ REST API built with Node.js and Express  
 ✔ PostgreSQL database integration  
-✔ Fully responsive UI with SCSS Modules 
+✔ Fully responsive UI with SCSS Modules
 
 ---
 
 ## Pages & Features
 
 ### Main Pages
+
 - **Home** – Hero section, featured products, curated collections
 - **Products** – Product catalog with filters and sorting
 - **Product Detail** – Individual product view with add to cart and favourites
@@ -37,12 +38,14 @@ FLORIA demonstrates a **production-oriented frontend architecture**, structured 
 - **Search** – Global search with real-time filtering
 
 ### Authentication
+
 - **Login** – Email/password authentication with validation
 - **Register** – User registration with Formik + Yup
 - Protected routes for authenticated users
 - JWT-based session handling
 
 ### Information Pages
+
 - **About Us** – Brand values and mission
 - **Contacts** – Contact information, business hours, location
 - **Plant Care** – Care instructions, tips and FAQ
@@ -68,12 +71,14 @@ Special attention was paid to usability and clarity:
 The application features a **fully responsive layout**, optimized for modern devices.
 
 ### Breakpoints
+
 - **Mobile**: ≥ 412px
 - **Tablet**: ≥ 768px
 - **Desktop**: ≥ 1024px
 - **Wide screens**: ≥ 1440px
 
 ### Adaptive Features
+
 - Flexible grid layouts (1–5 columns)
 - Touch-friendly controls
 - Adaptive typography and spacing
@@ -103,25 +108,75 @@ Redux Toolkit with persistence
 
 ---
 
+## Setup
+
+<details>
+<summary>Click to expand deployment steps</summary>
+
+### Deployment on Render
+
+<details>
+<summary><b>Quick Start</b></summary>
+
+1. Push code to GitHub
+2. Connect to Render: Go to [render.com](https://render.com) and connect your GitHub repo
+3. Auto-deploy: Render detects `render.yaml` and creates all services automatically
+4. Initialize Database:
+   - Go to Render Dashboard → Your PostgreSQL database → Shell tab
+   - Open `backend/config/database.sql` in your editor
+   - Copy entire file contents and paste into Render Shell
+   - Click Run to create all tables and insert data (products, categories, etc.)
+
+</details>
+
+<details>
+<summary><b>Manual Setup</b></summary>
+
+1. PostgreSQL Database:
+
+   - Create new PostgreSQL database on Render
+   - Go to database **Shell** tab
+   - Run entire `backend/config/database.sql` script
+
+2. Backend Web Service:
+
+   - Runtime: Node
+   - Build: `cd backend && yarn install && yarn build`
+   - Start: `cd backend && yarn start`
+   - Environment variables:
+     - `DATABASE_URL` (copy from database connection string)
+     - `JWT_SECRET` (generate random string)
+     - `PORT=5000`
+     - `NODE_ENV=production`
+
+3. Frontend Static Site:
+   - Build: `cd frontend && yarn install && yarn build`
+   - Publish: `frontend/build`
+   - Environment variables:
+     - `REACT_APP_API_URL` (backend URL + /api, e.g. `https://floria-backend.onrender.com/api`)
+
+</details>
+
 <details>
 <summary><b>Local Development Setup</b></summary>
 
-## Getting Started
+#### Prerequisites
 
-### Prerequisites
 - Node.js 18+
 - Yarn
 - PostgreSQL 15+
 
-### Setup Instructions
+#### Setup Instructions
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 cd Online-store
 ```
 
 2. Create environment file:
+
 ```bash
 cp .env.example .env
 ```
@@ -129,6 +184,7 @@ cp .env.example .env
 3. Edit `.env` file and configure your database credentials and JWT secret
 
 4. Setup and run the backend:
+
 ```bash
 cd backend
 yarn install
@@ -136,6 +192,7 @@ yarn dev
 ```
 
 5. Setup and run the frontend (in a new terminal):
+
 ```bash
 cd frontend
 yarn install
@@ -143,13 +200,18 @@ yarn start
 ```
 
 6. Initialize the database:
+
 ```bash
 psql -U postgres -d online_store -f backend/config/database.sql
 ```
 
 7. Access the application:
+
 - Frontend: http://localhost:3000
 - Backend API: http://localhost:5000
+
+</details>
+</details>
 
 ---
 
@@ -158,6 +220,7 @@ psql -U postgres -d online_store -f backend/config/database.sql
 FLORIA was created as a **portfolio and learning project** to simulate a realistic e-commerce application.
 
 The main goals were:
+
 - clean and maintainable frontend architecture
 - predictable state management
 - reusable and scalable UI components
@@ -177,6 +240,7 @@ FLORIA is my **second full-stack project** and my **first application built with
 During development, I gained hands-on experience across the entire application lifecycle — from UI design decisions to backend integration and state management.
 
 ### Frontend Development
+
 - Building a scalable React application using **TypeScript**
 - Designing reusable, composable UI components
 - Managing global state with **Redux Toolkit**
@@ -187,12 +251,14 @@ During development, I gained hands-on experience across the entire application l
 - Creating responsive layouts with **SCSS Modules** and custom breakpoints
 
 ### UX & UI Design
+
 - Translating design ideas into consistent, maintainable components
 - Working with spacing, typography and visual hierarchy
 - Designing calm, accessible interfaces suitable for e-commerce
 - Understanding how layout and feedback affect user trust
 
 ### Backend & Data Handling
+
 - Designing a relational database schema using **PostgreSQL**
 - Working with real product, category and user data
 - Implementing REST APIs with **Node.js and Express**
@@ -202,6 +268,7 @@ During development, I gained hands-on experience across the entire application l
 - Understanding data consistency between client and server
 
 ### Architecture & Best Practices
+
 - Separating concerns between components, slices and services
 - Structuring Redux slices for scalability
 - Writing maintainable and readable code
@@ -210,6 +277,7 @@ During development, I gained hands-on experience across the entire application l
 - Understanding trade-offs between simplicity and flexibility
 
 ### Development Process
+
 - Planning features step by step instead of all at once
 - Incrementally improving UI and UX based on testing and feedback
 - Learning how to search, read and apply documentation effectively
