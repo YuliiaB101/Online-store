@@ -68,11 +68,10 @@ Special attention was paid to usability and clarity:
 The application features a **fully responsive layout**, optimized for modern devices.
 
 ### Breakpoints
-- **Mobile**: 412px – 767px  
-- **Tablet**: 768px – 1023px  
-- **Laptop**: 1024px – 1279px  
-- **Desktop**: 1280px – 1439px  
-- **Wide Screens**: 1440px+
+- **Mobile**: ≥ 412px
+- **Tablet**: ≥ 768px
+- **Desktop**: ≥ 1024px
+- **Wide screens**: ≥ 1440px
 
 ### Adaptive Features
 - Flexible grid layouts (1–5 columns)
@@ -102,21 +101,19 @@ REST, Axios
 **State Management**  
 Redux Toolkit with persistence
 
-**Deployment**  
-Docker, Docker Compose, Nginx
-
 ---
 
 <details>
-<summary><b>Getting Started & Deployment Guide</b></summary>
+<summary><b>Getting Started</b></summary>
 
 ## Getting Started
 
 ### Prerequisites
-- Docker and Docker Compose installed
-- (Alternative) Node.js 18+, Yarn, PostgreSQL 15+
+- Node.js 18+
+- Yarn
+- PostgreSQL 15+
 
-### Quick Start with Docker
+### Setup Instructions
 
 1. Clone the repository:
 ```bash
@@ -129,79 +126,30 @@ cd Online-store
 cp .env.example .env
 ```
 
-3. Edit `.env` file and set your configuration (especially `JWT_SECRET` for production)
+3. Edit `.env` file and configure your database credentials and JWT secret
 
-4. Build and run with Docker Compose:
-```bash
-docker-compose up --build
-```
-
-5. Access the application:
-- Frontend: http://localhost
-- Backend API: http://localhost:5000
-- Database: localhost:5432
-
-6. Stop the application:
-```bash
-docker-compose down
-```
-
-To remove all data including database volumes:
-```bash
-docker-compose down -v
-```
-
-### Manual Setup (Without Docker)
-
-#### Backend Setup
+4. Setup and run the backend:
 ```bash
 cd backend
 yarn install
-cp ../.env.example .env
-# Configure database credentials in .env
 yarn dev
 ```
 
-#### Frontend Setup
+5. Setup and run the frontend (in a new terminal):
 ```bash
 cd frontend
 yarn install
 yarn start
 ```
 
-#### Database Setup
-Create a PostgreSQL database and run the SQL script:
+6. Initialize the database:
 ```bash
 psql -U postgres -d online_store -f backend/config/database.sql
 ```
 
----
-
-## Docker Architecture
-
-The application uses a **multi-container Docker setup**:
-
-### Services
-- **Frontend**: React app served by Nginx (port 80)
-- **Backend**: Node.js API server (port 5000)
-- **PostgreSQL**: Database server (port 5432)
-
-### Features
-- **Multi-stage builds** for optimized image sizes
-- **Health checks** for service reliability
-- **Volume persistence** for database data
-- **Network isolation** with custom Docker network
-- **Production-ready Nginx** configuration with gzip, caching, and security headers
-
-### Production Deployment Notes
-- Change `JWT_SECRET` in `.env` to a secure random string
-- Update `DB_PASSWORD` to a strong password
-- Consider using Docker secrets for sensitive data
-- Set up SSL/TLS certificates for HTTPS
-- Configure proper firewall rules
-- Use environment-specific `.env` files
-
-</details>
+7. Access the application:
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:5000
 
 ---
 
