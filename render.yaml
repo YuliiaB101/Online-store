@@ -14,8 +14,9 @@ services:
     runtime: node
     plan: free
     region: frankfurt
-    buildCommand: cd backend && yarn install && yarn build
-    startCommand: cd backend && yarn start
+    rootDirectory: backend
+    buildCommand: yarn install && yarn build
+    startCommand: yarn start
     envVars:
       - key: NODE_ENV
         value: production
@@ -29,15 +30,14 @@ services:
         generateValue: true
     healthCheckPath: /api/products
 
-  # Frontend Static Site
-  - type: web
+  # Frontend SPA Static Site
+  - type: static
     name: floria-frontend
-    runtime: static
     plan: free
     region: frankfurt
+    rootDirectory: frontend
     buildCommand: yarn install && yarn build
     staticPublishPath: build
-    rootDirectory: frontend
     envVars:
       - key: REACT_APP_API_URL
         fromService:
