@@ -1,0 +1,49 @@
+services:
+  # PostgreSQL Database
+  - type: pserv
+    name: floria-db
+    plan: free
+    databaseName: online_store
+    databaseUser: floria_user
+    region: frankfurt
+    ipAllowList: []
+
+  # Backend API
+  - type: web
+    name: floria-backend
+    runtime: node
+    plan: free
+    region: frankfurt
+    buildCommand: cd backend && yarn install && yarn build
+    startCommand: cd backend && yarn start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: DATABASE_URL
+        fromDatabase:
+          name: floria-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+    healthCheckPath: /api/products
+
+  # Frontend Static Site
+  - type: web
+    name: floria-frontend
+    runtime: static
+    plan: free
+    region: frankfurt
+    buildCommand: cd frontend && yarn install && yarn build
+    staticPublishPath: ./frontend/build
+    envVars:
+      - key: REACT_APP_API_URL
+        fromService:
+          type: web
+          name: floria-backend
+          property: url
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

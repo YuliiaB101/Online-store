@@ -104,7 +104,7 @@ Redux Toolkit with persistence
 ---
 
 <details>
-<summary><b>Getting Started</b></summary>
+<summary><b>Local Development Setup</b></summary>
 
 ## Getting Started
 
