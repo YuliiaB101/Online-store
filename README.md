@@ -6,6 +6,8 @@ The project focuses on a calm, nature-inspired user interface with soft shapes a
 
 FLORIA demonstrates a **production-oriented frontend architecture**, structured state management, secure authentication flows and seamless backend integration within a realistic business domain.
 
+🌐 **[Live Demo](your-deployment-url-here)** 
+
 ---
 
 ## Key Features
@@ -19,7 +21,7 @@ FLORIA demonstrates a **production-oriented frontend architecture**, structured 
 ✔ Informational pages commonly used in modern e-commerce  
 ✔ REST API built with Node.js and Express  
 ✔ PostgreSQL database integration  
-✔ Fully responsive UI with SCSS Modules (mobile-first)  
+✔ Fully responsive UI with SCSS Modules 
 
 ---
 
@@ -73,12 +75,11 @@ The application features a **fully responsive layout**, optimized for modern dev
 - **Wide Screens**: 1440px+
 
 ### Adaptive Features
-- Flexible grid layouts (1–6 columns)
-- Mobile-first navigation
+- Flexible grid layouts (1–5 columns)
 - Touch-friendly controls
 - Adaptive typography and spacing
 - Collapsible filters on small screens
-- Full-width forms on mobile
+- Responsive navigation optimized for mobile devices
 
 **Minimum supported screen width**: 412px
 
@@ -101,6 +102,107 @@ REST, Axios
 **State Management**  
 Redux Toolkit with persistence
 
+**Deployment**  
+Docker, Docker Compose, Nginx
+
+---
+
+<details>
+<summary><b>Getting Started & Deployment Guide</b></summary>
+
+## Getting Started
+
+### Prerequisites
+- Docker and Docker Compose installed
+- (Alternative) Node.js 18+, Yarn, PostgreSQL 15+
+
+### Quick Start with Docker
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd Online-store
+```
+
+2. Create environment file:
+```bash
+cp .env.example .env
+```
+
+3. Edit `.env` file and set your configuration (especially `JWT_SECRET` for production)
+
+4. Build and run with Docker Compose:
+```bash
+docker-compose up --build
+```
+
+5. Access the application:
+- Frontend: http://localhost
+- Backend API: http://localhost:5000
+- Database: localhost:5432
+
+6. Stop the application:
+```bash
+docker-compose down
+```
+
+To remove all data including database volumes:
+```bash
+docker-compose down -v
+```
+
+### Manual Setup (Without Docker)
+
+#### Backend Setup
+```bash
+cd backend
+yarn install
+cp ../.env.example .env
+# Configure database credentials in .env
+yarn dev
+```
+
+#### Frontend Setup
+```bash
+cd frontend
+yarn install
+yarn start
+```
+
+#### Database Setup
+Create a PostgreSQL database and run the SQL script:
+```bash
+psql -U postgres -d online_store -f backend/config/database.sql
+```
+
+---
+
+## Docker Architecture
+
+The application uses a **multi-container Docker setup**:
+
+### Services
+- **Frontend**: React app served by Nginx (port 80)
+- **Backend**: Node.js API server (port 5000)
+- **PostgreSQL**: Database server (port 5432)
+
+### Features
+- **Multi-stage builds** for optimized image sizes
+- **Health checks** for service reliability
+- **Volume persistence** for database data
+- **Network isolation** with custom Docker network
+- **Production-ready Nginx** configuration with gzip, caching, and security headers
+
+### Production Deployment Notes
+- Change `JWT_SECRET` in `.env` to a secure random string
+- Update `DB_PASSWORD` to a strong password
+- Consider using Docker secrets for sensitive data
+- Set up SSL/TLS certificates for HTTPS
+- Configure proper firewall rules
+- Use environment-specific `.env` files
+
+</details>
+
 ---
 
 ## Why This Project
@@ -114,7 +216,7 @@ The main goals were:
 - robust form validation
 - secure authentication flows
 - clear separation between frontend and backend
-- responsive, mobile-first design
+- responsive design
 - user trust through transparency and structure
 
 ---
@@ -135,7 +237,6 @@ During development, I gained hands-on experience across the entire application l
 - Handling form validation and error states in a user-friendly way
 - Improving perceived performance using skeleton loaders and lazy loading
 - Creating responsive layouts with **SCSS Modules** and custom breakpoints
-- Applying a **mobile-first approach** in real UI scenarios
 
 ### UX & UI Design
 - Translating design ideas into consistent, maintainable components
@@ -171,7 +272,6 @@ During development, I gained hands-on experience across the entire application l
 
 ## Next Steps
 
-- Improving accessibility (ARIA attributes, keyboard navigation)
 - Adding automated tests
 - Performance optimizations
 - Further UX refinements
