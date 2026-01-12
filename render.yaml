@@ -36,7 +36,7 @@ services:
     plan: free
     region: frankfurt
     rootDirectory: frontend
-    buildCommand: corepack enable && yarn install && yarn build
+    buildCommand: yarn install && yarn build
     staticPublishPath: build
     envVars:
       - key: REACT_APP_API_URL
