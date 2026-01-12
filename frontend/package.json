@@ -16,7 +16,7 @@
     "react-router-dom": "^6.18.0",
     "sass": "^1.69.5",
     "typescript": "^5.9.3",
-    "yap": "^0.0.2"
+    "yup": "^1.7.1"
   },
   "scripts": {
     "start": "react-scripts start",
