@@ -35,8 +35,9 @@ services:
     runtime: static
     plan: free
     region: frankfurt
-    buildCommand: cd frontend && yarn install && yarn build
-    staticPublishPath: ./frontend/build
+    buildCommand: yarn install && yarn build
+    staticPublishPath: build
+    rootDirectory: frontend
     envVars:
       - key: REACT_APP_API_URL
         fromService:
