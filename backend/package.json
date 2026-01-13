@@ -4,9 +4,9 @@
   "description": "Backend for online store",
   "main": "server.js",
   "scripts": {
+    "build": "tsc",
     "start": "node dist/server.js",
-    "dev": "nodemon --exec ts-node server.ts",
-    "build": "tsc"
+    "dev": "nodemon --exec ts-node server.ts"
   },
   "keywords": [],
   "author": "",
