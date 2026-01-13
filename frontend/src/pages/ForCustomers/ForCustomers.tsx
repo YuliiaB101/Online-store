@@ -74,7 +74,7 @@ const ForCustomers: React.FC = () => {
             damaged or unhealthy
           </li>
           <li>Please include photos of the plant and packaging</li>
-          <li>Approved refunds are processed within 5–7 business days</li>
+          <li>Approved refunds are processed within 5 - 7 business days</li>
           <li>
             Returns for change of mind are not accepted due to the perishable
             nature of plants
