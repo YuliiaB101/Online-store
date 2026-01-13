@@ -31,7 +31,7 @@ services:
     healthCheckPath: /api/products
 
   # Frontend SPA Static Site
-  - type: static
+  - type: static_site
     name: floria-frontend
     plan: free
     region: frankfurt
