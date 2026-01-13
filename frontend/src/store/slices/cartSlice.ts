@@ -89,7 +89,7 @@ const cartSlice = createSlice({
         state.items = action.payload;
       })
       .addCase(fetchCart.rejected, (state, action) => {
-        state.error = action.error.message || 'Ошибка загрузки корзины';
+        state.error = action.error.message || 'Failed to load cart';
       })
       .addCase(addToCart.fulfilled, (state, action: PayloadAction<CartItem>) => {
         const existingItem = state.items.find((item) => item.id === action.payload.id);

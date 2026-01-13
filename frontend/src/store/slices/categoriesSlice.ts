@@ -30,7 +30,7 @@ const categoriesSlice = createSlice({
         state.items = action.payload;
       })
       .addCase(fetchCategories.rejected, (state, action) => {
-        state.error = action.error.message || 'Ошибка загрузки категорий';
+        state.error = action.error.message || 'Failed to load categories';
       });
   },
 });
