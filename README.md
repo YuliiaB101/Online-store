@@ -6,7 +6,7 @@ The project focuses on a calm, nature-inspired user interface with soft shapes a
 
 FLORIA demonstrates a **production-oriented frontend architecture**, structured state management, secure authentication flows and seamless backend integration within a realistic business domain.
 
-🌐 **[Live Demo](your-deployment-url-here)**
+🌐 **[Live Demo](https://online-store-ohub.onrender.com)**
 
 ---
 
