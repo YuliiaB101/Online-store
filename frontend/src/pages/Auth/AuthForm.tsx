@@ -5,7 +5,7 @@ import styles from './Auth.module.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../types';
-import { login, register } from '../../store/slices/authSlice';
+import { login, register, clearError } from '../../store/slices/authSlice';
 
 interface AuthFormProps {
   mode: 'login' | 'register';
@@ -25,13 +25,18 @@ interface RegisterValues {
 const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
+  const { isAuthenticated, error } = useSelector((state: RootState) => state.auth);
 
   useEffect(() => {
     if (isAuthenticated) {
       navigate('/home');
     }
   }, [isAuthenticated, navigate]);
+
+  // Clear error when component mounts or mode changes
+  useEffect(() => {
+    dispatch(clearError() as any);
+  }, [mode, dispatch]);
 
   const isRegisterMode = mode === 'register';
 
@@ -73,6 +78,13 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
       <h1>
         {isRegisterMode ? 'Register' : 'Login'}
       </h1>
+
+      {error && (
+        <div className={styles.auth__error}>
+          {error}
+        </div>
+      )}
+
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
