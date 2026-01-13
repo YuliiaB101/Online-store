@@ -116,20 +116,6 @@ Redux Toolkit with persistence
 ### Deployment on Render
 
 <details>
-<summary><b>Quick Start</b></summary>
-
-1. Push code to GitHub
-2. Connect to Render: Go to [render.com](https://render.com) and connect your GitHub repo
-3. Auto-deploy: Render detects `render.yaml` and creates all services automatically
-4. Initialize Database:
-   - Go to Render Dashboard → Your PostgreSQL database → Shell tab
-   - Open `backend/config/database.sql` in your editor
-   - Copy entire file contents and paste into Render Shell
-   - Click Run to create all tables and insert data (products, categories, etc.)
-
-</details>
-
-<details>
 <summary><b>Manual Setup</b></summary>
 
 1. PostgreSQL Database:
@@ -142,7 +128,7 @@ Redux Toolkit with persistence
 
    - Runtime: Node
    - Build: `cd backend && yarn install && yarn build`
-   - Start: `cd backend && yarn start`
+   - Start: `cd backend && yarn dev`
    - Environment variables:
      - `DATABASE_URL` (copy from database connection string)
      - `JWT_SECRET` (generate random string)
