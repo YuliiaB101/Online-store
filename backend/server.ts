@@ -1,11 +1,9 @@
 import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-
 import authRoutes from './routes/auth';
 import productsRoutes from './routes/products';
 import categoriesRoutes from './routes/categories';
-import bannersRoutes from './routes/banners';
 import favouritesRoutes from './routes/favourites';
 import cartRoutes from './routes/cart';
 
@@ -21,7 +19,6 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productsRoutes);
 app.use('/api/categories', categoriesRoutes);
-app.use('/api/banners', bannersRoutes);
 app.use('/api/favourites', favouritesRoutes);
 app.use('/api/cart', cartRoutes);
 
