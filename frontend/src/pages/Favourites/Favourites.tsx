@@ -10,15 +10,10 @@ const Favourites = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { items } = useSelector((state: RootState) => state.favourites);
-  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
 
   useEffect(() => {
-    if (!isAuthenticated) {
-      navigate('/login');
-      return;
-    }
     dispatch(fetchFavourites() as any);
-  }, [dispatch, isAuthenticated, navigate]);
+  }, [dispatch]);
 
   if (items.length === 0) {
     return (

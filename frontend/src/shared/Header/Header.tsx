@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { logout } from '../../store/slices/authSlice';
+import { logout, useAuth } from '../../store/slices/authSlice';
 import { fetchCart, clearCartState } from '../../store/slices/cartSlice';
 import { fetchFavourites, clearFavouritesState } from '../../store/slices/favouritesSlice';
 import { RootState } from '../../types';
@@ -12,7 +12,7 @@ const Header: React.FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const { isAuthenticated, user } = useSelector((state: RootState) => state.auth);
+  const { isAuthenticated, user } = useAuth();
   const { items: cartItems } = useSelector((state: RootState) => state.cart);
   const { items: favouriteItems } = useSelector((state: RootState) => state.favourites);
 

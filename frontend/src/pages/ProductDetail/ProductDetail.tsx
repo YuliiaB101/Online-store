@@ -6,6 +6,7 @@ import { addToCart } from '../../store/slices/cartSlice';
 import { addToFavourites, removeFromFavourites } from '../../store/slices/favouritesSlice';
 import { addToast } from '../../store/slices/toastSlice';
 import { RootState, Product } from '../../types';
+import { useAuth } from '../../store/slices/authSlice';
 import styles from './ProductDetail.module.scss';
 
 const ProductDetail = () => {
@@ -15,7 +16,7 @@ const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
 
   const { currentProduct: product } = useSelector((state: RootState) => state.products);
-  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
+  const { isAuthenticated } = useAuth();
   const { items: Favourites } = useSelector((state: RootState) => state.favourites);
 
   const isFavourite = Favourites.some((fav: Product) => fav.id === product?.id); useEffect(() => {

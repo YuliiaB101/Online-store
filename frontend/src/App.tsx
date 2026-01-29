@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { JSX, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
@@ -7,7 +7,14 @@ import ScrollToTop from './components/ScrollToTop';
 import Toast from './components/Toast/Toast';
 import { Home, Products, ProductDetail, Login, Register, Cart, Checkout, Favourites, AboutUs, ForCustomers, Contacts, Search, PlantCare } from './pages/index';
 import Footer from './shared/Footer/Footer';
+import { useAuth } from './store/slices/authSlice';
 import './styles/styles.scss';
+
+const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
+  const { user } = useAuth();
+  if (!user) return <Navigate to="/login" replace />;
+  return children;
+};
 
 const AppContent: React.FC = () => {
   const location = useLocation();
@@ -37,14 +44,14 @@ const AppContent: React.FC = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
           <Route path="/favourites" element={<Favourites />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/for-customers" element={<ForCustomers />} />
           <Route path="/plant-care" element={<PlantCare />} />
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
         </Routes>
       </main>
       <Footer />

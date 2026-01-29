@@ -3,9 +3,8 @@ import { Formik, Form, Field, ErrorMessage, FormikProps } from 'formik';
 import * as Yup from 'yup';
 import styles from './Auth.module.scss';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../types';
-import { login, register, clearError } from '../../store/slices/authSlice';
+import { useDispatch } from 'react-redux';
+import { login, register, clearError, useAuth } from '../../store/slices/authSlice';
 
 interface AuthFormProps {
   mode: 'login' | 'register';
@@ -25,7 +24,7 @@ interface RegisterValues {
 const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isAuthenticated, error } = useSelector((state: RootState) => state.auth);
+  const { isAuthenticated, error } = useAuth();
 
   useEffect(() => {
     if (isAuthenticated) {

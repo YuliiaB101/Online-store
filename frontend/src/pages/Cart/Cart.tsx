@@ -10,15 +10,10 @@ const Cart = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { items } = useSelector((state: RootState) => state.cart);
-  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
 
   useEffect(() => {
-    if (!isAuthenticated) {
-      navigate('/login');
-      return;
-    }
     dispatch(fetchCart() as any);
-  }, [dispatch, isAuthenticated, navigate]);
+  }, [dispatch]);
 
   const handleIncrement = (id: number) => {
     dispatch(incrementQuantity(id));

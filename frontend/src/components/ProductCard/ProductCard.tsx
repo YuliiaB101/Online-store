@@ -6,6 +6,7 @@ import { Product, RootState } from '../../types';
 import styles from './ProductCard.module.scss';
 import { addToCart } from 'store/slices/cartSlice';
 import { addToast } from '../../store/slices/toastSlice';
+import { useAuth } from '../../store/slices/authSlice';
 
 interface ProductCardProps {
   product: Product;
@@ -14,7 +15,7 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
+  const { isAuthenticated } = useAuth();
   const { items: favourites } = useSelector((state: RootState) => state.favourites);
 
   const isFavourite = favourites.some((fav) => fav.id === product.id);

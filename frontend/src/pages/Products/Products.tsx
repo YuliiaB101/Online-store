@@ -9,13 +9,14 @@ import { fetchCategories } from '../../store/slices/categoriesSlice';
 import { fetchCart } from '../../store/slices/cartSlice';
 import { fetchFavourites } from '../../store/slices/favouritesSlice';
 import { RootState } from '../../types';
+import { useAuth } from '../../store/slices/authSlice';
 
 
 const Products: React.FC = () => {
     const dispatch = useDispatch();
     const [searchParams] = useSearchParams();
     const { items: products, filters } = useSelector((state: RootState) => state.products);
-    const { isAuthenticated } = useSelector((state: RootState) => state.auth);
+    const { isAuthenticated } = useAuth();
 
     // Initialize: load categories and handle URL filters
     useEffect(() => {

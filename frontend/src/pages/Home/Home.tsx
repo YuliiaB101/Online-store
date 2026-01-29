@@ -5,13 +5,14 @@ import { fetchCategories } from '../../store/slices/categoriesSlice';
 import { fetchCart } from '../../store/slices/cartSlice';
 import { fetchFavourites } from '../../store/slices/favouritesSlice';
 import { RootState, Product } from '../../types';
+import { useAuth } from '../../store/slices/authSlice';
 import styles from './Home.module.scss';
 import SmallProductCard from 'components/SmallProductCard/SmallProductCard';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
+  const { isAuthenticated } = useAuth();
   const { items: products } = useSelector((state: RootState) => state.products);
   const { items: categories } = useSelector((state: RootState) => state.categories);
 
