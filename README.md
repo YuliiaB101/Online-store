@@ -37,13 +37,13 @@ The project focuses on production-oriented frontend architecture, structured sta
 
 FLORIA simulates a realistic online store environment and demonstrates:
 
-✔ Scalable React architecture
-✔ Predictable state management using Redux Toolkit
-✔ REST API integration
-✔ JWT-based authentication
-✔ Secure password handling with bcrypt
-✔ Multi-step checkout logic
-✔ Responsive layout across multiple breakpoints
+✔ Scalable React architecture 
+✔ Predictable state management using Redux Toolkit 
+✔ REST API integration 
+✔ JWT-based authentication 
+✔ Secure password handling with bcrypt 
+✔ Multi-step checkout logic  
+✔ Responsive layout across multiple breakpoints   
 
 ---
 
