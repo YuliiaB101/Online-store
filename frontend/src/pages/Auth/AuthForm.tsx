@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage, FormikProps } from 'formik';
 import * as Yup from 'yup';
 import styles from './Auth.module.scss';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { login, register, clearError, useAuth } from '../../store/slices/authSlice';
 
@@ -24,13 +24,16 @@ interface RegisterValues {
 const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const { isAuthenticated, error } = useAuth();
+  const from = (location.state as { from?: string } | null)?.from;
+  const redirectTo = from && from !== '/login' && from !== '/register' ? from : '/home';
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/home');
+      navigate(redirectTo, { replace: true });
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated, navigate, redirectTo]);
 
   // Clear error when component mounts or mode changes
   useEffect(() => {
@@ -138,9 +141,9 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
 
       <div className={styles.auth__footer}>
         {isRegisterMode ? (
-          <>Already have an account? <Link to="/login">Login</Link></>
+          <>Already have an account? <Link to="/login" state={{ from }}>Login</Link></>
         ) : (
-          <>Still don't have an account? <Link to="/register">Register</Link></>
+          <>Still don't have an account? <Link to="/register" state={{ from }}>Register</Link></>
         )}
       </div>
     </main>

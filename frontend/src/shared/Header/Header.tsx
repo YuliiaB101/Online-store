@@ -141,7 +141,7 @@ const Header: React.FC = () => {
                 </div>
               </div>
             ) : (
-              <Link to="/login">
+              <Link to="/login" state={{ from: `${location.pathname}${location.search}${location.hash}` }}>
                 <img className={styles.header__icon} src="/icons/user.svg" alt="User" />
               </Link>
             )}

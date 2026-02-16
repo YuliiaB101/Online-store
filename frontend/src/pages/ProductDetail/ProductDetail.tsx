@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate, Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProductById } from '../../store/slices/productsSlice';
 import { addToCart } from '../../store/slices/cartSlice';
@@ -12,6 +12,7 @@ import styles from './ProductDetail.module.scss';
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
 
@@ -25,7 +26,7 @@ const ProductDetail = () => {
 
   const handleAddToCart = () => {
     if (!isAuthenticated) {
-      navigate('/login');
+      navigate('/login', { state: { from: `${location.pathname}${location.search}${location.hash}` } });
       return;
     }
     if (product) {
@@ -39,7 +40,7 @@ const ProductDetail = () => {
 
   const handleFavouriteClick = () => {
     if (!isAuthenticated) {
-      navigate('/login');
+      navigate('/login', { state: { from: `${location.pathname}${location.search}${location.hash}` } });
       return;
     }
 

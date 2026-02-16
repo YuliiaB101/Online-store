@@ -10,11 +10,14 @@ import styles from './Home.module.scss';
 import SmallProductCard from 'components/SmallProductCard/SmallProductCard';
 import { Link } from 'react-router-dom';
 
+const SKELETON_COUNT = 8;
+
 const Home = () => {
   const dispatch = useDispatch();
   const { isAuthenticated } = useAuth();
   const { items: products } = useSelector((state: RootState) => state.products);
   const { items: categories } = useSelector((state: RootState) => state.categories);
+  const isEmpty = products.length === 0 || categories.length === 0;
 
   useEffect(() => {
     dispatch(fetchCategories() as any);
@@ -56,9 +59,13 @@ const Home = () => {
         <div className={styles.home__main__block}>
           <h1 className={styles.home__main__title}>Our Top products for You</h1>
           <div className={styles.home__main__products}>
-            {categoryProducts.map((product) => (
-              <SmallProductCard key={product.id} product={product} />
-            ))}
+            {isEmpty
+              ? Array.from({ length: SKELETON_COUNT }).map((_, index) => (
+                <div key={index} className={styles.home__main__skeletonCard} />
+              ))
+              : categoryProducts.map((product) => (
+                <SmallProductCard key={product.id} product={product} />
+              ))}
           </div>
 
           <h1 className={styles.home__main__title}>Top Categories</h1>
@@ -67,15 +74,15 @@ const Home = () => {
               <img src="/images/categories/category-plants-indoor.jpg" alt="indoor_plants" />
               <p>Indoor Plants</p>
             </Link>
-            <Link to="/products?category=outdoor-plants,cacti,herbs" className={styles.home__top__categories__link}>
+            <Link to="/products?category=outdoor-plants,cacti,herbs" className={styles.home__main__categories__link}>
               <img src="/images/categories/category-plants-outdoor.jpg" alt="outdoor_plants" />
               <p>Outdoor Plants</p>
             </Link>
-            <Link to="/products?category=planters-pots" className={styles.home__top__categories__link}>
+            <Link to="/products?category=planters-pots" className={styles.home__main__categories__link}>
               <img src="/images/categories/category-pots.jpg" alt="pots" />
               <p>Pots</p>
             </Link>
-            <Link to="/products?category=gardening-tools" className={styles.home__top__categories__link}>
+            <Link to="/products?category=gardening-tools" className={styles.home__main__categories__link}>
               <img src="/images/categories/category-accessories.jpg" alt="accessories" />
               <p>Accessories</p>
             </Link>

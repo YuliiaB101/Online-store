@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFavourites, removeFromFavourites } from '../../store/slices/favouritesSlice';
 import { Product, RootState } from '../../types';
@@ -14,6 +14,7 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
   const { isAuthenticated } = useAuth();
   const { items: favourites } = useSelector((state: RootState) => state.favourites);
@@ -27,7 +28,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const handleFavouriteClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (!isAuthenticated) {
-      navigate('/login');
+      navigate('/login', { state: { from: `${location.pathname}${location.search}${location.hash}` } });
       return;
     }
 
@@ -49,7 +50,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const handleCartClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (!isAuthenticated) {
-      navigate('/login');
+      navigate('/login', { state: { from: `${location.pathname}${location.search}${location.hash}` } });
       return;
     } else {
       dispatch(addToCart({ productId: product.id, quantity: 1 }) as any);

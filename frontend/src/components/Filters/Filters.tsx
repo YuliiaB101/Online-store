@@ -53,7 +53,7 @@ const Filters = () => {
     <div className={styles.filters}>
       <div className={styles.filters__quick}>
         <button 
-          onClick={() => handleQuickFilter('foliage,succulents,flowering-plants,pothos')}
+          onClick={() => handleQuickFilter('foliage,succulents,flowering-plants,orchids,pothos')}
           className={`${styles.filters__quickBtn} ${isActiveFilter('foliage,succulents,flowering-plants,orchids,pothos') ? styles['filters__quickBtn--active'] : ''}`}
         >
           Indoor Plants
