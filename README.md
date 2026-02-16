@@ -85,8 +85,6 @@ FLORIA simulates a realistic online store environment and demonstrates:
 
 ## What This Project Demonstrates
 
-This project demonstrates practical full-stack development skills in a realistic business domain.
-
 ### Frontend
 
 - Building scalable React applications with TypeScript
@@ -164,6 +162,8 @@ Minimum supported screen width: **412px**
 
 ### Deployment
 - Render
+
+---
 
 ## Future Improvements
 
