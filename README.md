@@ -19,6 +19,14 @@ The project focuses on production-oriented frontend architecture, structured sta
 
 ---
 
+## Preview
+
+<p align="center" verticalAlign="top">
+  <img src="./docs/screenshots/home-full.png" width="32%" style="vertical-align: top" />
+  <img src="./docs/screenshots/products-full.png" width="32%" style="vertical-align: top" />
+  <img src="./docs/screenshots/cart-full.png" width="32%" style="vertical-align: top" />
+</p>
+
 ## User Journey
 
 This section illustrates a typical user flow through the application — from browsing products to completing an order.
@@ -90,9 +98,10 @@ A structured 5-step checkout process with form validation ensures clear user pro
 <summary>View screenshots</summary>
 
 **Checkout Flow**
+
 <p align="center">
-  <img src="./docs/screenshots/checkout-step-1.png" width="48%" />
-  <img src="./docs/screenshots/checkout-review.png" width="48%" />
+  <img src="./docs/screenshots/checkout-step-1.png" width="48%" style="vertical-align: top;" />
+  <img src="./docs/screenshots/checkout-review.png" width="48%" style="vertical-align: top;" />
 </p>
 
 </details>
@@ -112,6 +121,25 @@ This demonstrates user-specific state handling and protected routes.
 This journey demonstrates how the application handles product discovery, state management, user authentication and transactional flows within a cohesive and consistent UI system.
 
 ---
+
+## Responsive Design
+
+<details>
+<summary>View screenshots</summary>
+
+<div style="display: flex; gap: 24px; align-items: flex-start;">
+  <div style="flex: 1;">
+    <img src="./docs/screenshots/mobile-home-full.png" width="100%" />
+  </div>
+
+  <div style="flex: 1; display: flex; flex-direction: column; gap: 40px;">
+    <img src="./docs/screenshots/mobile-products-filtered.png" width="100%" />
+    <img src="./docs/screenshots/mobile-product.png" width="100%" />
+    <img src="./docs/screenshots/mobile-checkout-step-2.png" width="100%" />
+  </div>
+</div>
+
+</details>
 
 ## Project Overview
 

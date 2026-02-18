@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage, FormikProps } from 'formik';
 import * as Yup from 'yup';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState, CartItem } from '../../types';
 import styles from './Checkout.module.scss';
 import { Link, useNavigate } from 'react-router-dom';
+import { clearCart } from 'store/slices/cartSlice';
 
 const StepOne = () => (
     <div className={styles.checkout__form}>
@@ -87,7 +88,9 @@ const StepFour = () => {
 const StepFive = () => {
     const { items } = useSelector((state: RootState) => state.cart);
     const total = items.reduce((sum: number, item: CartItem) => sum + item.price * item.quantity, 0);
-    
+    const dispatch = useDispatch();
+    dispatch(clearCart() as any);
+
     return (
         <div className={styles.checkout__form}>
             <div className={styles.checkout__success}>
