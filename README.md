@@ -66,6 +66,9 @@ FLORIA simulates a complete e-commerce journey:
    <img src="./docs/screenshots/products-filtered.png"width="48%" align="top" />
 </p>
 
+**Product Detail Page**
+![Product Detail](./docs/screenshots/product-detail.png)
+
 **Checkout Flow**
 <p align="center">
   <img src="./docs/screenshots/checkout-step-1.png" width="48%" align="top" />
