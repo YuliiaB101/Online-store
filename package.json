@@ -1,7 +1,16 @@
 {
-  "dependencies": {
-    "classnames": "^2.5.1",
-    "formik": "^2.4.9",
-    "yup": "^1.7.1"
+  "name": "online-store-monorepo",
+  "private": true,
+  "workspaces": [
+    "apps/backend",
+    "apps/frontend"
+  ],
+  "scripts": {
+    "build": "yarn workspace online-store-backend run build && yarn workspace online-store-frontend run build",
+    "build:backend": "yarn workspace online-store-backend run build",
+    "build:frontend": "yarn workspace online-store-frontend run build",
+    "dev:backend": "yarn workspace online-store-backend run dev",
+    "dev:frontend": "yarn workspace online-store-frontend run dev",
+    "start:backend": "yarn workspace online-store-backend run start"
   }
 }

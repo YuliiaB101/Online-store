@@ -10,6 +10,7 @@
 ![JWT](https://img.shields.io/badge/Auth-JWT-orange)
 ![REST%20API](https://img.shields.io/badge/API-REST-lightgrey)
 ![Render](https://img.shields.io/badge/Deploy-Render-46E3B7)
+![Monorepo](https://img.shields.io/badge/Repository-Monorepo-8A2BE2)
 
 FLORIA is a full-stack e-commerce SPA built with React, TypeScript, Node.js and PostgreSQL.
 
@@ -39,9 +40,9 @@ The project simulates a realistic online retail environment and focuses on scala
 ## Preview
 
 <p align="center" verticalAlign="top">
-  <img src="./docs/screenshots/home-full.png" width="32%" align="top" />
-  <img src="./docs/screenshots/products-full.png" width="32%" align="top" />
-  <img src="./docs/screenshots/cart-full.png" width="32%" align="top" />
+  <img src="./apps/docs/screenshots/home-full.png" width="32%" align="top" />
+  <img src="./apps/docs/screenshots/products-full.png" width="32%" align="top" />
+  <img src="./apps/docs/screenshots/cart-full.png" width="32%" align="top" />
 </p>
 
 ## User Flow
@@ -55,34 +56,34 @@ FLORIA simulates a complete e-commerce journey:
 - Personalised favourites  
 
 <details>
-<summary>View screenshots</summary>
+<summary><strong>🔎 Explore User Flow Screenshots</strong></summary>
 
 **Home**
-![Home](./docs/screenshots/home-full.png)
+![Home](./apps/docs/screenshots/home-full.png)
 
 **Products**
 <p align="center">
-   <img src="./docs/screenshots/products-default.png" width="48%" align="top" />
-   <img src="./docs/screenshots/products-filtered.png"width="48%" align="top" />
+  <img src="./apps/docs/screenshots/products-default.png" width="48%" align="top" />
+  <img src="./apps/docs/screenshots/products-filtered.png"width="48%" align="top" />
 </p>
 
 **Product Detail Page**
-![Product Detail](./docs/screenshots/product-detail.png)
+![Product Detail](./apps/docs/screenshots/product-detail.png)
 
 **Checkout Flow**
 <p align="center">
-  <img src="./docs/screenshots/checkout-step-1.png" width="48%" align="top" />
-  <img src="./docs/screenshots/checkout-review.png" width="48%" align="top" />
+  <img src="./apps/docs/screenshots/checkout-step-1.png" width="48%" align="top" />
+  <img src="./apps/docs/screenshots/checkout-review.png" width="48%" align="top" />
 </p>
 
 **Login**
-![Login](./docs/screenshots/login.png)
+![Login](./apps/docs/screenshots/login.png)
 
 **Cart**
-![Cart](./docs/screenshots/cart.png)
+![Cart](./apps/docs/screenshots/cart.png)
 
 **Favourites**
-![Favourites](./docs/screenshots/favourites.png)
+![Favourites](./apps/docs/screenshots/favourites.png)
 
 </details>
 
@@ -98,17 +99,17 @@ Fully responsive across:
 - **Wide screens**: ≥ 1440px
 <details>
 
-<summary>View screenshots</summary>
+<summary><strong>🔎 View Mobile Layout</strong></summary>
 
 <table align="center" width="100%">
   <tr>
-    <td width="50%" valign="top">
-      <img src="./docs/screenshots/mobile-home-full.png" width="100%" />
+    <td width="35%" valign="top">
+      <img src="./apps/docs/screenshots/mobile-home-full.png" width="100%" />
     </td>
-    <td width="50%" valign="top">
-      <img src="./docs/screenshots/mobile-products-filtered.png" width="100%" /><br /><br />
-      <img src="./docs/screenshots/mobile-product.png" width="100%" /><br /><br />
-      <img src="./docs/screenshots/mobile-checkout-step-2.png" width="100%" />
+    <td width="35%" valign="top">
+      <img src="./apps/docs/screenshots/mobile-products-filtered.png" width="100%" /><br /><br />
+      <img src="./apps/docs/screenshots/mobile-product.png" width="100%" /><br /><br />
+      <img src="./apps/docs/screenshots/mobile-checkout-step-2.png" width="100%" />
     </td>
   </tr>
 </table>
@@ -147,26 +148,16 @@ FLORIA highlights the following technical aspects:
 <details>
 <summary><b>Deployment on Render</b></summary>
 
-1. PostgreSQL Database:
-   - Create new PostgreSQL database on Render
-   - Go to database **Shell** tab
-   - Run `backend/config/database.sql` script
+The project is configured as a monorepo with a Blueprint file (`render.yaml`), so backend + frontend + PostgreSQL are created in a single deployment.
 
-2. Backend Web Service:
-   - Runtime: Node
-   - Build: `cd backend && yarn install && yarn build`
-   - Start: `cd backend && yarn dev`
-   - Environment variables:
-     - `DATABASE_URL` (copy from database connection string)
-     - `JWT_SECRET` (generate random string)
-     - `PORT=5000`
-     - `NODE_ENV=production`
-
-3. Frontend Static Site:
-   - Build: `cd frontend && yarn install && yarn build`
-   - Publish: `frontend/build`
-   - Environment variables:
-     - `REACT_APP_API_URL` (backend URL + /api, e.g. `https://floria-backend.onrender.com/api`)
+1. Push the repository with `render.yaml` to GitHub.
+2. In Render, choose **New + → Blueprint** and select the repository.
+3. Render will automatically create:
+  - PostgreSQL: `floria-db`
+  - Web Service (Node): `floria-backend`
+  - Static Site: `floria-frontend`
+4. After the first deployment, open the database (`floria-db`) → **Shell** and run the SQL from `apps/backend/config/database.sql`.
+5. If the backend service name was changed, update `REACT_APP_API_URL` for the frontend.
 
 </details>
 
@@ -176,19 +167,15 @@ FLORIA highlights the following technical aspects:
 ```bash
 git clone <repository-url>
 cd Online-store
-cp .env.example .env
-
-# edit `.env` file and configure your database credentials and JWT secret
-
-cd backend
 yarn install
-yarn dev
 
-cd frontend
-yarn install
-yarn start
+# backend (terminal 1)
+yarn dev:backend
 
-psql -U postgres -d online_store -f backend/config/database.sql
+# frontend (terminal 2)
+yarn dev:frontend
+
+psql -U postgres -d online_store -f apps/backend/config/database.sql
 ```
 
 7. Access the application:
