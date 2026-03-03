@@ -4,8 +4,8 @@ import { footerConfig } from "./footerConfig";
 import { Link } from "react-router-dom";
 
 const Footer: React.FC = () => {
-    return (
- <footer className={`${styles.footer} fade-in`}>
+  return (
+    <footer className={`${styles.footer} fade-in`}>
       <div className={styles.footer__top}>
         <div className={styles.footer__columns}>
           {[footerConfig.explore, footerConfig.information, footerConfig.tips].map(
@@ -30,13 +30,21 @@ const Footer: React.FC = () => {
             Subscribe to our newsletter for exclusive offers and plant care tips.
           </p>
 
-          <form className={styles.footer__newsletter_form}>
+          <form
+            className={styles.footer__newsletter_form}
+            onSubmit={(e) => {
+              e.preventDefault();
+              alert("Subscribed to the newsletter!");
+            }}
+          >
             <input
               type="email"
               placeholder="Enter your email"
               className={styles.footer__newsletter_input}
             />
-            <button className={styles.footer__newsletter_button}>Subscribe</button>
+            <button className={styles.footer__newsletter_button} type="submit">
+              Subscribe
+            </button>
           </form>
         </div>
       </div>
@@ -55,7 +63,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className={styles.footer__socials}>
-            <Link to="#">
+          <Link to="#">
             <img className={styles.footer__icon} src="/icons/facebook-icon.svg" alt="Facebook" />
           </Link>
           <Link to="#">
@@ -67,7 +75,7 @@ const Footer: React.FC = () => {
         </div>
       </div>
     </footer>
-    );
+  );
 };
 
 export default React.memo(Footer);

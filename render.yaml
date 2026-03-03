@@ -23,6 +23,10 @@ services:
     buildCommand: yarn install && yarn run build
     staticPublishPath: build
     pullRequestPreviewsEnabled: false
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
     envVars:
       - key: REACT_APP_API_URL
         value: https://floria-backend.onrender.com
