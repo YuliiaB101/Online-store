@@ -3,7 +3,7 @@ services:
     name: floria-backend
     runtime: node
     rootDir: apps/backend
-    buildCommand: yarn install --production=false && yarn run build
+    buildCommand: yarn install --production=false && yarn run build && yarn run seed
     startCommand: yarn run start
     plan: free
     envVars:
