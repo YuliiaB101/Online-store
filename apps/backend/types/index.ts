@@ -13,7 +13,6 @@ export interface Product {
   price: number;
   image_url: string;
   category_id: number;
-  likes: number;
   created_at: Date;
   category_name?: string;
   category_slug?: string;

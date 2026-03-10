@@ -13,7 +13,6 @@ export interface Product {
   category_id: number;
   category_name: string;
   category_slug: string;
-  likes: number;
   created_at: string;
   rating_avg: number;
   rating_count: number;
@@ -26,6 +25,7 @@ export interface Category {
 }
 
 export interface CartItem extends Product {
+  product_id: number;
   quantity: number;
 }
 

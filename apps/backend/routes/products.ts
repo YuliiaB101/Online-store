@@ -70,24 +70,4 @@ router.get('/:id', async (req: Request, res: Response): Promise<void> => {
   }
 });
 
-// Like product
-router.post('/:id/like', async (req: Request, res: Response): Promise<void> => {
-  try {
-    const { id } = req.params;
-    const result = await pool.query(
-      'UPDATE products SET likes = likes + 1 WHERE id = $1 RETURNING likes',
-      [id]
-    );
-
-    if (result.rows.length === 0) {
-      res.status(404).json({ message: 'Product not found' });
-      return;
-    }
-
-    res.json({ likes: result.rows[0].likes });
-  } catch (error) {
-    res.status(500).json({ message: 'Server error', error: (error as Error).message });
-  }
-});
-
 export default router;

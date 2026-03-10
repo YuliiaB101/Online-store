@@ -53,6 +53,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       navigate('/login', { state: { from: `${location.pathname}${location.search}${location.hash}` } });
       return;
     } else {
+      console.log('Adding to cart:', product.id);
       dispatch(addToCart({ productId: product.id, quantity: 1 }) as any);
       dispatch(addToast({
         message: `${product.name} added to <strong>cart</strong>!`,

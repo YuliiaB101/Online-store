@@ -88,8 +88,6 @@ const StepFour = () => {
 const StepFive = () => {
     const { items } = useSelector((state: RootState) => state.cart);
     const total = items.reduce((sum: number, item: CartItem) => sum + item.price * item.quantity, 0);
-    const dispatch = useDispatch();
-    dispatch(clearCart() as any);
 
     return (
         <div className={styles.checkout__form}>
@@ -168,6 +166,7 @@ const Checkout: React.FC = () => {
     const [currentStep, setCurrentStep] = useState<number>(0);
     const { user } = useSelector((state: RootState) => state.auth);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -238,6 +237,7 @@ const Checkout: React.FC = () => {
                 enableReinitialize={true}
                 onSubmit={() => {
                     if (currentStep === steps.length - 1) {
+                        dispatch(clearCart() as any);
                         navigate('/');
                     } else {
                         nextStep();
@@ -252,8 +252,8 @@ const Checkout: React.FC = () => {
                             <button className={styles.checkout__buttons__back} onClick={prevStep} disabled={currentStep === 0 || currentStep === 4} type="button">
                                 Back
                             </button>
-                            <button 
-                                className={styles.checkout__buttons__next} 
+                            <button
+                                className={styles.checkout__buttons__next}
                                 type="submit"
                                 disabled={!isValid && currentStep < 3}
                             >

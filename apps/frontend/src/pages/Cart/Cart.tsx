@@ -17,7 +17,7 @@ const Cart = () => {
 
   const handleIncrement = (id: number) => {
     dispatch(incrementQuantity(id));
-    const item = items.find(i => i.id === id);
+    const item = items.find((i) => i.id === id);
     if (item) {
       dispatch(updateCartItem({ id, quantity: item.quantity + 1 }) as any);
     }
@@ -71,7 +71,7 @@ const Cart = () => {
               onIncrement={handleIncrement}
               onDecrement={handleDecrement}
               onRemove={handleRemove}
-              onClick={() => navigate(`/product/${item.id}`)}
+              onClick={() => navigate(`/product/${item.product_id}`)}
             />
           ))}
         </div>
