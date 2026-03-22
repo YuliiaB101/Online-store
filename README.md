@@ -61,7 +61,7 @@ FLORIA simulates a complete e-commerce journey:
 - Multi-step checkout with validation  
 - Personalised favourites  
 
-<details open><summary>Click to open/close screenshots</summary>
+<details open><summary><strong>🔎 Click to open/close screenshots</strong></summary>
 
 **Home**
 ![Home](./apps/docs/screenshots/home-full.png)
@@ -102,8 +102,8 @@ Fully responsive across:
 - **Tablet**: ≥ 768px
 - **Desktop**: ≥ 1024px
 - **Wide screens**: ≥ 1440px
-- 
-<details open><summary>🔎 Click to open/close Mobile Layout</summary>
+
+<details open><summary><strong>🔎 Click to open/close Mobile Layout</strong></summary>
 
 <table align="center" width="100%">
   <tr>
