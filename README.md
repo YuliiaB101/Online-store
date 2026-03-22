@@ -16,7 +16,7 @@ FLORIA is a full-stack e-commerce SPA built with React, TypeScript, Node.js and 
 
 The project simulates a realistic online retail environment and focuses on scalable frontend architecture, structured state management, secure authentication and transactional flows.
 
-**Live Demo:** [https://floria-frontend-wq5q.onrender.com/](https://floria-frontend-wq5q.onrender.com/)
+**Live Demo:** [https://floria-frontend.onrender.com](https://floria-frontend.onrender.com)
 > Note: The backend may need a few seconds to initialize on the first visit (free-tier hosting).
 
 🎥 **Video Walkthrough (1.5 min):**
@@ -61,8 +61,7 @@ FLORIA simulates a complete e-commerce journey:
 - Multi-step checkout with validation  
 - Personalised favourites  
 
-<details>
-<summary><strong>🔎 Explore User Flow Screenshots</strong></summary>
+<details open><summary>Click to open/close screenshots</summary>
 
 **Home**
 ![Home](./apps/docs/screenshots/home-full.png)
@@ -103,9 +102,8 @@ Fully responsive across:
 - **Tablet**: ≥ 768px
 - **Desktop**: ≥ 1024px
 - **Wide screens**: ≥ 1440px
-<details>
-
-<summary><strong>🔎 View Mobile Layout</strong></summary>
+- 
+<details open><summary>🔎 Click to open/close Mobile Layout</summary>
 
 <table align="center" width="100%">
   <tr>
